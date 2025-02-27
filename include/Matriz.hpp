@@ -17,6 +17,8 @@ public:
     Matriz(size_t linhas, size_t colunas);                              // Construtor de matriz nula
 
     void imprimir() const;
+    Matriz<T> linha(int indice) const;  // Retorna matriz 1xn
+    Matriz<T> coluna(int indice) const; // Retorna matrix nx1
 
     T operator()(int linha, int coluna) const; // Operador de acesso (leitura)
     T &operator()(int linha, int coluna);      // Operador de acesso por referência
@@ -94,6 +96,39 @@ void Matriz<T>::imprimir() const
         std::cout << std::endl;
     }
     std::cout << std::endl;
+}
+template <typename T>
+Matriz<T> Matriz<T>::linha(int indice) const
+{
+    if (indice <= 0)
+        throw std::out_of_range("Erro: Índice deve ser maior que zero.");
+
+    if ((size_t)indice > linhas)
+        throw std::out_of_range("Erro: Índice de linha fora dos limites.");
+
+    std::vector<T> nova_linha(&matriz[(indice - 1) * colunas], &matriz[indice * colunas]);
+
+    Matriz<T> novo(1, colunas, nova_linha); // Nova matriz com ordem 1xn
+
+    return novo;
+}
+
+template <typename T>
+Matriz<T> Matriz<T>::coluna(int indice) const
+{
+    if (indice <= 0)
+        throw std::out_of_range("Erro: Índice deve ser maior que zero.");
+
+    if ((size_t)indice > linhas)
+        throw std::out_of_range("Erro: Índice de linha fora dos limites.");
+
+    std::vector<T> nova_coluna(colunas);
+    for (size_t i = 0; i < linhas; i++)
+        nova_coluna[i] = matriz[i * colunas + (indice - 1)];
+
+    Matriz<T>
+        novo(linhas, 1, nova_coluna);
+    return novo;
 }
 
 /* OPERADORES ARITMÉTICOS */
