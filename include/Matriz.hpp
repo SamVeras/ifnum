@@ -1,4 +1,5 @@
 #pragma once
+#include <iomanip>
 #include <iostream>
 #include <stdexcept>
 #include <vector>
@@ -28,6 +29,9 @@ public:
     Matriz<T> &operator+=(const Matriz<T> outro);
     Matriz<T> &operator-=(const Matriz<T> outro);
     Matriz<T> &operator*=(T escalar); // M. de matriz p/ escalar e atribuição
+
+    template <typename U>
+    friend std::ostream &operator<<(std::ostream &os, const Matriz<U> &u);
 };
 
 /* CONSTRUTORES */
@@ -160,4 +164,23 @@ template <typename T>
 Matriz<T> &Matriz<T>::operator*=(T escalar)
 {
     return *this = *this * escalar;
+}
+
+/* FRIENDS */
+
+template <typename U>
+std::ostream &operator<<(std::ostream &os, const Matriz<U> &u)
+{
+    const size_t largura = 10;
+
+    for (size_t i = 0; i < u.linhas; ++i)
+    {
+        for (size_t j = 0; j < u.colunas; ++j)
+        {
+            os << std::setw(largura) << u(i, j);
+        }
+        os << std::endl;
+    }
+
+    return os;
 }
