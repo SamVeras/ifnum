@@ -17,6 +17,7 @@ public:
     Matriz(size_t linhas, size_t colunas);                              // Construtor de matriz nula
 
     void imprimir() const;
+    T determinante() const;
     Matriz<T> linha(int indice) const;  // Retorna matriz 1xn
     Matriz<T> coluna(int indice) const; // Retorna matrix nx1
 
@@ -99,6 +100,20 @@ void Matriz<T>::imprimir() const
     }
     std::cout << std::endl;
 }
+
+template <typename T>
+T Matriz<T>::determinante() const
+{
+    if (colunas != linhas)
+        throw std::invalid_argument("Erro: Matriz não é quadrada.");
+
+    T det = 0;
+
+    // TO-DO
+
+    return det;
+}
+
 template <typename T>
 Matriz<T> Matriz<T>::linha(int indice) const
 {
