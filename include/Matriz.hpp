@@ -30,6 +30,9 @@ public:
     Matriz<T> &operator-=(const Matriz<T> &outro);
     Matriz<T> &operator*=(T escalar); // M. de matriz p/ escalar e atribuição
 
+    bool operator==(const Matriz<T> &outro) const;
+    bool operator!=(const Matriz<T> &outro) const;
+
     template <typename U> // std::cout << matriz;
     friend std::ostream &operator<<(std::ostream &os, const Matriz<U> &u);
 
@@ -167,6 +170,28 @@ template <typename T>
 Matriz<T> &Matriz<T>::operator*=(T escalar)
 {
     return *this = *this * escalar;
+}
+
+/* OPERADORES DE IGUALDADE */
+
+template <typename T>
+bool Matriz<T>::operator==(const Matriz<T> &outro) const
+{
+    if (linhas != outro.linhas || colunas != outro.colunas)
+        return false;
+
+    for (size_t i = 0; i < linhas; ++i)
+        for (size_t j = 0; j < colunas; ++j)
+            if ((*this)(i, j) != outro(i, j))
+                return false;
+
+    return true;
+}
+
+template <typename T>
+bool Matriz<T>::operator!=(const Matriz<T> &outro) const
+{
+    return !(*this == outro);
 }
 
 /* FRIENDS */
