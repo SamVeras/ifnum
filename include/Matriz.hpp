@@ -32,6 +32,9 @@ public:
 
     template <typename U>
     friend std::ostream &operator<<(std::ostream &os, const Matriz<U> &u);
+
+    template <typename U> // escalar à esquerda (2 * matriz)
+    friend Matriz<U> operator*(U escalar, const Matriz<U> &matriz);
 };
 
 /* CONSTRUTORES */
@@ -183,4 +186,10 @@ std::ostream &operator<<(std::ostream &os, const Matriz<U> &u)
     }
 
     return os;
+}
+
+template <typename U>
+Matriz<U> operator*(U escalar, Matriz<U> &matriz)
+{
+    return matriz * escalar;
 }
