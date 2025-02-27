@@ -26,11 +26,13 @@ public:
     Matriz<T> operator+(const Matriz<T> &outro) const;
     Matriz<T> operator-(const Matriz<T> &outro) const;
     Matriz<T> operator*(T escalar) const;              // Multiplicação de matriz por escalar
+    Matriz<T> operator/(T escalar) const;              // Divisão de matriz por escalar
     Matriz<T> operator*(const Matriz<T> &outro) const; // Multiplicação de matrizes
 
     Matriz<T> &operator+=(const Matriz<T> &outro);
     Matriz<T> &operator-=(const Matriz<T> &outro);
-    Matriz<T> &operator*=(T escalar); // M. de matriz p/ escalar e atribuição
+    Matriz<T> &operator*=(T escalar); // M. de matriz por escalar e atribuição
+    Matriz<T> &operator/=(T escalar); // D. de matriz por escalar e atribuição
 
     bool operator==(const Matriz<T> &outro) const;
     bool operator!=(const Matriz<T> &outro) const;
@@ -173,6 +175,17 @@ Matriz<T> Matriz<T>::operator*(T escalar) const
 }
 
 template <typename T>
+Matriz<T> Matriz<T>::operator/(T escalar) const
+{
+    Matriz<T> novo(linhas, colunas);
+
+    for (size_t i = 0; i < matriz.size(); i++)
+        novo.matriz[i] = matriz[i] / escalar;
+
+    return novo;
+}
+
+template <typename T>
 Matriz<T> Matriz<T>::operator*(const Matriz<T> &outro) const
 {
     if (colunas != outro.linhas)
@@ -205,6 +218,12 @@ template <typename T>
 Matriz<T> &Matriz<T>::operator*=(T escalar)
 {
     return *this = *this * escalar;
+}
+
+template <typename T>
+inline Matriz<T> &Matriz<T>::operator/=(T escalar)
+{
+    return *this = *this / escalar;
 }
 
 /* OPERADORES DE IGUALDADE */
