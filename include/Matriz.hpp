@@ -177,6 +177,9 @@ Matriz<T> Matriz<T>::operator*(T escalar) const
 template <typename T>
 Matriz<T> Matriz<T>::operator/(T escalar) const
 {
+    if (escalar == 0)
+        throw std::invalid_argument("Erro: Divisão por zero.");
+
     Matriz<T> novo(linhas, colunas);
 
     for (size_t i = 0; i < matriz.size(); i++)
@@ -206,24 +209,53 @@ Matriz<T> Matriz<T>::operator*(const Matriz<T> &outro) const
 template <typename T>
 Matriz<T> &Matriz<T>::operator+=(const Matriz<T> &other)
 {
-    return *this = *this + other;
+    // return *this = *this + other;
+
+    if (colunas != other.colunas || linhas != other.linhas)
+        throw std::invalid_argument("Erro: Matrizes de ordens diferentes.");
+
+    for (size_t i = 0; i < matriz.size(); i++)
+        matriz[i] += other.matriz[i];
+
+    return *this;
 }
 template <typename T>
 Matriz<T> &Matriz<T>::operator-=(const Matriz<T> &outro)
 {
-    return *this = *this - outro;
+    // return *this = *this - outro;
+
+    if (colunas != other.colunas || linhas != other.linhas)
+        throw std::invalid_argument("Erro: Matrizes de ordens diferentes.");
+
+    for (size_t i = 0; i < matriz.size(); i++)
+        matriz[i] -= other.matriz[i];
+
+    return *this;
 }
 
 template <typename T>
 Matriz<T> &Matriz<T>::operator*=(T escalar)
 {
-    return *this = *this * escalar;
+    // return *this = *this * escalar;
+
+    for (size_t i = 0; i < matriz.size(); i++)
+        matriz[i] *= escalar;
+
+    return *this;
 }
 
 template <typename T>
 inline Matriz<T> &Matriz<T>::operator/=(T escalar)
 {
-    return *this = *this / escalar;
+    // return *this = *this / escalar;
+
+    if (escalar == 0)
+        throw std::invalid_argument("Erro: Divisão por zero.");
+
+    for (size_t i = 0; i < matriz.size(); i++)
+        matriz[i] /= escalar;
+
+    return *this;
 }
 
 /* OPERADORES DE IGUALDADE */
