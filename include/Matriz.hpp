@@ -13,24 +13,24 @@ private:
     std::vector<T> matriz;
 
 public:
-    Matriz(size_t linhas, size_t colunas, std::vector<T> dados); // Construtor com lista
-    Matriz(size_t linhas, size_t colunas);                       // Construtor de matriz nula
+    Matriz(size_t linhas, size_t colunas, const std::vector<T> &dados); // Construtor com lista
+    Matriz(size_t linhas, size_t colunas);                              // Construtor de matriz nula
 
     void imprimir() const;
 
-    T operator()(int linha, int coluna) const; // Operador de acesso
-    T &operator()(int linha, int coluna);      // Operador de acesso por ref.
+    T operator()(int linha, int coluna) const; // Operador de acesso (leitura)
+    T &operator()(int linha, int coluna);      // Operador de acesso por referência
 
-    Matriz<T> operator+(const Matriz<T> outro);
-    Matriz<T> operator-(const Matriz<T> outro);
-    Matriz<T> operator*(T escalar);       // Multiplicação de matriz por escalar
-    Matriz<T> operator*(Matriz<T> outro); // Multiplicação de matrizes
+    Matriz<T> operator+(const Matriz<T> &outro) const;
+    Matriz<T> operator-(const Matriz<T> &outro) const;
+    Matriz<T> operator*(T escalar) const;              // Multiplicação de matriz por escalar
+    Matriz<T> operator*(const Matriz<T> &outro) const; // Multiplicação de matrizes
 
-    Matriz<T> &operator+=(const Matriz<T> outro);
-    Matriz<T> &operator-=(const Matriz<T> outro);
+    Matriz<T> &operator+=(const Matriz<T> &outro);
+    Matriz<T> &operator-=(const Matriz<T> &outro);
     Matriz<T> &operator*=(T escalar); // M. de matriz p/ escalar e atribuição
 
-    template <typename U>
+    template <typename U> // std::cout << matriz;
     friend std::ostream &operator<<(std::ostream &os, const Matriz<U> &u);
 
     template <typename U> // escalar à esquerda (2 * matriz)
@@ -40,7 +40,7 @@ public:
 /* CONSTRUTORES */
 
 template <typename T>
-Matriz<T>::Matriz(size_t linhas, size_t colunas, std::vector<T> dados)
+Matriz<T>::Matriz(size_t linhas, size_t colunas, const std::vector<T> &dados)
     : linhas(linhas), colunas(colunas), matriz(linhas * colunas)
 {
     for (size_t i = 0; i < matriz.size(); i++)
@@ -96,7 +96,7 @@ void Matriz<T>::imprimir() const
 /* OPERADORES ARITMÉTICOS */
 
 template <typename T>
-Matriz<T> Matriz<T>::operator+(const Matriz<T> other)
+Matriz<T> Matriz<T>::operator+(const Matriz<T> &other) const
 {
     if (colunas != other.colunas || linhas != other.linhas)
         throw std::invalid_argument("Erro: Matrizes de ordens diferentes.");
@@ -110,7 +110,7 @@ Matriz<T> Matriz<T>::operator+(const Matriz<T> other)
 }
 
 template <typename T>
-Matriz<T> Matriz<T>::operator-(const Matriz<T> other)
+Matriz<T> Matriz<T>::operator-(const Matriz<T> &other) const
 {
     if (colunas != other.colunas || linhas != other.linhas)
         throw std::invalid_argument("Erro: Matrizes de ordens diferentes.");
@@ -124,7 +124,7 @@ Matriz<T> Matriz<T>::operator-(const Matriz<T> other)
 }
 
 template <typename T>
-Matriz<T> Matriz<T>::operator*(T escalar)
+Matriz<T> Matriz<T>::operator*(T escalar) const
 {
     Matriz<T> novo(linhas, colunas);
 
@@ -135,7 +135,7 @@ Matriz<T> Matriz<T>::operator*(T escalar)
 }
 
 template <typename T>
-Matriz<T> Matriz<T>::operator*(Matriz<T> outro)
+Matriz<T> Matriz<T>::operator*(const Matriz<T> &outro) const
 {
     if (colunas != outro.linhas)
         throw std::invalid_argument("Erro: Matrizes incompatíveis.");
@@ -153,12 +153,12 @@ Matriz<T> Matriz<T>::operator*(Matriz<T> outro)
 /* OPERADORES C/ ATRIBUIÇÃO */
 
 template <typename T>
-Matriz<T> &Matriz<T>::operator+=(const Matriz<T> other)
+Matriz<T> &Matriz<T>::operator+=(const Matriz<T> &other)
 {
     return *this = *this + other;
 }
 template <typename T>
-Matriz<T> &Matriz<T>::operator-=(const Matriz<T> outro)
+Matriz<T> &Matriz<T>::operator-=(const Matriz<T> &outro)
 {
     return *this = *this - outro;
 }
