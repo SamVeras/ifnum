@@ -46,7 +46,7 @@ template <typename T>
 Matriz<T>::Matriz(size_t linhas, size_t colunas, const std::vector<T> &dados)
     : linhas(linhas), colunas(colunas), matriz(linhas * colunas)
 {
-    for (size_t i = 0; i < matriz.size(); i++)
+    for (size_t i = 0; i < matriz.size() && i < dados.size(); i++)
         matriz[i] = dados[i];
 }
 
