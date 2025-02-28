@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <vector>
+#include <cmath>
 
 template <typename T>
 class Matriz
@@ -18,6 +19,9 @@ public:
 
     void imprimir() const;
     T determinante() const;
+    T modulo() const;
+    Matriz<T> transposta() const;
+    Matriz<T> tendencia(const Matriz<T> &other, double e, int r) const;
     Matriz<T> linha(int indice) const;  // Retorna matriz 1xn
     Matriz<T> coluna(int indice) const; // Retorna matrix nx1
 
@@ -148,6 +152,54 @@ Matriz<T> Matriz<T>::coluna(int indice) const
     return novo;
 }
 
+template <typename T>
+T Matriz<T>::modulo() const // Calcula a norma de um vetor.
+{
+    if (colunas != 1) {
+        throw std::invalid_argument("Erro: A matriz não é um vetor coluna.");
+    }
+
+    T soma_quadrados = 0;
+    for (size_t i = 0; i < linhas; ++i) {
+        soma_quadrados += (*this)(i, 0) * (*this)(i, 0);  // Soma dos quadrados dos elementos
+    }
+
+    return std::sqrt(soma_quadrados);  // Retorna a raiz quadrada da soma
+}
+
+
+template <typename T>
+Matriz<T> Matriz<T>::transposta() const
+{
+    Matriz<T> novo(this->colunas, this->linhas);  // Usando 'this->' para acessar membros
+    for (size_t i = 0; i < this->linhas; i++) {
+        for (size_t j = 0; j < this->colunas; j++) {
+            novo(j, i) = (*this)(i, j);  // Usando o operador de acesso correto
+        }
+    }
+    return novo;
+}
+
+
+template <typename T>
+Matriz<T> Matriz<T>::tendencia(const Matriz<T> &other, double e, int r) const
+{
+    int i = 0;
+    double erro = 0;
+    Matriz<T> trans = (*this).transposta();  // Corrigido de 'trasposta' para 'transposta'
+    Matriz<T> v = other;
+    Matriz<T> v2(1, 1);  // Inicializando 'v2' com dimensões válidas, por exemplo 1x1
+
+    while (e > erro && i <= r)
+    {
+        v2 = trans * v;
+        erro = v.modulo() - v2.modulo();
+        v = v2;
+        i++;
+    }
+    return v;
+}
+
 /* OPERADORES ARITMÉTICOS */
 
 template <typename T>
@@ -235,7 +287,7 @@ Matriz<T> &Matriz<T>::operator+=(const Matriz<T> &other)
     return *this;
 }
 template <typename T>
-Matriz<T> &Matriz<T>::operator-=(const Matriz<T> &outro)
+Matriz<T> &Matriz<T>::operator-=(const Matriz<T> &other)
 {
     // return *this = *this - outro;
 
