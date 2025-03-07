@@ -188,29 +188,41 @@ double Matriz<T>::autovalor(const Matriz<T> &other, double e, int r) const
     double erro = 0;
     Matriz<T> trans = (*this).transposta();  // Corrigido de 'trasposta' para 'transposta'
     Matriz<T> v = other;
-    Matriz<T> v2(1, 1);  // Inicializando 'v2' com dimensões válidas, por exemplo 1x1
-    Matriz<T> v_antigo = v;  // Salva o vetor original (antes das iterações)
+    Matriz<T> v2(1,1);  // Inicializando 'v2' com as mesmas dimensões de 'v'
 
     // Loop de iteração
-    while (e > erro && i <= r)
+    while (erro < e && i <= r)
     {
         v2 = trans * v;  // Multiplicação da matriz transposta com o vetor v
-        erro = v.modulo() - v2.modulo();  // Cálculo do erro baseado nos módulos
+        erro = abs(v.modulo() - v2.modulo());  // Calculando o erro com o módulo da diferença
+
+        std::cout << "Iteração " << i << ", Erro: " << erro << std::endl;
 
         v = v2;  // Atualiza o vetor v
         i++;  // Incrementa o número de iterações
+
+        // Se o erro for muito pequeno, podemos sair do loop antecipadamente
+        if (erro < 1e-6) {
+            break;
+        }
     }
 
     // Agora, calculamos lambda após o loop
-    Matriz<T> transposto_v_antigo = v_antigo.transposta();
-    Matriz<T> produto = transposto_v_antigo * (*this) * v_antigo;
-    Matriz<T> denominador = transposto_v_antigo * v_antigo;
+    Matriz<T> transposto_v = v.transposta();
+    Matriz<T> produto = transposto_v * (*this) * v;
+    Matriz<T> denominador = transposto_v * v;
+
+    // Verificar se o denominador é zero antes de fazer a divisão
+    if (denominador(0, 0) == 0) {
+        std::cerr << "Erro: Denominador é zero. Não é possível calcular o lambda." << std::endl;
+        return std::nan("");  // Retorna um valor NaN ou um erro apropriado.
+    }
 
     double lambda = produto(0, 0) / denominador(0, 0);  // Calculando lambda com a fórmula dada
 
     std::cout << "Valor de lambda: " << lambda << std::endl;
 
-    return lambda;  // Retorna o vetor resultante
+    return lambda;  // Retorna o valor de lambda
 }
 
 /* OPERADORES ARITMÉTICOS */
