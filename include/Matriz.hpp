@@ -21,7 +21,7 @@ public:
     T determinante() const;
     T modulo() const;
     Matriz<T> transposta() const;
-    Matriz<T> tendencia(const Matriz<T> &other, double e, int r) const;
+    double autovalor(const Matriz<T> &other, double e, int r) const;
     Matriz<T> linha(int indice) const;  // Retorna matriz 1xn
     Matriz<T> coluna(int indice) const; // Retorna matrix nx1
 
@@ -169,12 +169,12 @@ T Matriz<T>::modulo() const // Calcula a norma de um vetor.
 
 
 template <typename T>
-Matriz<T> Matriz<T>::transposta() const
+Matriz<T> Matriz<T>::transposta() const  // Troca a matriz lxc para cxl.
 {
     Matriz<T> novo(this->colunas, this->linhas);  // Usando 'this->' para acessar membros
     for (size_t i = 0; i < this->linhas; i++) {
         for (size_t j = 0; j < this->colunas; j++) {
-            novo(j, i) = (*this)(i, j);  // Usando o operador de acesso correto
+            novo(j, i) = (*this)(i, j);  
         }
     }
     return novo;
@@ -182,22 +182,35 @@ Matriz<T> Matriz<T>::transposta() const
 
 
 template <typename T>
-Matriz<T> Matriz<T>::tendencia(const Matriz<T> &other, double e, int r) const
+double Matriz<T>::autovalor(const Matriz<T> &other, double e, int r) const
 {
     int i = 0;
     double erro = 0;
     Matriz<T> trans = (*this).transposta();  // Corrigido de 'trasposta' para 'transposta'
     Matriz<T> v = other;
     Matriz<T> v2(1, 1);  // Inicializando 'v2' com dimensões válidas, por exemplo 1x1
+    Matriz<T> v_antigo = v;  // Salva o vetor original (antes das iterações)
 
+    // Loop de iteração
     while (e > erro && i <= r)
     {
-        v2 = trans * v;
-        erro = v.modulo() - v2.modulo();
-        v = v2;
-        i++;
+        v2 = trans * v;  // Multiplicação da matriz transposta com o vetor v
+        erro = v.modulo() - v2.modulo();  // Cálculo do erro baseado nos módulos
+
+        v = v2;  // Atualiza o vetor v
+        i++;  // Incrementa o número de iterações
     }
-    return v;
+
+    // Agora, calculamos lambda após o loop
+    Matriz<T> transposto_v_antigo = v_antigo.transposta();
+    Matriz<T> produto = transposto_v_antigo * (*this) * v_antigo;
+    Matriz<T> denominador = transposto_v_antigo * v_antigo;
+
+    double lambda = produto(0, 0) / denominador(0, 0);  // Calculando lambda com a fórmula dada
+
+    std::cout << "Valor de lambda: " << lambda << std::endl;
+
+    return lambda;  // Retorna o vetor resultante
 }
 
 /* OPERADORES ARITMÉTICOS */
