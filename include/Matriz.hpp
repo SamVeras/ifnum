@@ -21,7 +21,7 @@ public:
     T determinante() const;
     T modulo() const;
     Matriz<T> transposta() const;
-    double autovalor(const Matriz<T> &other, double e, int r) const;
+    double autovalor(const Matriz<T> &other, double tolerancia, int r) const;
     Matriz<T> linha(int indice) const;  // Retorna matriz 1xn
     Matriz<T> coluna(int indice) const; // Retorna matrix nx1
 
@@ -180,49 +180,42 @@ Matriz<T> Matriz<T>::transposta() const  // Troca a matriz lxc para cxl.
     return novo;
 }
 
-
 template <typename T>
-double Matriz<T>::autovalor(const Matriz<T> &other, double e, int r) const
+double Matriz<T>::autovalor(const Matriz<T> &other, double tolerancia, int r) const
 {
-    int i = 0;
-    double erro = 0;
-    Matriz<T> trans = (*this).transposta();  // Corrigido de 'trasposta' para 'transposta'
+    if (colunas != linhas)
+        throw std::invalid_argument("Erro: Matriz deve ser quadrada.");
+
+    if (other.colunas != 1 || other.linhas != linhas)
+        throw std::invalid_argument("Erro: O vetor inicial deve ser um vetor coluna com a mesma quantidade de linhas da matriz.");
+
     Matriz<T> v = other;
-    Matriz<T> v2(1,1);  // Inicializando 'v2' com as mesmas dimensões de 'v'
+    Matriz<T> v2(linhas, 1);
+    Matriz<T> transposta = this->transposta();
+    
+    double erro = tolerancia + 1; // Garantir entrada no loop
+    int i = 0;
 
-    // Loop de iteração
-    while (erro < e && i <= r)
+    while (erro > tolerancia && i < r)
     {
-        v2 = trans * v;  // Multiplicação da matriz transposta com o vetor v
-        erro = abs(v.modulo() - v2.modulo());  // Calculando o erro com o módulo da diferença
+        v2 = transposta * v;
+        
+        double modulo_v = v.modulo();
+        double modulo_v2 = v2.modulo();
+        erro = std::abs(modulo_v2 - modulo_v);
 
-        std::cout << "Iteração " << i << ", Erro: " << erro << std::endl;
-
-        v = v2;  // Atualiza o vetor v
-        i++;  // Incrementa o número de iterações
-
-        // Se o erro for muito pequeno, podemos sair do loop antecipadamente
-        if (erro < 1e-6) {
-            break;
-        }
+        v = v2 / modulo_v2; // Normaliza o vetor para evitar crescimento descontrolado
+        i++;
     }
 
-    // Agora, calculamos lambda após o loop
-    Matriz<T> transposto_v = v.transposta();
-    Matriz<T> produto = transposto_v * (*this) * v;
-    Matriz<T> denominador = transposto_v * v;
+    // Cálculo do autovalor final
+    Matriz<T> produto = v.transposta() * (*this) * v;
+    Matriz<T> denominador = v.transposta() * v;
 
-    // Verificar se o denominador é zero antes de fazer a divisão
-    if (denominador(0, 0) == 0) {
-        std::cerr << "Erro: Denominador é zero. Não é possível calcular o lambda." << std::endl;
-        return std::nan("");  // Retorna um valor NaN ou um erro apropriado.
-    }
+    if (denominador(0, 0) == 0)
+        throw std::runtime_error("Erro: Denominador zero, impossibilitando o cálculo do autovalor.");
 
-    double lambda = produto(0, 0) / denominador(0, 0);  // Calculando lambda com a fórmula dada
-
-    std::cout << "Valor de lambda: " << lambda << std::endl;
-
-    return lambda;  // Retorna o valor de lambda
+    return produto(0, 0) / denominador(0, 0);
 }
 
 /* OPERADORES ARITMÉTICOS */
