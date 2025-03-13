@@ -30,6 +30,7 @@ public:
 
     Matriz<T> operator+(const Matriz<T> &outro) const;
     Matriz<T> operator-(const Matriz<T> &outro) const;
+    Matriz<T> operator-() const;                       // Negativar matriz
     Matriz<T> operator*(T escalar) const;              // Multiplicação de matriz por escalar
     Matriz<T> operator/(T escalar) const;              // Divisão de matriz por escalar
     Matriz<T> operator*(const Matriz<T> &outro) const; // Multiplicação de matrizes
@@ -155,26 +156,29 @@ Matriz<T> Matriz<T>::coluna(int indice) const
 template <typename T>
 T Matriz<T>::modulo() const // Calcula a norma de um vetor.
 {
-    if (colunas != 1) {
+    if (colunas != 1)
+    {
         throw std::invalid_argument("Erro: A matriz não é um vetor coluna.");
     }
 
     T soma_quadrados = 0;
-    for (size_t i = 0; i < linhas; ++i) {
-        soma_quadrados += (*this)(i, 0) * (*this)(i, 0);  // Soma dos quadrados dos elementos
+    for (size_t i = 0; i < linhas; ++i)
+    {
+        soma_quadrados += (*this)(i, 0) * (*this)(i, 0); // Soma dos quadrados dos elementos
     }
 
-    return std::sqrt(soma_quadrados);  // Retorna a raiz quadrada da soma
+    return std::sqrt(soma_quadrados); // Retorna a raiz quadrada da soma
 }
 
-
 template <typename T>
-Matriz<T> Matriz<T>::transposta() const  // Troca a matriz lxc para cxl.
+Matriz<T> Matriz<T>::transposta() const // Troca a matriz lxc para cxl.
 {
-    Matriz<T> novo(this->colunas, this->linhas);  // Usando 'this->' para acessar membros
-    for (size_t i = 0; i < this->linhas; i++) {
-        for (size_t j = 0; j < this->colunas; j++) {
-            novo(j, i) = (*this)(i, j);  
+    Matriz<T> novo(this->colunas, this->linhas);
+    for (size_t i = 0; i < this->linhas; i++)
+    {
+        for (size_t j = 0; j < this->colunas; j++)
+        {
+            novo(j, i) = (*this)(i, j);
         }
     }
     return novo;
@@ -192,14 +196,14 @@ double Matriz<T>::autovalor(const Matriz<T> &other, double tolerancia, int r) co
     Matriz<T> v = other;
     Matriz<T> v2(linhas, 1);
     Matriz<T> transposta = this->transposta();
-    
+
     double erro = tolerancia + 1; // Garantir entrada no loop
     int i = 0;
 
     while (erro > tolerancia && i < r)
     {
         v2 = transposta * v;
-        
+
         double modulo_v = v.modulo();
         double modulo_v2 = v2.modulo();
         erro = std::abs(modulo_v2 - modulo_v);
@@ -244,6 +248,17 @@ Matriz<T> Matriz<T>::operator-(const Matriz<T> &other) const
 
     for (size_t i = 0; i < matriz.size(); i++)
         novo.matriz[i] = matriz[i] - other.matriz[i];
+
+    return novo;
+}
+
+template <typename T>
+inline Matriz<T> Matriz<T>::operator-() const
+{
+    Matriz<T> novo = *this;
+
+    for (auto &e : novo.matriz)
+        e *= -1;
 
     return novo;
 }
@@ -323,8 +338,8 @@ Matriz<T> &Matriz<T>::operator*=(T escalar)
 {
     // return *this = *this * escalar;
 
-    for (size_t i = 0; i < matriz.size(); i++)
-        matriz[i] *= escalar;
+    for (auto &e : matriz)
+        e *= escalar;
 
     return *this;
 }
@@ -337,8 +352,8 @@ inline Matriz<T> &Matriz<T>::operator/=(T escalar)
     if (escalar == 0)
         throw std::invalid_argument("Erro: Divisão por zero.");
 
-    for (size_t i = 0; i < matriz.size(); i++)
-        matriz[i] /= escalar;
+    for (auto &e : matriz)
+        e /= escalar;
 
     return *this;
 }
