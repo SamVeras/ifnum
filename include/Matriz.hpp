@@ -4,6 +4,8 @@
 #include <stdexcept>
 #include <vector>
 #include <cmath>
+#include <cstring>
+#include <algorithm>
 
 template <typename T>
 class Matriz
@@ -187,11 +189,39 @@ Matriz<T> Matriz<T>::coluna(int indice) const
 template <typename T>
 void Matriz<T>::redimensionar(int linhas, int colunas)
 {
-    // Nós não precisamos criar uma nova matriz nem nada do tipo, basta
-    // aumentar o tamanho do vetor que guarda os dados (matriz), atualizar o
-    // índice dos valores internos e atualizar os valores de linhas e colunas.
+    if ((size_t)linhas == linhas_ && (size_t)colunas == colunas_)
+        return; // Uai?
 
-    matriz_.resize(linhas * colunas, 0);
+    if (linhas < 0 || colunas < 0)
+        throw std::invalid_argument("Erro: Valores devem ser positivos.");
+
+    // Nós não precisamos criar uma nova matriz nem nada do tipo, basta aumentar
+    // o tamanho do vetor que guarda os dados (matriz), atualizar o índice dos
+    // valores internos e atualizar os valores de linhas e colunas.
+
+    // size_t novo_tamanho = static_cast<size_t>(linhas * colunas);
+    size_t min_linhas = std::min((size_t)linhas, linhas_);
+    size_t min_colunas = std::min((size_t)colunas, colunas_);
+
+    // Nós só vamos precisar shiftar valores se, e somente se, o número de
+    // COLUNAS for modificado:
+
+    if ((size_t)colunas > colunas_)
+    { // Se o novo número de colunas for maior, nós precisamos shiftar os
+        // valores para direita começando de trás pra frente, para evitar
+        // sobrescrever valores.
+        matriz_.resize(linhas * colunas, 0);
+        for (size_t i = min_linhas; i > 0; i--)
+            std::memmove(&matriz_[i * colunas], &matriz_[i * colunas_], min_colunas * sizeof(T));
+
+        // TODO: ZERAR OS VALORES ENTRE OS ANTIGOS
+    }
+    else if ((size_t)colunas < colunas_)
+    {
+        for (size_t i = 0; i < min_linhas; ++i)
+            std::memmove(&matriz_[i * colunas], &matriz_[i * colunas_], min_colunas * sizeof(T));
+        matriz_.resize(linhas * colunas, 0);
+    }
     // Esse 0 indica que, se houverem novos valores na matriz, eles serão zero.
 
     this->linhas_ = linhas;
