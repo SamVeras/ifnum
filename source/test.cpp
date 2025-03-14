@@ -1,40 +1,43 @@
-#include "Matriz.hpp"
 #include <iostream>
+#include "Matriz.hpp"
 
-int main()
+
+Matriz<T> sub(Matriz<T> &matriz, Matriz<T> &b)
 {
-    /*try
-    {
-        Matriz<int> A(2, 3, {1, 2, 3, 4, 5, 6});
-        A.imprimir();
-        Matriz<int> B = A.transposta();
-        B.imprimir();
+    Matriz<T> x(matriz.linhas,1);
+    for(int i = matriz.linhas ; i <= 1; i--){
+        for(int j = matriz.linhas; j <= i ; j--){
+            if (j == matriz.linhas && i == matriz.linhas && i == j){
+                x(i,1) = b(i,1) / matriz(i,j)  
 
-        auto C = A * B;
+            } else if (j <= matriz.linhas && i >= matriz.linhas && i != j){
+                x(i,1) += b(i,1) - matriz(i,j) * x(j,1);
 
-        // C.imprimir();
-    }
-    catch (const std::invalid_argument &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+            }else if(j == i && j < matriz.linhas && i < matriz.linhas){
+                x(i,1) += x(i,1) / matriz(i,j);
 
-    return 0;*/
-    // Criando uma matriz 2x2
-    std::vector<double> dados = {1, 2, 3, 4};
-    Matriz<double> A(2, 2, dados);
+            }
+            }
+        }
+    return x;   
+}
 
-    // Criando um vetor (matriz coluna) 2x1
-    std::vector<double> dados_vetor = {1, 1};
-    Matriz<double> b(2, 1, dados_vetor);
 
-    // Chamando a função tendência
-    double erro_tolerado = 0.01; // Erro tolerável
-    int max_iteracoes = 100;      // Número máximo de iterações
-    Matriz<double> resultado = A.tendencia(b, erro_tolerado, max_iteracoes);
+int main() {
+    // Matriz de exemplo (2x2)
+    std::vector<double> dados = {2,3,1
+                                 0,1,-2
+                                 0,0,4};
+    Matriz<double> A(3, 3, dados);
 
-    // Imprimindo o resultado
-    std::cout << "Resultado da tendência:\n" << resultado << std::endl;
+    // Vetor inicial (2x1)
+    std::vector<double> vetor_inicial = {4,2,1};
+    Matriz<double> v0(3, 1, vetor_inicial);
+
+    Matriz<double> v = sub(A , v0);
+
+    v.imprimir();
 
     return 0;
 }
+
