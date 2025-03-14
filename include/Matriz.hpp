@@ -84,13 +84,13 @@ Matriz<T>::Matriz(size_t linhas, size_t colunas)
 template <typename T>
 inline size_t Matriz<T>::linhas() const
 {
-    return this.linhas_;
+    return this->linhas_;
 }
 
 template <typename T>
 inline size_t Matriz<T>::colunas() const
 {
-    return this.colunas_;
+    return this->colunas_;
 }
 
 /* ------------------------ SOBRECARGAS DE OPERADORES ----------------------- */
