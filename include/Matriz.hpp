@@ -4,18 +4,29 @@
 #include <stdexcept>
 #include <vector>
 #include <cmath>
+#include <cstring>
+#include <algorithm>
 
 template <typename T>
 class Matriz
 {
 private:
-    size_t linhas;
-    size_t colunas;
-    std::vector<T> matriz;
+    size_t linhas_;
+    size_t colunas_;
+    std::vector<T> matriz_;
 
 public:
-    Matriz(size_t linhas, size_t colunas, const std::vector<T> &dados); // Construtor com lista
-    Matriz(size_t linhas, size_t colunas);                              // Construtor de matriz nula
+    /* ---------------------------- CONSTRUTORES ---------------------------- */
+
+    Matriz(size_t linhas, size_t colunas, const std::vector<T> &dados);
+    Matriz(size_t linhas, size_t colunas); // Matriz nula
+
+    /* ------------------------------- GETTERS ------------------------------ */
+
+    size_t linhas() const;
+    size_t colunas() const;
+
+    /* ------------------------------- MÉTODOS ------------------------------ */
 
     void imprimir() const;
     T determinante() const;
@@ -24,16 +35,20 @@ public:
     double autovalor(const Matriz<T> &other, double tolerancia, int r) const;
     Matriz<T> linha(int indice) const;  // Retorna matriz 1xn
     Matriz<T> coluna(int indice) const; // Retorna matrix nx1
+    void redimensionar(int linhas, int colunas);
+
+    /* ---------------------- SOBRECARGAS DE OPERADORES --------------------- */
 
     T operator()(int linha, int coluna) const; // Operador de acesso (leitura)
     T &operator()(int linha, int coluna);      // Operador de acesso por referência
 
+    Matriz<T> operator-() const; // Negativar matriz
+
     Matriz<T> operator+(const Matriz<T> &outro) const;
     Matriz<T> operator-(const Matriz<T> &outro) const;
-    Matriz<T> operator-() const;                       // Negativar matriz
+    Matriz<T> operator*(const Matriz<T> &outro) const; // Multiplicação de matrizes
     Matriz<T> operator*(T escalar) const;              // Multiplicação de matriz por escalar
     Matriz<T> operator/(T escalar) const;              // Divisão de matriz por escalar
-    Matriz<T> operator*(const Matriz<T> &outro) const; // Multiplicação de matrizes
 
     Matriz<T> &operator+=(const Matriz<T> &outro);
     Matriz<T> &operator-=(const Matriz<T> &outro);
@@ -43,6 +58,8 @@ public:
     bool operator==(const Matriz<T> &outro) const;
     bool operator!=(const Matriz<T> &outro) const;
 
+    /* ------------------------------- FRIENDS ------------------------------ */
+
     template <typename U> // std::cout << matriz;
     friend std::ostream &operator<<(std::ostream &os, const Matriz<U> &u);
 
@@ -50,21 +67,35 @@ public:
     friend Matriz<U> operator*(U escalar, const Matriz<U> &matriz);
 };
 
-/* CONSTRUTORES */
+/* ------------------------------ CONSTRUTORES ------------------------------ */
 
 template <typename T>
 Matriz<T>::Matriz(size_t linhas, size_t colunas, const std::vector<T> &dados)
-    : linhas(linhas), colunas(colunas), matriz(linhas * colunas)
+    : linhas_(linhas), colunas_(colunas), matriz_(linhas * colunas)
 {
-    for (size_t i = 0; i < matriz.size() && i < dados.size(); i++)
-        matriz[i] = dados[i];
+    for (size_t i = 0; i < matriz_.size() && i < dados.size(); i++)
+        matriz_[i] = dados[i];
 }
 
 template <typename T>
 Matriz<T>::Matriz(size_t linhas, size_t colunas)
-    : linhas(linhas), colunas(colunas), matriz(linhas * colunas) {}
+    : linhas_(linhas), colunas_(colunas), matriz_(linhas * colunas) {}
 
-/* OPERADORES DE ACESSO */
+/* --------------------------------- GETTERS -------------------------------- */
+
+template <typename T>
+inline size_t Matriz<T>::linhas() const
+{
+    return this->linhas_;
+}
+
+template <typename T>
+inline size_t Matriz<T>::colunas() const
+{
+    return this->colunas_;
+}
+
+/* ------------------------ SOBRECARGAS DE OPERADORES ----------------------- */
 
 template <typename T>
 T Matriz<T>::operator()(int linha, int coluna) const
@@ -72,10 +103,10 @@ T Matriz<T>::operator()(int linha, int coluna) const
     if (linha < 0 || coluna < 0)
         throw std::out_of_range("Erro: Índices negativos.");
 
-    if ((size_t)linha >= linhas || (size_t)coluna >= colunas)
+    if ((size_t)linha >= linhas_ || (size_t)coluna >= colunas_)
         throw std::out_of_range("Erro: Índices fora dos limites da matriz.");
 
-    return matriz[linha * colunas + coluna];
+    return matriz_[linha * colunas_ + coluna];
 }
 
 template <typename T>
@@ -84,32 +115,35 @@ T &Matriz<T>::operator()(int linha, int coluna)
     if (linha < 0 || coluna < 0)
         throw std::out_of_range("Erro: Índices negativos.");
 
-    if ((size_t)linha >= linhas || (size_t)coluna >= colunas)
+    if ((size_t)linha >= linhas_ || (size_t)coluna >= colunas_)
         throw std::out_of_range("Erro: Índices fora dos limites da matriz.");
 
-    return matriz[linha * colunas + coluna];
+    return matriz_[linha * colunas_ + coluna];
 }
 
-/* MÉTODOS */
+template <typename T>
+inline Matriz<T> Matriz<T>::operator-() const
+{
+    Matriz<T> novo = *this;
+
+    for (auto &e : novo.matriz_)
+        e *= -1;
+
+    return novo;
+}
+
+/* --------------------------------- MÉTODOS -------------------------------- */
 
 template <typename T>
 void Matriz<T>::imprimir() const
 {
-    for (size_t i = 0; i < linhas; ++i)
-    {
-        for (size_t j = 0; j < colunas; ++j)
-        {
-            std::cout << (*this)(i, j) << " ";
-        }
-        std::cout << std::endl;
-    }
-    std::cout << std::endl;
+    std::cout << (*this) << std::endl;
 }
 
 template <typename T>
 T Matriz<T>::determinante() const
 {
-    if (colunas != linhas)
+    if (colunas_ != linhas_)
         throw std::invalid_argument("Erro: Matriz não é quadrada.");
 
     T det = 0;
@@ -125,12 +159,12 @@ Matriz<T> Matriz<T>::linha(int indice) const
     if (indice <= 0)
         throw std::out_of_range("Erro: Índice deve ser maior que zero.");
 
-    if ((size_t)indice > linhas)
+    if ((size_t)indice > linhas_)
         throw std::out_of_range("Erro: Índice de linha fora dos limites.");
 
-    std::vector<T> nova_linha(&matriz[(indice - 1) * colunas], &matriz[indice * colunas]);
+    std::vector<T> nova_linha(&matriz_[(indice - 1) * colunas_], &matriz_[indice * colunas_]);
 
-    Matriz<T> novo(1, colunas, nova_linha); // Nova matriz com ordem 1xn
+    Matriz<T> novo(1, colunas_, nova_linha); // Nova matriz com ordem 1xn
 
     return novo;
 }
@@ -141,28 +175,69 @@ Matriz<T> Matriz<T>::coluna(int indice) const
     if (indice <= 0)
         throw std::out_of_range("Erro: Índice deve ser maior que zero.");
 
-    if ((size_t)indice > linhas)
+    if ((size_t)indice > linhas_)
         throw std::out_of_range("Erro: Índice de linha fora dos limites.");
 
-    std::vector<T> nova_coluna(colunas);
-    for (size_t i = 0; i < linhas; i++)
-        nova_coluna[i] = matriz[i * colunas + (indice - 1)];
+    std::vector<T> nova_coluna(colunas_);
+    for (size_t i = 0; i < linhas_; i++)
+        nova_coluna[i] = matriz_[i * colunas_ + (indice - 1)];
 
-    Matriz<T>
-        novo(linhas, 1, nova_coluna);
+    Matriz<T> novo(linhas_, 1, nova_coluna); // Nova matriz com ordem nx1
     return novo;
+}
+
+template <typename T>
+void Matriz<T>::redimensionar(int linhas, int colunas)
+{
+    if ((size_t)linhas == linhas_ && (size_t)colunas == colunas_)
+        return; // Uai?
+
+    if (linhas < 0 || colunas < 0)
+        throw std::invalid_argument("Erro: Valores devem ser positivos.");
+
+    // Nós não precisamos criar uma nova matriz nem nada do tipo, basta aumentar
+    // o tamanho do vetor que guarda os dados (matriz), atualizar o índice dos
+    // valores internos e atualizar os valores de linhas e colunas.
+
+    // size_t novo_tamanho = static_cast<size_t>(linhas * colunas);
+    size_t min_linhas = std::min((size_t)linhas, linhas_);
+    size_t min_colunas = std::min((size_t)colunas, colunas_);
+
+    // Nós só vamos precisar shiftar valores se, e somente se, o número de
+    // COLUNAS for modificado:
+
+    if ((size_t)colunas > colunas_)
+    { // Se o novo número de colunas for maior, nós precisamos shiftar os
+        // valores para direita começando de trás pra frente, para evitar
+        // sobrescrever valores.
+        matriz_.resize(linhas * colunas, 0);
+        for (size_t i = min_linhas; i > 0; i--)
+            std::memmove(&matriz_[i * colunas], &matriz_[i * colunas_], min_colunas * sizeof(T));
+
+        // TODO: ZERAR OS VALORES ENTRE OS ANTIGOS
+    }
+    else if ((size_t)colunas < colunas_)
+    {
+        for (size_t i = 0; i < min_linhas; ++i)
+            std::memmove(&matriz_[i * colunas], &matriz_[i * colunas_], min_colunas * sizeof(T));
+        matriz_.resize(linhas * colunas, 0);
+    }
+    // Esse 0 indica que, se houverem novos valores na matriz, eles serão zero.
+
+    this->linhas_ = linhas;
+    this->colunas_ = colunas;
 }
 
 template <typename T>
 T Matriz<T>::modulo() const // Calcula a norma de um vetor.
 {
-    if (colunas != 1)
+    if (colunas_ != 1)
     {
         throw std::invalid_argument("Erro: A matriz não é um vetor coluna.");
     }
 
     T soma_quadrados = 0;
-    for (size_t i = 0; i < linhas; ++i)
+    for (size_t i = 0; i < linhas_; ++i)
     {
         soma_quadrados += (*this)(i, 0) * (*this)(i, 0); // Soma dos quadrados dos elementos
     }
@@ -173,10 +248,10 @@ T Matriz<T>::modulo() const // Calcula a norma de um vetor.
 template <typename T>
 Matriz<T> Matriz<T>::transposta() const // Troca a matriz lxc para cxl.
 {
-    Matriz<T> novo(this->colunas, this->linhas);
-    for (size_t i = 0; i < this->linhas; i++)
+    Matriz<T> novo(this->colunas_, this->linhas_);
+    for (size_t i = 0; i < this->linhas_; i++)
     {
-        for (size_t j = 0; j < this->colunas; j++)
+        for (size_t j = 0; j < this->colunas_; j++)
         {
             novo(j, i) = (*this)(i, j);
         }
@@ -187,14 +262,14 @@ Matriz<T> Matriz<T>::transposta() const // Troca a matriz lxc para cxl.
 template <typename T>
 double Matriz<T>::autovalor(const Matriz<T> &other, double tolerancia, int r) const
 {
-    if (colunas != linhas)
+    if (colunas_ != linhas_)
         throw std::invalid_argument("Erro: Matriz deve ser quadrada.");
 
-    if (other.colunas != 1 || other.linhas != linhas)
+    if (other.colunas_ != 1 || other.linhas_ != linhas_)
         throw std::invalid_argument("Erro: O vetor inicial deve ser um vetor coluna com a mesma quantidade de linhas da matriz.");
 
     Matriz<T> v = other;
-    Matriz<T> v2(linhas, 1);
+    Matriz<T> v2(linhas_, 1);
     Matriz<T> transposta = this->transposta();
 
     double erro = tolerancia + 1; // Garantir entrada no loop
@@ -227,13 +302,13 @@ double Matriz<T>::autovalor(const Matriz<T> &other, double tolerancia, int r) co
 template <typename T>
 Matriz<T> Matriz<T>::operator+(const Matriz<T> &other) const
 {
-    if (colunas != other.colunas || linhas != other.linhas)
+    if (colunas_ != other.colunas_ || linhas_ != other.linhas_)
         throw std::invalid_argument("Erro: Matrizes de ordens diferentes.");
 
-    Matriz<T> novo(linhas, colunas);
+    Matriz<T> novo(linhas_, colunas_);
 
-    for (size_t i = 0; i < matriz.size(); i++)
-        novo.matriz[i] = matriz[i] + other.matriz[i];
+    for (size_t i = 0; i < matriz_.size(); i++)
+        novo.matriz_[i] = matriz_[i] + other.matriz_[i];
 
     return novo;
 }
@@ -241,24 +316,13 @@ Matriz<T> Matriz<T>::operator+(const Matriz<T> &other) const
 template <typename T>
 Matriz<T> Matriz<T>::operator-(const Matriz<T> &other) const
 {
-    if (colunas != other.colunas || linhas != other.linhas)
+    if (colunas_ != other.colunas_ || linhas_ != other.linhas_)
         throw std::invalid_argument("Erro: Matrizes de ordens diferentes.");
 
-    Matriz<T> novo(linhas, colunas);
+    Matriz<T> novo(linhas_, colunas_);
 
-    for (size_t i = 0; i < matriz.size(); i++)
-        novo.matriz[i] = matriz[i] - other.matriz[i];
-
-    return novo;
-}
-
-template <typename T>
-inline Matriz<T> Matriz<T>::operator-() const
-{
-    Matriz<T> novo = *this;
-
-    for (auto &e : novo.matriz)
-        e *= -1;
+    for (size_t i = 0; i < matriz_.size(); i++)
+        novo.matriz_[i] = matriz_[i] - other.matriz_[i];
 
     return novo;
 }
@@ -266,10 +330,10 @@ inline Matriz<T> Matriz<T>::operator-() const
 template <typename T>
 Matriz<T> Matriz<T>::operator*(T escalar) const
 {
-    Matriz<T> novo(linhas, colunas);
+    Matriz<T> novo(linhas_, colunas_);
 
-    for (size_t i = 0; i < matriz.size(); i++)
-        novo.matriz[i] = matriz[i] * escalar;
+    for (size_t i = 0; i < matriz_.size(); i++)
+        novo.matriz_[i] = matriz_[i] * escalar;
 
     return novo;
 }
@@ -280,10 +344,10 @@ Matriz<T> Matriz<T>::operator/(T escalar) const
     if (escalar == 0)
         throw std::invalid_argument("Erro: Divisão por zero.");
 
-    Matriz<T> novo(linhas, colunas);
+    Matriz<T> novo(linhas_, colunas_);
 
-    for (size_t i = 0; i < matriz.size(); i++)
-        novo.matriz[i] = matriz[i] / escalar;
+    for (size_t i = 0; i < matriz_.size(); i++)
+        novo.matriz_[i] = matriz_[i] / escalar;
 
     return novo;
 }
@@ -291,14 +355,14 @@ Matriz<T> Matriz<T>::operator/(T escalar) const
 template <typename T>
 Matriz<T> Matriz<T>::operator*(const Matriz<T> &outro) const
 {
-    if (colunas != outro.linhas)
+    if (colunas_ != outro.linhas_)
         throw std::invalid_argument("Erro: Matrizes incompatíveis.");
 
-    Matriz<T> novo(linhas, outro.colunas);
+    Matriz<T> novo(linhas_, outro.colunas_);
 
-    for (size_t i = 0; i < linhas; i++)
-        for (size_t j = 0; j < outro.colunas; j++)
-            for (size_t k = 0; k < colunas; k++)
+    for (size_t i = 0; i < linhas_; i++)
+        for (size_t j = 0; j < outro.colunas_; j++)
+            for (size_t k = 0; k < colunas_; k++)
                 novo(i, j) += (*this)(i, k) * outro(k, j);
 
     return novo;
@@ -311,11 +375,11 @@ Matriz<T> &Matriz<T>::operator+=(const Matriz<T> &other)
 {
     // return *this = *this + other;
 
-    if (colunas != other.colunas || linhas != other.linhas)
+    if (colunas_ != other.colunas_ || linhas_ != other.linhas_)
         throw std::invalid_argument("Erro: Matrizes de ordens diferentes.");
 
-    for (size_t i = 0; i < matriz.size(); i++)
-        matriz[i] += other.matriz[i];
+    for (size_t i = 0; i < matriz_.size(); i++)
+        matriz_[i] += other.matriz_[i];
 
     return *this;
 }
@@ -324,11 +388,11 @@ Matriz<T> &Matriz<T>::operator-=(const Matriz<T> &other)
 {
     // return *this = *this - outro;
 
-    if (colunas != other.colunas || linhas != other.linhas)
+    if (colunas_ != other.colunas_ || linhas_ != other.linhas_)
         throw std::invalid_argument("Erro: Matrizes de ordens diferentes.");
 
-    for (size_t i = 0; i < matriz.size(); i++)
-        matriz[i] -= other.matriz[i];
+    for (size_t i = 0; i < matriz_.size(); i++)
+        matriz_[i] -= other.matriz_[i];
 
     return *this;
 }
@@ -338,7 +402,7 @@ Matriz<T> &Matriz<T>::operator*=(T escalar)
 {
     // return *this = *this * escalar;
 
-    for (auto &e : matriz)
+    for (auto &e : matriz_)
         e *= escalar;
 
     return *this;
@@ -352,7 +416,7 @@ inline Matriz<T> &Matriz<T>::operator/=(T escalar)
     if (escalar == 0)
         throw std::invalid_argument("Erro: Divisão por zero.");
 
-    for (auto &e : matriz)
+    for (auto &e : matriz_)
         e /= escalar;
 
     return *this;
@@ -363,11 +427,11 @@ inline Matriz<T> &Matriz<T>::operator/=(T escalar)
 template <typename T>
 bool Matriz<T>::operator==(const Matriz<T> &outro) const
 {
-    if (linhas != outro.linhas || colunas != outro.colunas)
+    if (linhas_ != outro.linhas_ || colunas_ != outro.colunas_)
         return false;
 
-    for (size_t i = 0; i < linhas; ++i)
-        for (size_t j = 0; j < colunas; ++j)
+    for (size_t i = 0; i < linhas_; ++i)
+        for (size_t j = 0; j < colunas_; ++j)
             if ((*this)(i, j) != outro(i, j))
                 return false;
 
@@ -387,9 +451,9 @@ std::ostream &operator<<(std::ostream &os, const Matriz<U> &u)
 {
     const size_t largura = 10;
 
-    for (size_t i = 0; i < u.linhas; ++i)
+    for (size_t i = 0; i < u.linhas_; ++i)
     {
-        for (size_t j = 0; j < u.colunas; ++j)
+        for (size_t j = 0; j < u.colunas_; ++j)
         {
             os << std::setw(largura) << u(i, j);
         }
