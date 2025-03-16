@@ -1,21 +1,24 @@
 #pragma once
+#include <algorithm>
+#include <cmath>
+#include <cstring>
 #include <iomanip>
 #include <iostream>
 #include <stdexcept>
 #include <vector>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
+
+namespace ifnum
+{
 
 template <typename T>
 class Matriz
 {
-private:
+  private:
     size_t linhas_;
     size_t colunas_;
     std::vector<T> matriz_;
 
-public:
+  public:
     /* ---------------------------- CONSTRUTORES ---------------------------- */
 
     Matriz(size_t linhas, size_t colunas, const std::vector<T> &dados);
@@ -44,18 +47,18 @@ public:
 
     Matriz<T> operator-() const; // Negativar matriz
 
-    Matriz<T> operator+(const Matriz<T> &outro) const;
-    Matriz<T> operator-(const Matriz<T> &outro) const;
+    Matriz<T> operator+(const Matriz<T> &outro) const; // Soma de matrizes
+    Matriz<T> operator-(const Matriz<T> &outro) const; // Subtração de matrizes
     Matriz<T> operator*(const Matriz<T> &outro) const; // Multiplicação de matrizes
     Matriz<T> operator*(T escalar) const;              // Multiplicação de matriz por escalar
     Matriz<T> operator/(T escalar) const;              // Divisão de matriz por escalar
 
-    Matriz<T> &operator+=(const Matriz<T> &outro);
-    Matriz<T> &operator-=(const Matriz<T> &outro);
-    Matriz<T> &operator*=(T escalar); // M. de matriz por escalar e atribuição
-    Matriz<T> &operator/=(T escalar); // D. de matriz por escalar e atribuição
+    Matriz<T> &operator+=(const Matriz<T> &outro); // Soma de matrizes e atribuição
+    Matriz<T> &operator-=(const Matriz<T> &outro); // Subtração de matrizes e atribuição
+    Matriz<T> &operator*=(T escalar);              // Multiplicação matriz por escalar e atribuição
+    Matriz<T> &operator/=(T escalar);              // Divisão matriz por escalar e atribuição
 
-    bool operator==(const Matriz<T> &outro) const;
+    bool operator==(const Matriz<T> &outro) const; // Igualdade entre matrizes
     bool operator!=(const Matriz<T> &outro) const;
 
     /* ------------------------------- FRIENDS ------------------------------ */
@@ -63,9 +66,13 @@ public:
     template <typename U> // std::cout << matriz;
     friend std::ostream &operator<<(std::ostream &os, const Matriz<U> &u);
 
-    template <typename U> // escalar à esquerda (2 * matriz)
+    template <typename U> // escalar à esquerda (x * matriz)
     friend Matriz<U> operator*(U escalar, const Matriz<U> &matriz);
 };
+
+/* -------------------------------------------------------------------------- */
+/*                                 DEFINIÇÕES                                 */
+/* -------------------------------------------------------------------------- */
 
 /* ------------------------------ CONSTRUTORES ------------------------------ */
 
@@ -79,7 +86,9 @@ Matriz<T>::Matriz(size_t linhas, size_t colunas, const std::vector<T> &dados)
 
 template <typename T>
 Matriz<T>::Matriz(size_t linhas, size_t colunas)
-    : linhas_(linhas), colunas_(colunas), matriz_(linhas * colunas) {}
+    : linhas_(linhas), colunas_(colunas), matriz_(linhas * colunas)
+{
+}
 
 /* --------------------------------- GETTERS -------------------------------- */
 
@@ -93,43 +102,6 @@ template <typename T>
 inline size_t Matriz<T>::colunas() const
 {
     return this->colunas_;
-}
-
-/* ------------------------ SOBRECARGAS DE OPERADORES ----------------------- */
-
-template <typename T>
-T Matriz<T>::operator()(int linha, int coluna) const
-{
-    if (linha < 0 || coluna < 0)
-        throw std::out_of_range("Erro: Índices negativos.");
-
-    if ((size_t)linha >= linhas_ || (size_t)coluna >= colunas_)
-        throw std::out_of_range("Erro: Índices fora dos limites da matriz.");
-
-    return matriz_[linha * colunas_ + coluna];
-}
-
-template <typename T>
-T &Matriz<T>::operator()(int linha, int coluna)
-{
-    if (linha < 0 || coluna < 0)
-        throw std::out_of_range("Erro: Índices negativos.");
-
-    if ((size_t)linha >= linhas_ || (size_t)coluna >= colunas_)
-        throw std::out_of_range("Erro: Índices fora dos limites da matriz.");
-
-    return matriz_[linha * colunas_ + coluna];
-}
-
-template <typename T>
-inline Matriz<T> Matriz<T>::operator-() const
-{
-    Matriz<T> novo = *this;
-
-    for (auto &e : novo.matriz_)
-        e *= -1;
-
-    return novo;
 }
 
 /* --------------------------------- MÉTODOS -------------------------------- */
@@ -151,6 +123,74 @@ T Matriz<T>::determinante() const
     // TO-DO
 
     return det;
+}
+
+template <typename T>
+T Matriz<T>::modulo() const // Calcula a norma de um vetor.
+{
+    if (colunas_ != 1) {
+        throw std::invalid_argument("Erro: A matriz não é um vetor coluna.");
+    }
+
+    T soma_quadrados = 0;
+    for (size_t i = 0; i < linhas_; ++i) {
+        soma_quadrados += (*this)(i, 0) * (*this)(i, 0); // Soma dos quadrados dos elementos
+    }
+
+    return std::sqrt(soma_quadrados); // Retorna a raiz quadrada da soma
+}
+
+template <typename T>
+Matriz<T> Matriz<T>::transposta() const // Troca a matriz lxc para cxl.
+{
+    Matriz<T> novo(this->colunas_, this->linhas_);
+    for (size_t i = 0; i < this->linhas_; i++) {
+        for (size_t j = 0; j < this->colunas_; j++) {
+            novo(j, i) = (*this)(i, j);
+        }
+    }
+    return novo;
+}
+
+template <typename T>
+double Matriz<T>::autovalor(const Matriz<T> &other, double tolerancia, int r) const
+{
+    if (colunas_ != linhas_)
+        throw std::invalid_argument("Erro: Matriz deve ser quadrada.");
+
+    if (other.colunas_ != 1 || other.linhas_ != linhas_)
+        throw std::invalid_argument("Erro: O vetor inicial deve ser um vetor "
+                                    "coluna com a mesma quantidade "
+                                    "de linhas da matriz.");
+
+    Matriz<T> v = other;
+    Matriz<T> v2(linhas_, 1);
+    Matriz<T> transposta = this->transposta();
+
+    double erro = tolerancia + 1; // Garantir entrada no loop
+    int i = 0;
+
+    while (erro > tolerancia && i < r) {
+        v2 = transposta * v;
+
+        double modulo_v = v.modulo();
+        double modulo_v2 = v2.modulo();
+        erro = std::abs(modulo_v2 - modulo_v);
+
+        v = v2 / modulo_v2; // Normaliza o vetor para evitar crescimento
+                            // descontrolado
+        i++;
+    }
+
+    // Cálculo do autovalor final
+    Matriz<T> produto = v.transposta() * (*this) * v;
+    Matriz<T> denominador = v.transposta() * v;
+
+    if (denominador(0, 0) == 0)
+        throw std::runtime_error(
+            "Erro: Denominador zero, impossibilitando o cálculo do autovalor.");
+
+    return produto(0, 0) / denominador(0, 0);
 }
 
 template <typename T>
@@ -206,8 +246,8 @@ void Matriz<T>::redimensionar(int linhas, int colunas)
     // Nós só vamos precisar shiftar valores se, e somente se, o número de
     // COLUNAS for modificado:
 
-    if ((size_t)colunas > colunas_)
-    { // Se o novo número de colunas for maior, nós precisamos shiftar os
+    if ((size_t)colunas > colunas_) { // Se o novo número de colunas for maior,
+                                      // nós precisamos shiftar os
         // valores para direita começando de trás pra frente, para evitar
         // sobrescrever valores.
         matriz_.resize(linhas * colunas, 0);
@@ -215,9 +255,7 @@ void Matriz<T>::redimensionar(int linhas, int colunas)
             std::memmove(&matriz_[i * colunas], &matriz_[i * colunas_], min_colunas * sizeof(T));
 
         // TODO: ZERAR OS VALORES ENTRE OS ANTIGOS
-    }
-    else if ((size_t)colunas < colunas_)
-    {
+    } else if ((size_t)colunas < colunas_) {
         for (size_t i = 0; i < min_linhas; ++i)
             std::memmove(&matriz_[i * colunas], &matriz_[i * colunas_], min_colunas * sizeof(T));
         matriz_.resize(linhas * colunas, 0);
@@ -228,76 +266,42 @@ void Matriz<T>::redimensionar(int linhas, int colunas)
     this->colunas_ = colunas;
 }
 
+/* ------------------------ SOBRECARGAS DE OPERADORES ----------------------- */
+
 template <typename T>
-T Matriz<T>::modulo() const // Calcula a norma de um vetor.
+T Matriz<T>::operator()(int linha, int coluna) const
 {
-    if (colunas_ != 1)
-    {
-        throw std::invalid_argument("Erro: A matriz não é um vetor coluna.");
-    }
+    if (linha < 0 || coluna < 0)
+        throw std::out_of_range("Erro: Índices negativos.");
 
-    T soma_quadrados = 0;
-    for (size_t i = 0; i < linhas_; ++i)
-    {
-        soma_quadrados += (*this)(i, 0) * (*this)(i, 0); // Soma dos quadrados dos elementos
-    }
+    if ((size_t)linha >= linhas_ || (size_t)coluna >= colunas_)
+        throw std::out_of_range("Erro: Índices fora dos limites da matriz.");
 
-    return std::sqrt(soma_quadrados); // Retorna a raiz quadrada da soma
+    return matriz_[linha * colunas_ + coluna];
 }
 
 template <typename T>
-Matriz<T> Matriz<T>::transposta() const // Troca a matriz lxc para cxl.
+T &Matriz<T>::operator()(int linha, int coluna)
 {
-    Matriz<T> novo(this->colunas_, this->linhas_);
-    for (size_t i = 0; i < this->linhas_; i++)
-    {
-        for (size_t j = 0; j < this->colunas_; j++)
-        {
-            novo(j, i) = (*this)(i, j);
-        }
-    }
+    if (linha < 0 || coluna < 0)
+        throw std::out_of_range("Erro: Índices negativos.");
+
+    if ((size_t)linha >= linhas_ || (size_t)coluna >= colunas_)
+        throw std::out_of_range("Erro: Índices fora dos limites da matriz.");
+
+    return matriz_[linha * colunas_ + coluna];
+}
+
+template <typename T>
+inline Matriz<T> Matriz<T>::operator-() const
+{
+    Matriz<T> novo = *this;
+
+    for (auto &e : novo.matriz_)
+        e *= -1;
+
     return novo;
 }
-
-template <typename T>
-double Matriz<T>::autovalor(const Matriz<T> &other, double tolerancia, int r) const
-{
-    if (colunas_ != linhas_)
-        throw std::invalid_argument("Erro: Matriz deve ser quadrada.");
-
-    if (other.colunas_ != 1 || other.linhas_ != linhas_)
-        throw std::invalid_argument("Erro: O vetor inicial deve ser um vetor coluna com a mesma quantidade de linhas da matriz.");
-
-    Matriz<T> v = other;
-    Matriz<T> v2(linhas_, 1);
-    Matriz<T> transposta = this->transposta();
-
-    double erro = tolerancia + 1; // Garantir entrada no loop
-    int i = 0;
-
-    while (erro > tolerancia && i < r)
-    {
-        v2 = transposta * v;
-
-        double modulo_v = v.modulo();
-        double modulo_v2 = v2.modulo();
-        erro = std::abs(modulo_v2 - modulo_v);
-
-        v = v2 / modulo_v2; // Normaliza o vetor para evitar crescimento descontrolado
-        i++;
-    }
-
-    // Cálculo do autovalor final
-    Matriz<T> produto = v.transposta() * (*this) * v;
-    Matriz<T> denominador = v.transposta() * v;
-
-    if (denominador(0, 0) == 0)
-        throw std::runtime_error("Erro: Denominador zero, impossibilitando o cálculo do autovalor.");
-
-    return produto(0, 0) / denominador(0, 0);
-}
-
-/* OPERADORES ARITMÉTICOS */
 
 template <typename T>
 Matriz<T> Matriz<T>::operator+(const Matriz<T> &other) const
@@ -368,8 +372,6 @@ Matriz<T> Matriz<T>::operator*(const Matriz<T> &outro) const
     return novo;
 }
 
-/* OPERADORES C/ ATRIBUIÇÃO */
-
 template <typename T>
 Matriz<T> &Matriz<T>::operator+=(const Matriz<T> &other)
 {
@@ -422,8 +424,6 @@ inline Matriz<T> &Matriz<T>::operator/=(T escalar)
     return *this;
 }
 
-/* OPERADORES DE IGUALDADE */
-
 template <typename T>
 bool Matriz<T>::operator==(const Matriz<T> &outro) const
 {
@@ -444,17 +444,13 @@ bool Matriz<T>::operator!=(const Matriz<T> &outro) const
     return !(*this == outro);
 }
 
-/* FRIENDS */
-
 template <typename U>
 std::ostream &operator<<(std::ostream &os, const Matriz<U> &u)
 {
     const size_t largura = 10;
 
-    for (size_t i = 0; i < u.linhas_; ++i)
-    {
-        for (size_t j = 0; j < u.colunas_; ++j)
-        {
+    for (size_t i = 0; i < u.linhas_; ++i) {
+        for (size_t j = 0; j < u.colunas_; ++j) {
             os << std::setw(largura) << u(i, j);
         }
         os << std::endl;
@@ -468,3 +464,5 @@ Matriz<U> operator*(U escalar, Matriz<U> &matriz)
 {
     return matriz * escalar;
 }
+
+} // namespace ifnum

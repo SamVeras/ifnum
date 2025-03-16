@@ -1,0 +1,9 @@
+ColumnLimit: 100 # Limite de colunas temporário, mudar para 80 quando começarmos a usar doxygen
+IndentWidth: 4
+BreakBeforeBraces: Linux
+BreakTemplateDeclarations: Yes
+AlignTrailingComments:
+  Kind: Always
+  OverEmptyLines: 0
+ReflowComments: false
+AllowShortFunctionsOnASingleLine: false

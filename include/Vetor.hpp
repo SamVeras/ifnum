@@ -1,30 +1,30 @@
 #pragma once
-#include <iostream>
-#include <vector>
 #include <cmath>
+#include <iostream>
 #include <stdexcept>
+#include <vector>
 
 template <typename T>
 class Vetor
 {
-private:
-    size_t tamanho;             // Mover 'tamanho' para antes de 'coordenadas'
+  private:
+    size_t tamanho; // Mover 'tamanho' para antes de 'coordenadas'
     std::vector<T> coordenadas;
 
-public:
+  public:
     Vetor(std::vector<T> valores); // Construtor
 
     void imprimir() const;
     double norma() const;
     Vetor<T> normalizar() const;
-    
+
     Vetor<T> operator+(const Vetor &outro) const;
     Vetor<T> operator-(const Vetor &outro) const;
     T operator*(const Vetor &outro) const;
-    
+
     bool operator==(const Vetor &outro) const;
     bool operator!=(const Vetor &outro) const;
-    
+
     // Métodos para obter o tamanho e as coordenadas
     size_t obterTamanho() const;
     std::vector<T> obterCoordenadas() const;
@@ -48,15 +48,15 @@ std::vector<T> Vetor<T>::obterCoordenadas() const
 }
 
 template <typename T>
-Vetor<T>::Vetor(std::vector<T> valores)
-: tamanho(valores.size()), coordenadas(valores) {}  // Inicializa 'tamanho' antes de 'coordenadas'
+Vetor<T>::Vetor(std::vector<T> valores) : tamanho(valores.size()), coordenadas(valores)
+{
+} // Inicializa 'tamanho' antes de 'coordenadas'
 
 template <typename T>
 void Vetor<T>::imprimir() const
 {
     std::cout << "(";
-    for (size_t i = 0; i < tamanho; i++)
-    {
+    for (size_t i = 0; i < tamanho; i++) {
         std::cout << coordenadas[i];
         if (i < tamanho - 1)
             std::cout << ", ";
@@ -134,8 +134,7 @@ template <typename T>
 std::ostream &operator<<(std::ostream &os, const Vetor<T> &v)
 {
     os << "(";
-    for (size_t i = 0; i < v.tamanho; i++)
-    {
+    for (size_t i = 0; i < v.tamanho; i++) {
         os << v.coordenadas[i];
         if (i < v.tamanho - 1)
             os << ", ";
