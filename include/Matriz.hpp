@@ -229,41 +229,58 @@ Matriz<T> Matriz<T>::coluna(int indice) const
 template <typename T>
 void Matriz<T>::redimensionar(int linhas, int colunas)
 {
-    if ((size_t)linhas == linhas_ && (size_t)colunas == colunas_)
-        return; // Uai?
-
     if (linhas < 0 || colunas < 0)
         throw std::invalid_argument("Erro: Valores devem ser positivos.");
+
+    const size_t novo_linhas = static_cast<size_t>(linhas);
+    const size_t novo_colunas = static_cast<size_t>(colunas);
+    const size_t novo_tamanho = novo_linhas * novo_colunas;
+
+    if (novo_linhas == linhas_ && novo_colunas == colunas_)
+        return; // Uai?
 
     // Nós não precisamos criar uma nova matriz nem nada do tipo, basta aumentar
     // o tamanho do vetor que guarda os dados (matriz), atualizar o índice dos
     // valores internos e atualizar os valores de linhas e colunas.
 
-    // size_t novo_tamanho = static_cast<size_t>(linhas * colunas);
-    size_t min_linhas = std::min((size_t)linhas, linhas_);
-    size_t min_colunas = std::min((size_t)colunas, colunas_);
+    // Nota: fazer resize em um vetor é equivalente a realocá-lo na memória. :)
 
-    // Nós só vamos precisar shiftar valores se, e somente se, o número de
-    // COLUNAS for modificado:
+    const size_t min_linhas = std::min(novo_linhas, linhas_);
+    const size_t min_colunas = std::min(novo_colunas, colunas_);
 
-    if ((size_t)colunas > colunas_) { // Se o novo número de colunas for maior,
-                                      // nós precisamos shiftar os
-        // valores para direita começando de trás pra frente, para evitar
-        // sobrescrever valores.
-        matriz_.resize(linhas * colunas, 0);
-        for (size_t i = min_linhas; i > 0; i--)
-            std::memmove(&matriz_[i * colunas], &matriz_[i * colunas_], min_colunas * sizeof(T));
+    // Nós só vamos precisar shiftar valores se o número de COLUNAS mudar.
+    // Se o novo número de colunas for maior, nós precisamos shiftar os valores
+    // para direita começando de trás pra frente, para evitar sobrescrita.
 
-        // TODO: ZERAR OS VALORES ENTRE OS ANTIGOS
-    } else if ((size_t)colunas < colunas_) {
-        for (size_t i = 0; i < min_linhas; ++i)
-            std::memmove(&matriz_[i * colunas], &matriz_[i * colunas_], min_colunas * sizeof(T));
-        matriz_.resize(linhas * colunas, 0);
+    if (novo_colunas > colunas_) {
+        // Mover linhas existentes de trás pra frente (evitando sobrescrita)
+        matriz_.resize(novo_tamanho, T()); // T() ao invés de 0 para inicializar
+        for (size_t i = min_linhas; i > 0; --i) {
+            const size_t lin = i - 1;
+
+            auto *dest = &matriz_[lin * novo_colunas];
+            auto *src = &matriz_[lin * colunas_];
+            std::memmove(dest, src, min_colunas * sizeof(T));
+
+            // std::memmove não esvazia as posições antigas, precisamos zerar
+            auto *fill_pos = &matriz_[lin * novo_colunas + min_colunas];
+            std::fill_n(fill_pos, novo_colunas - min_colunas, T());
+        }
+    } else if (novo_colunas < colunas_) {
+        // Mover linhas esquerda pra direita, sem risco de sobrescrita
+        for (size_t lin = 0; lin < min_linhas; ++lin) {
+            auto *dest = &matriz_[lin * novo_colunas];
+            auto *src = &matriz_[lin * colunas_];
+            std::memmove(dest, src, min_colunas * sizeof(T));
+        }
+        matriz_.resize(novo_tamanho, T());
+    } else {
+        // Colunas permanecem as mesmas, redimensionar de acordo com as linhas
+        matriz_.resize(novo_tamanho, T());
     }
-    // Esse 0 indica que, se houverem novos valores na matriz, eles serão zero.
 
-    this->linhas_ = linhas;
-    this->colunas_ = colunas;
+    linhas_ = novo_linhas;
+    colunas_ = novo_colunas;
 }
 
 /* ------------------------ SOBRECARGAS DE OPERADORES ----------------------- */

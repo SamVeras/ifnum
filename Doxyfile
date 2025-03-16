@@ -6,6 +6,7 @@ EXTRACT_ALL = YES
 INPUT = include/ source/
 RECURSIVE = YES
 HIDE_UNDOC_RELATIONS = NO
+CREATE_SUBDIRS = YES
 
 # Necessários devido ao tema doxygen-awesome [ base ]:
 
