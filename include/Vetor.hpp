@@ -4,6 +4,9 @@
 #include <stdexcept>
 #include <vector>
 
+namespace ifnum
+{
+
 template <typename T>
 class Vetor
 {
@@ -142,3 +145,5 @@ std::ostream &operator<<(std::ostream &os, const Vetor<T> &v)
     os << ")";
     return os;
 }
+
+} // namespace ifnum
