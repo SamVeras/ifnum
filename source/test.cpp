@@ -1,7 +1,4 @@
-#include "AlgebraLinear.hpp"
-#include "Matriz.hpp"
-#include "Vetor.hpp"
-#include "Cordic.hpp"
+#include "ifnum.hpp"
 
 int main()
 {

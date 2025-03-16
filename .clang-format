@@ -6,3 +6,4 @@ AlignTrailingComments:
   Kind: Always
   OverEmptyLines: 0
 ReflowComments: false
+AllowShortFunctionsOnASingleLine: false
