@@ -38,9 +38,17 @@ Matriz<T> reversub(Matriz<T> &matriz, Matriz<T> &b)
 }
 
 template <typename T>
+bool verificar_matriz_quadrada(Matriz<T> matriz)
+{
+    if (matriz.colunas() != matriz.linhas())
+        return false;
+    return true;
+}
+
+template <typename T>
 Matriz<T> gauss(Matriz<T> &matriz, Matriz<T> &b)
 {
-    if(!matriz.verificarMatrizQuadrada()) {
+    if (!verificar_matriz_quadrada(matriz)) {
         throw std::invalid_argument("Erro: Matriz não é quadrada.");
     };
     int n = static_cast<int>(matriz.linhas());
@@ -61,10 +69,9 @@ Matriz<T> gauss(Matriz<T> &matriz, Matriz<T> &b)
 }
 
 template <typename T>
-Matriz<T> gaussJordan(Matriz<T> &matriz, Matriz<T> &b)
+Matriz<T> gauss_jordan(Matriz<T> &matriz, Matriz<T> &b)
 {
-    if (!matriz.verificarMatrizQuadrada())   
-    {
+    if (!verificar_matriz_quadrada(matriz)) {
         throw std::invalid_argument("Erro: Matriz não é quadrada.");
     };
     int n = static_cast<int>(matriz.linhas());
