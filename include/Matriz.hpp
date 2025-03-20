@@ -18,6 +18,8 @@ class Matriz
     size_t colunas_;
     std::vector<T> matriz_;
 
+    T sarrus_() const;
+
   public:
     /* ---------------------------- CONSTRUTORES ---------------------------- */
 
@@ -39,6 +41,8 @@ class Matriz
     Matriz<T> linha(int indice) const;  // Retorna matriz 1xn
     Matriz<T> coluna(int indice) const; // Retorna matrix nx1
     void redimensionar(int linhas, int colunas);
+    void trocar_linhas(int indice1, int indice2);
+    void trocar_colunas(int indice1, int indice2);
 
     /* ---------------------- SOBRECARGAS DE OPERADORES --------------------- */
 
@@ -75,6 +79,21 @@ class Matriz
 /* -------------------------------------------------------------------------- */
 
 /* ------------------------------ CONSTRUTORES ------------------------------ */
+
+template <typename T>
+T Matriz<T>::sarrus_() const
+{
+    auto m = this;
+    if (linhas_ == 2)
+        return (*m)(0, 0) * (*m)(1, 1) - (*m)(0, 1) * (*m)(1, 0);
+
+    if (linhas_ == 3)
+        return (*m)(0, 0) * (*m)(1, 1) * (*m)(2, 2) + (*m)(0, 1) * (*m)(1, 2) * (*m)(2, 0) +
+               (*m)(0, 2) * (*m)(1, 0) * (*m)(2, 1) - (*m)(0, 2) * (*m)(1, 1) * (*m)(2, 0) -
+               (*m)(0, 0) * (*m)(1, 2) * (*m)(2, 1) - (*m)(0, 1) * (*m)(1, 0) * (*m)(2, 2);
+
+    return 0; // matrix 0x0?
+}
 
 template <typename T>
 Matriz<T>::Matriz(size_t linhas, size_t colunas, const std::vector<T> &dados)
@@ -117,6 +136,12 @@ T Matriz<T>::determinante() const
 {
     if (colunas_ != linhas_)
         throw std::invalid_argument("Erro: Matriz não é quadrada.");
+
+    if (linhas_ == 1)
+        return (*this)(0, 0);
+
+    if (linhas_ <= 3)
+        return sarrus_();
 
     T det = 0;
 
