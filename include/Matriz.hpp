@@ -283,6 +283,35 @@ void Matriz<T>::redimensionar(int linhas, int colunas)
     colunas_ = novo_colunas;
 }
 
+template <typename T>
+void Matriz<T>::trocar_linhas(int indice1, int indice2)
+{
+    if (indice1 < 0 || indice2 < 0)
+        throw std::out_of_range("Erro: Índice/s de linha negativo/s.");
+
+    if ((size_t)indice1 >= linhas_ || (size_t)indice2 >= linhas_)
+        throw std::out_of_range("Erro: Índice/s de linha além do limite da matriz.");
+
+    auto start1 = matriz_.begin() + indice1 * colunas_; // inicio do intervalo [
+    auto last1 = start1 + colunas_;                     // fim do intervalo    )
+    auto start2 = matriz_.begin() + indice2 * colunas_; // inicio do destino
+    std::swap_ranges(start1, last1, start2);
+}
+
+template <typename T>
+void Matriz<T>::trocar_colunas(int indice1, int indice2)
+{
+
+    if (indice1 < 0 || indice2 < 0)
+        throw std::out_of_range("Erro: Índice/s de coluna negativo/s.");
+
+    if ((size_t)indice1 >= colunas_ || (size_t)indice2 >= colunas_)
+        throw std::out_of_range("Erro: Índice/s de coluna além do limite da matriz.");
+
+    for (size_t i = 0; i < linhas_; i++)
+        std::swap(matriz_[i * colunas_ + indice1], matriz_[i * colunas_ + indice2]);
+}
+
 /* ------------------------ SOBRECARGAS DE OPERADORES ----------------------- */
 
 template <typename T>
