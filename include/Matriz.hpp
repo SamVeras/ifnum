@@ -39,6 +39,7 @@ class Matriz
     Matriz<T> linha(int indice) const;  // Retorna matriz 1xn
     Matriz<T> coluna(int indice) const; // Retorna matrix nx1
     void redimensionar(int linhas, int colunas);
+    bool verificarMatrizQuadrada();
 
     /* ---------------------- SOBRECARGAS DE OPERADORES --------------------- */
 
@@ -281,6 +282,15 @@ void Matriz<T>::redimensionar(int linhas, int colunas)
 
     linhas_ = novo_linhas;
     colunas_ = novo_colunas;
+}
+
+template <typename T>
+bool Matriz<T>::verificarMatrizQuadrada()
+{
+    if (colunas_ != linhas_) {
+        return false;
+    } else {
+        return true;}
 }
 
 /* ------------------------ SOBRECARGAS DE OPERADORES ----------------------- */
