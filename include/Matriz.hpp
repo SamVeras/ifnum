@@ -196,13 +196,13 @@ double Matriz<T>::autovalor(const Matriz<T> &other, double tolerancia, int r) co
 template <typename T>
 Matriz<T> Matriz<T>::linha(int indice) const
 {
-    if (indice <= 0)
-        throw std::out_of_range("Erro: Índice deve ser maior que zero.");
+    if (indice < 0)
+        throw std::out_of_range("Erro: Índice deve ser maior ou igual a zero.");
 
-    if ((size_t)indice > linhas_)
+    if ((size_t)indice >= linhas_)
         throw std::out_of_range("Erro: Índice de linha fora dos limites.");
 
-    std::vector<T> nova_linha(&matriz_[(indice - 1) * colunas_], &matriz_[indice * colunas_]);
+    std::vector<T> nova_linha(&matriz_[indice * colunas_], &matriz_[(indice + 1) * colunas_]);
 
     Matriz<T> novo(1, colunas_, nova_linha); // Nova matriz com ordem 1xn
 
@@ -212,15 +212,15 @@ Matriz<T> Matriz<T>::linha(int indice) const
 template <typename T>
 Matriz<T> Matriz<T>::coluna(int indice) const
 {
-    if (indice <= 0)
-        throw std::out_of_range("Erro: Índice deve ser maior que zero.");
+    if (indice < 0)
+        throw std::out_of_range("Erro: Índice deve ser maior ou igual a zero.");
 
-    if ((size_t)indice > linhas_)
-        throw std::out_of_range("Erro: Índice de linha fora dos limites.");
+    if ((size_t)indice >= linhas_)
+        throw std::out_of_range("Erro: Índice de coluna fora dos limites.");
 
     std::vector<T> nova_coluna(colunas_);
     for (size_t i = 0; i < linhas_; i++)
-        nova_coluna[i] = matriz_[i * colunas_ + (indice - 1)];
+        nova_coluna[i] = matriz_[i * colunas_ + indice];
 
     Matriz<T> novo(linhas_, 1, nova_coluna); // Nova matriz com ordem nx1
     return novo;
