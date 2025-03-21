@@ -125,7 +125,7 @@ Matriz<T> retorna_U(Matriz<T> &matriz)
 }
 
 template <typename T>
-Matriz<T> retorna_L(const Matriz<T>& matriz)
+Matriz<T> retorna_L(Matriz<T>& matriz)
 {
     if (!verificar_matriz_quadrada(matriz)) {
         throw std::invalid_argument("Erro: Matriz não é quadrada.");
