@@ -17,11 +17,13 @@ Matriz<T> sub(Matriz<T> &matriz, Matriz<T> &b)
         x(i, 0) = (b(i, 0) - soma) / matriz(i, i);
     }
 
-    return x;
+    Matriz<T> result = (matriz*x -b) * (matriz *x -b);
+
+    return result;
 }
 
 template <typename T>
-Matriz<T> reversub(Matriz<T> &matriz, Matriz<T> &b)
+Matriz<T> reversub(const Matriz<T> &matriz,const Matriz<T> &b)
 {
     int n = static_cast<int>(matriz.linhas());
     Matriz<T> x(n, 1);
@@ -33,8 +35,9 @@ Matriz<T> reversub(Matriz<T> &matriz, Matriz<T> &b)
         }
         x(i, 0) = (b(i, 0) - soma) / matriz(i, i);
     }
+    Matriz<T> result = (matriz*x -b) * (matriz *x -b);
 
-    return x;
+    return result;
 }
 
 template <typename T>
@@ -98,5 +101,61 @@ Matriz<T> gauss_jordan(Matriz<T> &matriz, Matriz<T> &b)
 
     return matriz;
 }
+
+template <typename T>
+Matriz<T> retorna_U(Matriz<T> &matriz)
+{
+    if (!verificar_matriz_quadrada(matriz)) {
+        throw std::invalid_argument("Erro: Matriz não é quadrada.");
+    }
+    
+    int n = static_cast<int>(matriz.linhas());
+    
+    for (int i = 0; i < n - 1; ++i) {
+        for (int k = i + 1; k < n; ++k) {
+            T fator = matriz(k, i) / matriz(i, i);
+    
+            for (int j = i; j < n; ++j) {
+                matriz(k, j) -= matriz(i, j) * fator;
+            }
+        }
+    }
+    
+    return matriz;  // Agora retorna apenas a matriz U    
+}
+
+template <typename T>
+Matriz<T> retorna_L(const Matriz<T>& matriz)
+{
+    if (!verificar_matriz_quadrada(matriz)) {
+        throw std::invalid_argument("Erro: Matriz não é quadrada.");
+    }
+
+    int n = static_cast<int>(matriz.linhas());
+    Matriz<T> L(n, n);  // Criamos uma nova matriz L
+
+    // Inicializa a matriz L com a identidade (valores 1 na diagonal e 0 fora da diagonal)
+    for (int i = 0; i < n; ++i) {
+        L(i, i) = 1;  // Diagonal principal é 1
+        for (int j = i + 1; j < n; ++j) {
+            L(i, j) = 0;  // Valores acima da diagonal são 0
+        }
+    }
+
+    for (int i = 0; i < n - 1; ++i) {
+        for (int k = i + 1; k < n; ++k) {
+            T fator = matriz(k, i) / matriz(i, i);
+            L(k, i) = fator;  // Armazena o fator na matriz L
+    
+            for (int j = i; j < n; ++j) {
+                // Atualiza a matriz original (ou já modificada) para a próxima iteração
+                matriz(k, j) -= matriz(i, j) * fator;
+            }
+        }
+    }
+
+    return L;  // Retorna a matriz L
+}
+
 
 } // namespace ifnum
