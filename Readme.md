@@ -17,3 +17,12 @@ Maia](https://github.com/Gzanella1) e [Yean J. Chen](https://github.com/yeanjy).
 - disciplinas de programação
 - arquitetura de computadores
 - métodos numéricos
+
+## Compilação
+
+Requisitos: `g++`, `make` e `doxygen`.
+
+- Compilar a biblioteca: `make`
+- Compilar a biblioteca e os executáveis de teste: `make tests`
+- Gerar a documentação (usando Doxygen): `make docs`
+- Limpar os artefatos de compilação: `make clean`
