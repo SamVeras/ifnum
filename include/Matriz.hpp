@@ -100,8 +100,8 @@ template <typename T>
 Matriz<T>::Matriz(size_t linhas, size_t colunas, const std::vector<T> &dados)
     : linhas_(linhas), colunas_(colunas), matriz_(linhas * colunas)
 {
-    for (size_t i = 0; i < matriz_.size() && i < dados.size(); i++)
-        matriz_[i] = dados[i];
+    size_t count = std::min(matriz_.size(), dados.size());
+    std::copy_n(dados.begin(), count, matriz_.begin());
 }
 
 template <typename T>
