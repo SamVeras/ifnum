@@ -30,6 +30,7 @@ class Matriz
 
     size_t linhas() const;
     size_t colunas() const;
+    std::vector<T> vector() const; // Retornar por valor para evitar modificação
 
     /* ------------------------------- MÉTODOS ------------------------------ */
 
@@ -121,6 +122,12 @@ template <typename T>
 inline size_t Matriz<T>::colunas() const
 {
     return this->colunas_;
+}
+
+template <typename T>
+inline std::vector<T> Matriz<T>::vector() const
+{
+    return matriz_;
 }
 
 /* --------------------------------- MÉTODOS -------------------------------- */

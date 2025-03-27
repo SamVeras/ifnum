@@ -1,4 +1,5 @@
 #include "AlgebraLinear.hpp"
+#include "Auxiliar.hpp"
 #include "Cordic.hpp"
 #include "Matriz.hpp"
 #include "Vetor.hpp"
