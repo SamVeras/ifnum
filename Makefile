@@ -22,6 +22,7 @@ LIB_OBJS  := $(patsubst $(SRCDIR)/%.cpp, $(BUILDDIR)/%.o, $(LIB_SRCS))
 
 # Coleta os arquivos fonte dos testes (cada um com sua própria main())
 TEST_SRCS := $(wildcard $(TESTDIR)/*.cpp)
+TEST_OBJS := $(patsubst $(TESTDIR)/%.cpp, $(BUILDDIR)/%_test.o, $(TEST_SRCS))
 
 # Os nomes dos executáveis serão os mesmos dos arquivos de teste.
 TEST_BINS := $(patsubst $(TESTDIR)/%.cpp, $(BUILDDIR)/%, $(TEST_SRCS))
@@ -42,9 +43,14 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.cpp | $(BUILDDIR)
 	@echo "Compilando $< -> $@"
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Regra para compilar cada executável de teste
-$(BUILDDIR)/%: $(TESTDIR)/%.cpp $(LIBTARGET) | $(BUILDDIR)
-	@echo "Linkando $< -> $@"
+# Regra para compilar os arquivos de teste em objetos
+$(BUILDDIR)/%.test.o: $(TESTDIR)/%.cpp | $(BUILDDIR)
+	@echo "Compilando teste $< -> $@"
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Regra para linkar os objetos de teste com a biblioteca e gerar os executáveis
+$(BUILDDIR)/%: $(BUILDDIR)/%.test.o $(LIBTARGET) | $(BUILDDIR)
+	@echo "Linkando teste -> $@"
 	$(CXX) $(CXXFLAGS) $< -L$(BUILDDIR) -l$(LIB_NAME) -o $@
 
 # Cria o diretório build, se não existir
