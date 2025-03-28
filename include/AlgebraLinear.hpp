@@ -157,5 +157,62 @@ Matriz<T> retorna_L(Matriz<T>& matriz)
     return L;  // Retorna a matriz L
 }
 
+// Ler um pouco de pivotamento em http://e-maxx.ru/bookz/files/numerical_recipes.pdf
+template <typename T>
+void pivotamento_completoU(Matriz<T>& matriz, Matriz<T>& vetor) {
+    int n = static_cast<int>(matriz.linhas());
+
+    if (!verificar_matriz_quadrada(matriz)) {
+        throw std::invalid_argument("Erro: Matriz não é quadrada.");
+    }
+
+    for (int i = 0; i < n - 1; ++i) {
+        // Encontrar o maior elemento absoluto na matriz para pivotamento
+        int linha_pivot = i;
+        int coluna_pivot = i;
+        T max_val = std::abs(matriz(i, i));
+
+        for (int k = i; k < n; ++k) {
+            for (int l = i; l < n; ++l) {
+                if (std::abs(matriz(k, l)) > max_val) {
+                    max_val = std::abs(matriz(k, l));
+                    linha_pivot = k;
+                    coluna_pivot = l;
+                }
+            }
+        }
+
+        // Trocar as linhas no caso de um pivotamento
+        if (linha_pivot != i) {
+            for (int j = 0; j < n; ++j) {
+                std::swap(matriz(i, j), matriz(linha_pivot, j));
+            }
+            // Trocar as linhas no vetor também
+            std::swap(vetor(i, 0), vetor(linha_pivot, 0));
+        }
+
+        // Trocar as colunas no caso de um pivotamento
+        if (coluna_pivot != i) {
+            for (int j = 0; j < n; ++j) {
+                std::swap(matriz(j, i), matriz(j, coluna_pivot));
+            }
+            // Trocar os elementos correspondentes no vetor
+            std::swap(vetor(i, 0), vetor(coluna_pivot, 0));
+        }
+
+        // Agora a matriz está preparada para a eliminação de Gauss
+        for (int k = i + 1; k < n; ++k) {
+            T fator = matriz(k, i) / matriz(i, i);
+
+            for (int j = i; j < n; ++j) {
+                matriz(k, j) -= matriz(i, j) * fator;
+            }
+
+            vetor(k, 0) -= vetor(i, 0) * fator;  // Atualizar vetor de soluções
+            matriz.imprimir();
+            vetor.imprimir();
+        }
+    }
+}
 
 } // namespace ifnum
