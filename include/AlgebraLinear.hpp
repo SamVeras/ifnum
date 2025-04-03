@@ -7,6 +7,19 @@ namespace ifnum
 
 template <typename T>
 Matriz<T> sub(Matriz<T> &matriz, Matriz<T> &b)
+/*
+ * @brief Resolve um sistema linear pelo método de substituição simples.
+ * 
+ * Recebe uma matriz nxn com a parte inferior zerada e um vetor e retorna a solução do sistema
+ * 
+ * @param matriz Matriz dos coeficientes
+ * @param b Vetor 
+ * @param x Vetor solução do sistema
+ * 
+ * @Autors Lucas Andrei e Giovani
+ * @date 20/03/2025
+ * @modified 20/03/2025
+*/
 {
     int n = static_cast<int>(matriz.linhas());
     Matriz<T> x(n, 1);
@@ -24,6 +37,19 @@ Matriz<T> sub(Matriz<T> &matriz, Matriz<T> &b)
 
 template <typename T>
 Matriz<T> reversub(const Matriz<T> &matriz,const Matriz<T> &b)
+/*
+ * @brief Resolve um sistema linear pelo método de  retro substituição.
+ * 
+ * Recebe uma matriz nxn com a parte superior zerada e um vetor e retorna a solução do sistema
+ * 
+ * @param matriz Matriz dos coeficientes
+ * @param b Vetor 
+ * @param x Vetor solução do sistema
+ * 
+ * @Autors Lucas Andrei e Giovani
+ * @date 20/03/2025
+ * @modified 20/03/2025
+*/
 {
     int n = static_cast<int>(matriz.linhas());
     Matriz<T> x(n, 1);
@@ -49,6 +75,17 @@ bool verificar_matriz_quadrada(Matriz<T> matriz)
 
 template <typename T>
 Matriz<T> gauss(Matriz<T> &matriz, Matriz<T> &b)
+/*
+ * @brief Resolve um sistema linear pelo método de substituição simples.
+ * 
+ * Recebe uma matriz nxn com a parte inferior zerada e um vetor e retorna a solução do sistema
+ * 
+ * @param matriz Matriz dos coeficientes
+ * 
+ * @Autors 
+ * @date 20/03/2025
+ * @modified 20/03/2025
+*/
 {
     if (!verificar_matriz_quadrada(matriz)) {
         throw std::invalid_argument("Erro: Matriz não é quadrada.");
@@ -72,6 +109,17 @@ Matriz<T> gauss(Matriz<T> &matriz, Matriz<T> &b)
 
 template <typename T>
 Matriz<T> gauss_jordan(Matriz<T> &matriz, Matriz<T> &b)
+/*
+ * @brief Resolve um sistema linear pelo método de substituição simples.
+ * 
+ * Recebe uma matriz nxn com a parte inferior zerada e um vetor e retorna a solução do sistema
+ * 
+ * @param matriz Matriz dos coeficientes
+ * 
+ * @Autors 
+ * @date 
+ * @modified 
+*/
 {
     if (!verificar_matriz_quadrada(matriz)) {
         throw std::invalid_argument("Erro: Matriz não é quadrada.");
@@ -103,6 +151,17 @@ Matriz<T> gauss_jordan(Matriz<T> &matriz, Matriz<T> &b)
 
 template <typename T>
 Matriz<T> retorna_U(Matriz<T> &matriz)
+/*
+ * @brief Calcula a matriz U.
+ * 
+ * Recebe uma matriz quadrada e calcula a matriz U de LU.
+ * 
+ * @param matriz Matriz quadrada
+ * 
+ * @Autors Lucas A. C. Marin e Giovani Z.
+ * @date 27/03/2025
+ * @modified 27/03/2025
+*/
 {
     if (!verificar_matriz_quadrada(matriz)) {
         throw std::invalid_argument("Erro: Matriz não é quadrada.");
@@ -125,6 +184,17 @@ Matriz<T> retorna_U(Matriz<T> &matriz)
 
 template <typename T>
 Matriz<T> retorna_L(Matriz<T>& matriz)
+/*
+ * @brief Calcula a matriz L 
+ * 
+ * Recebe uma matriz quadrada e calcula a matriz L de LU
+ * 
+ * @param matriz Matriz dos coeficientes
+ * 
+ * @Autors Lucas A. C. Marin e Giovani Z. 
+ * @date 27/03/2025
+ * @modified 27/03/2025
+*/
 {
     if (!verificar_matriz_quadrada(matriz)) {
         throw std::invalid_argument("Erro: Matriz não é quadrada.");
@@ -157,7 +227,24 @@ Matriz<T> retorna_L(Matriz<T>& matriz)
 }
 
 // Ler um pouco de pivotamento em http://e-maxx.ru/bookz/files/numerical_recipes.pdf
-std::tuple<Matriz<double>, Matriz<double>, Matriz<double>> decomposicaoLU(const Matriz<double>& A) {
+std::tuple<Matriz<double>, Matriz<double>, Matriz<double>> decomposicaoLU(const Matriz<double>& A) 
+/*
+ * @brief Decompoem uma matriz em L e U com pivotamento completo
+ * 
+ * Decompoem uma matriz em L e U com pivotamento completo e retorna junto a L e U um matriz de permutação. 
+ * 
+ * @param A matriz quadrada que será decomposta
+ * @param L matriz quadrada triangular inferiro
+ * @param U matriz quadrada triangular superior
+ * @param P matriz qudrada de permutação
+ * 
+ * 
+ * @Autors Lucas A. C. Marin e Giovani Z.
+ * @date 03/04/2025
+ * @modified 03/04/2025
+*/
+{
+
     size_t n = A.linhas();
     Matriz<double> L(n, n);
     Matriz<double> U = A;
@@ -213,7 +300,19 @@ std::tuple<Matriz<double>, Matriz<double>, Matriz<double>> decomposicaoLU(const 
     return std::make_tuple(L, U, P);
 }
 
-Matriz<double> resolverLU(const Matriz<double>& A, const Matriz<double>& b) {
+Matriz<double> resolverLU(const Matriz<double>& A, const Matriz<double>& b)
+/*
+ * @brief Resolve um sistema linear pelo método de substituição simples.
+ * 
+ * Recebe uma matriz nxn com a parte inferior zerada e um vetor e retorna a solução do sistema
+ * 
+ * @param matriz Matriz dos coeficientes
+ * 
+ * @Autors Lucas A. C. Marin e Giovani Z.
+ * @date 03/04/2025
+ * @modified 03/04/2025
+*/
+{
     auto [L, U, P] = decomposicaoLU(A);
     
     // Resolver Pb = Ly
