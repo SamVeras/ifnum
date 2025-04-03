@@ -1,4 +1,6 @@
 #include "Matriz.hpp"
+#include <tuple>
+using namespace std;
 
 namespace ifnum
 {
@@ -17,9 +19,7 @@ Matriz<T> sub(Matriz<T> &matriz, Matriz<T> &b)
         x(i, 0) = (b(i, 0) - soma) / matriz(i, i);
     }
 
-    Matriz<T> result = (matriz*x -b) * (matriz *x -b);
-
-    return result;
+    return x;
 }
 
 template <typename T>
@@ -35,9 +35,8 @@ Matriz<T> reversub(const Matriz<T> &matriz,const Matriz<T> &b)
         }
         x(i, 0) = (b(i, 0) - soma) / matriz(i, i);
     }
-    Matriz<T> result = (matriz*x -b) * (matriz *x -b);
 
-    return result;
+    return x;
 }
 
 template <typename T>
@@ -158,61 +157,73 @@ Matriz<T> retorna_L(Matriz<T>& matriz)
 }
 
 // Ler um pouco de pivotamento em http://e-maxx.ru/bookz/files/numerical_recipes.pdf
-template <typename T>
-void pivotamento_completoU(Matriz<T>& matriz, Matriz<T>& vetor) {
-    int n = static_cast<int>(matriz.linhas());
-
-    if (!verificar_matriz_quadrada(matriz)) {
-        throw std::invalid_argument("Erro: Matriz não é quadrada.");
+std::tuple<Matriz<double>, Matriz<double>, Matriz<double>> decomposicaoLU(const Matriz<double>& A) {
+    size_t n = A.linhas();
+    Matriz<double> L(n, n);
+    Matriz<double> U = A;
+    Matriz<double> P(n, n);
+    
+    // Inicializar P como identidade
+    for (size_t i = 0; i < n; i++) {
+        P(i, i) = 1;
     }
-
-    for (int i = 0; i < n - 1; ++i) {
-        // Encontrar o maior elemento absoluto na matriz para pivotamento
-        int linha_pivot = i;
-        int coluna_pivot = i;
-        T max_val = std::abs(matriz(i, i));
-
-        for (int k = i; k < n; ++k) {
-            for (int l = i; l < n; ++l) {
-                if (std::abs(matriz(k, l)) > max_val) {
-                    max_val = std::abs(matriz(k, l));
-                    linha_pivot = k;
-                    coluna_pivot = l;
+    
+    for (size_t k = 0; k < n; k++) {
+        // Pivotamento completo
+        double maxValor = 0.0;
+        size_t maxLinha = k, maxColuna = k;
+        
+        for (size_t i = k; i < n; i++) {
+            for (size_t j = k; j < n; j++) {
+                if (std::abs(U(i, j)) > maxValor) {
+                    maxValor = std::abs(U(i, j));
+                    maxLinha = i;
+                    maxColuna = j;
                 }
             }
         }
-
-        // Trocar as linhas no caso de um pivotamento
-        if (linha_pivot != i) {
-            for (int j = 0; j < n; ++j) {
-                std::swap(matriz(i, j), matriz(linha_pivot, j));
-            }
-            // Trocar as linhas no vetor também
-            std::swap(vetor(i, 0), vetor(linha_pivot, 0));
+        
+        if (maxValor == 0.0) {
+            throw std::runtime_error("Matriz singular");
         }
-
-        // Trocar as colunas no caso de um pivotamento
-        if (coluna_pivot != i) {
-            for (int j = 0; j < n; ++j) {
-                std::swap(matriz(j, i), matriz(j, coluna_pivot));
+        
+        // Trocar linhas na matriz U e P
+        U.trocar_linhas(k, maxLinha);
+        P.trocar_linhas(k, maxLinha);
+        L.trocar_linhas(k, maxLinha);
+        
+        // Trocar colunas na matriz U
+        U.trocar_colunas(k, maxColuna);
+        P.trocar_colunas(k, maxColuna);
+        
+        // Atualizar L e U
+        for (size_t i = k + 1; i < n; i++) {
+            L(i, k) = U(i, k) / U(k, k);
+            for (size_t j = k; j < n; j++) {
+                U(i, j) -= L(i, k) * U(k, j);
             }
-            // Trocar os elementos correspondentes no vetor
-            std::swap(vetor(i, 0), vetor(coluna_pivot, 0));
-        }
-
-        // Agora a matriz está preparada para a eliminação de Gauss
-        for (int k = i + 1; k < n; ++k) {
-            T fator = matriz(k, i) / matriz(i, i);
-
-            for (int j = i; j < n; ++j) {
-                matriz(k, j) -= matriz(i, j) * fator;
-            }
-
-            vetor(k, 0) -= vetor(i, 0) * fator;  // Atualizar vetor de soluções
-            matriz.imprimir();
-            vetor.imprimir();
         }
     }
+    
+    // Completar a diagonal de L com 1s
+    for (size_t i = 0; i < n; i++) {
+        L(i, i) = 1.0;
+    }
+    
+    return std::make_tuple(L, U, P);
+}
+
+Matriz<double> resolverLU(const Matriz<double>& A, const Matriz<double>& b) {
+    auto [L, U, P] = decomposicaoLU(A);
+    
+    // Resolver Pb = Ly
+    Matriz<double> Pb = P * b;
+    Matriz<double> y = reversub(L, Pb);
+    
+    // Resolver Ux = y
+    Matriz<double> x = sub(U, y);
+    
+    return x;
 }
 
 } // namespace ifnum
