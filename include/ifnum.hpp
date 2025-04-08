@@ -3,3 +3,13 @@
 #include "Cordic.hpp"
 #include "Matriz.hpp"
 #include "Vetor.hpp"
+
+/*!
+ * @namespace ifnum
+ * @brief Namespace principal do projeto. Contém estruturas e funções numéricas.
+ */
+
+/*!
+ * @namespace ifnum::rng
+ * @brief Subnamespace com funções utilitárias para geração de números aleatórios.
+ */

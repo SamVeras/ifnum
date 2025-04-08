@@ -5,6 +5,21 @@
 namespace ifnum
 {
 
+/*!
+ * @brief Realiza uma rotação de vetor (x, y) por um ângulo usando o algoritmo CORDIC.
+ *
+ * Utiliza o método CORDIC (COordinate Rotation DIgital Computer) para calcular
+ * uma rotação aproximada de um vetor no plano 2D. A rotação é feita iterativamente
+ * com deslocamentos binários, evitando multiplicações pesadas.
+ *
+ * @param x Componente x do vetor original.
+ * @param y Componente y do vetor original.
+ * @param angle Ângulo de rotação em graus.
+ * @return std::pair<double, double> Vetor rotacionado (x', y').
+ *
+ * @author Yean Jy Chen
+ * @date 15/03/2025
+ */
 std::pair<double, double> rotate(double x, double y, double angle)
 {
     constexpr std::array<double, 30> angles = {
@@ -33,11 +48,34 @@ std::pair<double, double> rotate(double x, double y, double angle)
     return {x, y};
 }
 
+/*!
+ * @brief Calcula uma aproximação do seno de um ângulo usando CORDIC.
+ *
+ * Usa o algoritmo CORDIC para obter uma aproximação eficiente da função seno.
+ *
+ * @param angle Ângulo em graus.
+ * @return Valor aproximado do seno do ângulo.
+ *
+ * @author Yean Jy Chen
+ * @date 15/03/2025
+ */
 double sin(double angle)
 {
     constexpr double K = 0.6072529350088812561694;
     return rotate(K, 0, angle).second;
 }
+
+/*!
+ * @brief Calcula uma aproximação do cosseno de um ângulo usando CORDIC.
+ *
+ * Usa o algoritmo CORDIC para obter uma aproximação eficiente da função cosseno.
+ *
+ * @param angle Ângulo em graus.
+ * @return Valor aproximado do cosseno do ângulo.
+ *
+ * @author Yean Jy Chen
+ * @date 15/03/2025
+ */
 double cos(double angle)
 {
     constexpr double K = 0.6072529350088812561694;
