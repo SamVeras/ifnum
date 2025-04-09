@@ -1,3 +1,11 @@
+/*!
+ * @file ifnum.hpp
+ * @brief Header central que agrega todos os módulos principais do projeto.
+ *
+ * Este arquivo serve como ponto de inclusão único para as funcionalidades
+ * principais da biblioteca.
+ */
+
 #include "AlgebraLinear.hpp"
 #include "Auxiliar.hpp"
 #include "Cordic.hpp"

@@ -1,11 +1,16 @@
+/*!
+ * @file Cordic.cpp
+ * @brief Implementações das funções CORDIC declaradas em Cordic.hpp.
+ *
+ * Contém as implementações de seno, cosseno e rotação de vetores utilizando
+ * o algoritmo CORDIC com aproximações sucessivas.
+ */
+
 #include "Cordic.hpp"
 #include <array>
 #include <cmath>
 
-namespace ifnum
-{
-
-namespace cordic
+namespace ifnum::cordic
 {
 
 /*!
@@ -85,6 +90,4 @@ double cos(double angle)
     return rotate(K, 0, angle).first;
 }
 
-} // namespace cordic
-
-} // namespace ifnum
+} // namespace ifnum::cordic
