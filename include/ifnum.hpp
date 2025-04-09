@@ -13,3 +13,8 @@
  * @namespace ifnum::rng
  * @brief Subnamespace com funções utilitárias para geração de números aleatórios.
  */
+
+/*!
+ * @namespace ifnum::cordic
+ * @brief Implementações de funções trigonométricas usando o algoritmo CORDIC.
+ */

@@ -5,6 +5,9 @@
 namespace ifnum
 {
 
+namespace cordic
+{
+
 /*!
  * @brief Realiza uma rotação de vetor (x, y) por um ângulo usando o algoritmo CORDIC.
  *
@@ -81,5 +84,7 @@ double cos(double angle)
     constexpr double K = 0.6072529350088812561694;
     return rotate(K, 0, angle).first;
 }
+
+} // namespace cordic
 
 } // namespace ifnum
