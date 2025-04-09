@@ -1,0 +1,19 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar dependências
+        run: sudo apt-get update && sudo apt-get install -y build-essential
+
+      - name: Compilar biblioteca
+        run: make all

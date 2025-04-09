@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*" # ex: v1.0.0
+
+jobs:
+  build_and_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar dependências
+        run: sudo apt-get update && sudo apt-get install -y build-essential
+
+      - name: Compilar biblioteca
+        run: make all
+
+      - name: Preparar artefato
+        run: cp build/libifnum.a libifnum.a
+
+      - name: Criar release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: libifnum.a
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
