@@ -12,8 +12,26 @@ namespace ifnum
 
 template <typename T>
 class Matriz
+/*
+ * @brief Classe para representar matrizes
+ * 
+ * 
+ * @Autors 
+ * @date 00/00/0000
+ * @modified 00/00/0000
+*/
 {
   private:
+ /* 
+ * @param linhas_ Grava o número de linhas da matriz
+ * @param coluna_ Grava o número de colunas da matriz
+ * @param matriz_ Vetor que guarda os dados da matriz
+ * @param T 
+ * 
+ * @Autors Pessoa a, Pessoa b, ... 
+ * @date 00/00/0000
+ * @modified 00/00/0000
+ */
     size_t linhas_;
     size_t colunas_;
     std::vector<T> matriz_;

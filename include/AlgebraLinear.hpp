@@ -29,6 +29,9 @@ Matriz<T> sub(Matriz<T> &matriz, Matriz<T> &b)
         for (int j = i + 1; j < n; j++) {
             soma += matriz(i, j) * x(j, 0);
         }
+        if (matriz(i,i)==0){
+            throw std::invalid_argument("Sistema não é Possivel e deteminado");
+        }
         x(i, 0) = (b(i, 0) - soma) / matriz(i, i);
     }
 
@@ -59,6 +62,9 @@ Matriz<T> reversub(const Matriz<T> &matriz,const Matriz<T> &b)
         for (int j = 0; j < i; j++) {
             soma += matriz(i, j) * x(j, 0);
         }
+        if (matriz(i,i)==0){
+            throw std::invalid_argument("Sistema não é Possivel e deteminado");
+        }
         x(i, 0) = (b(i, 0) - soma) / matriz(i, i);
     }
 
@@ -76,15 +82,16 @@ bool verificar_matriz_quadrada(Matriz<T> matriz)
 template <typename T>
 Matriz<T> gauss(Matriz<T> &matriz, Matriz<T> &b)
 /*
- * @brief Resolve um sistema linear pelo método de substituição simples.
+ * @brief Descrição simples da função
  * 
- * Recebe uma matriz nxn com a parte inferior zerada e um vetor e retorna a solução do sistema
+ * Descrição detalahda da função
  * 
- * @param matriz Matriz dos coeficientes
+ * @param a faz tal coisa
+ * @param b serve para guardar alguma coisa
  * 
- * @Autors 
- * @date 20/03/2025
- * @modified 20/03/2025
+ * @Autors Pessoa a, Pessoa b, ... 
+ * @date 00/00/0000
+ * @modified 00/00/0000
 */
 {
     if (!verificar_matriz_quadrada(matriz)) {
@@ -110,16 +117,18 @@ Matriz<T> gauss(Matriz<T> &matriz, Matriz<T> &b)
 template <typename T>
 Matriz<T> gauss_jordan(Matriz<T> &matriz, Matriz<T> &b)
 /*
- * @brief Resolve um sistema linear pelo método de substituição simples.
+ * @brief Descrição simples da função
  * 
- * Recebe uma matriz nxn com a parte inferior zerada e um vetor e retorna a solução do sistema
+ * Descrição detalahda da função
  * 
- * @param matriz Matriz dos coeficientes
+ * @param a faz tal coisa
+ * @param b serve para guardar alguma coisa
  * 
- * @Autors 
- * @date 
- * @modified 
+ * @Autors Pessoa a, Pessoa b, ... 
+ * @date 00/00/0000
+ * @modified 00/00/0000
 */
+
 {
     if (!verificar_matriz_quadrada(matriz)) {
         throw std::invalid_argument("Erro: Matriz não é quadrada.");
@@ -258,7 +267,7 @@ std::tuple<Matriz<double>, Matriz<double>, Matriz<double>> decomposicaoLU(const 
     for (size_t k = 0; k < n; k++) {
         // Pivotamento completo
         double maxValor = 0.0;
-        size_t maxLinha = k, maxColuna = k;
+        size_t maxLinha = k, maxColuna = k; // Guarda os indices do maior valor. 
         
         for (size_t i = k; i < n; i++) {
             for (size_t j = k; j < n; j++) {
@@ -302,11 +311,18 @@ std::tuple<Matriz<double>, Matriz<double>, Matriz<double>> decomposicaoLU(const 
 
 Matriz<double> resolverLU(const Matriz<double>& A, const Matriz<double>& b)
 /*
- * @brief Resolve um sistema linear pelo método de substituição simples.
+ * @brief Resolve um sistema linear pelo método Ax=b
  * 
- * Recebe uma matriz nxn com a parte inferior zerada e um vetor e retorna a solução do sistema
+ * Recebe as matrizes LU e realiza a resolução do sistema pelo método Ax=b
  * 
- * @param matriz Matriz dos coeficientes
+ * @param A Matriz principal
+ * @param b Vetor com os resultados de A * x
+ * @param L Matriz triangular superior
+ * @param U Matriz triangula inferior
+ * @param P Matriz de permutação.
+ * @param Pb Mariz com o novo b permutado. 
+ * @param y Matriz com a resposta de y de L * y = b
+ * @param x Matriz com os valores de x de U * x = y
  * 
  * @Autors Lucas A. C. Marin e Giovani Z.
  * @date 03/04/2025
@@ -314,7 +330,7 @@ Matriz<double> resolverLU(const Matriz<double>& A, const Matriz<double>& b)
 */
 {
     auto [L, U, P] = decomposicaoLU(A);
-    
+    L.imprimir();    
     // Resolver Pb = Ly
     Matriz<double> Pb = P * b;
     Matriz<double> y = reversub(L, Pb);
