@@ -1,0 +1,7 @@
+<map id="include/AlgebraLinear.hpp" name="include/AlgebraLinear.hpp">
+<area shape="rect" id="Node000001" title="Declarações de funções relacionadas à álgebra linear." alt="" coords="73,5,263,31"/>
+<area shape="rect" id="Node000002" href="$d2/d3f/ifnum_8hpp.html" title="Header central que agrega todos os módulos principais do projeto." alt="" coords="5,79,144,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,41,92,81,88,76,141,37"/>
+<area shape="rect" id="Node000003" href="$d8/da5/AlgebraLinear_8cpp.html" title="Implementações auxiliares para operações de álgebra linear." alt="" coords="169,79,354,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,37,248,76,244,81,192,41"/>
+</map>
