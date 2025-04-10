@@ -7,6 +7,8 @@ INPUT = include/ source/
 RECURSIVE = YES
 HIDE_UNDOC_RELATIONS = NO
 CREATE_SUBDIRS = YES
+EXTENSION_MAPPING = tpp=C++
+FILE_PATTERNS = *.tpp *.cpp *.hpp
 
 # Necessários devido ao tema doxygen-awesome [ base ]:
 
