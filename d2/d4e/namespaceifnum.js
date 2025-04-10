@@ -5,6 +5,7 @@ var namespaceifnum =
       [ "rotate", "d8/dbc/namespaceifnum_1_1cordic.html#a166cfaef81433f851e6467945986ebb6", null ],
       [ "sin", "d8/dbc/namespaceifnum_1_1cordic.html#acae1b2a10c86a14cd27761ff6f22162c", null ]
     ] ],
+    [ "debug", "d4/d29/namespaceifnum_1_1debug.html", "d4/d29/namespaceifnum_1_1debug" ],
     [ "rng", "d7/d2c/namespaceifnum_1_1rng.html", [
       [ "matriz_aleatoria", "d7/d2c/namespaceifnum_1_1rng.html#a6c2524644ce91c6a51fbd080ff3501b8", null ],
       [ "mt", "d7/d2c/namespaceifnum_1_1rng.html#afc65bbbfa86a7e12f2456185703f46f3", null ]

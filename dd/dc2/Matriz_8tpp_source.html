@@ -175,7 +175,7 @@ $(document).ready(function(){initNavTree('dd/dc2/Matriz_8tpp_source.html','../..
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#aaa360331f5dfe812101e89ad368baabc">  159</a></span>T <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#aaa360331f5dfe812101e89ad368baabc">Matriz&lt;T&gt;::determinante</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="keyword"></span>{</div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordflow">if</span> (colunas_ != linhas_)</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Erro: Matriz não é quadrada.&quot;</span>);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Matriz não é quadrada.&quot;</span>);</div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keywordflow">if</span> (linhas_ == 1)</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        <span class="keywordflow">return</span> (*<span class="keyword">this</span>)(0, 0);</div>
@@ -196,7 +196,7 @@ $(document).ready(function(){initNavTree('dd/dc2/Matriz_8tpp_source.html','../..
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#aa10c082b01bde12d68e31b32b2beb6d1">  190</a></span>T <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#aa10c082b01bde12d68e31b32b2beb6d1">Matriz&lt;T&gt;::modulo</a>() const <span class="comment">// Calcula a norma de um vetor.</span></div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>{</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keywordflow">if</span> (colunas_ != 1) {</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Erro: A matriz não é um vetor coluna.&quot;</span>);</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;A matriz não é um vetor coluna.&quot;</span>);</div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    }</div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    T soma_quadrados = 0;</div>
@@ -227,10 +227,10 @@ $(document).ready(function(){initNavTree('dd/dc2/Matriz_8tpp_source.html','../..
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#aa2ac14ffea356ca8b391c80cf51784c7">  244</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#aa2ac14ffea356ca8b391c80cf51784c7">Matriz&lt;T&gt;::autovalor</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;other, <span class="keywordtype">double</span> tolerancia, <span class="keywordtype">int</span> r)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="keyword"></span>{</div>
 <div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keywordflow">if</span> (colunas_ != linhas_)</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Erro: Matriz deve ser quadrada.&quot;</span>);</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Matriz deve ser quadrada.&quot;</span>);</div>
 <div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
 <div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <span class="keywordflow">if</span> (other.colunas_ != 1 || other.linhas_ != linhas_)</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Erro: O vetor inicial deve ser um vetor &quot;</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;O vetor inicial deve ser um vetor &quot;</span></div>
 <div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>                                    <span class="stringliteral">&quot;coluna com a mesma quantidade &quot;</span></div>
 <div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>                                    <span class="stringliteral">&quot;de linhas da matriz.&quot;</span>);</div>
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
@@ -258,403 +258,402 @@ $(document).ready(function(){initNavTree('dd/dc2/Matriz_8tpp_source.html','../..
 <div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> denominador = v.<a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#aee65d6031035b3e3966cc00bdc56fc98">transposta</a>() * v;</div>
 <div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    <span class="keywordflow">if</span> (denominador(0, 0) == 0)</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        <span class="keywordflow">throw</span> std::runtime_error(</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>            <span class="stringliteral">&quot;Erro: Denominador zero, impossibilitando o cálculo do autovalor.&quot;</span>);</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <span class="keywordflow">return</span> produto(0, 0) / denominador(0, 0);</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>}</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Denominador zero, impossibilitando o cálculo do autovalor.&quot;</span>);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    <span class="keywordflow">return</span> produto(0, 0) / denominador(0, 0);</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>}</div>
 </div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00298" data-start="{" data-end="}">
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a9afceea97ef36954dc7b92f07bc2e4bd">  298</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#a9afceea97ef36954dc7b92f07bc2e4bd">Matriz&lt;T&gt;::linha</a>(<span class="keywordtype">int</span> indice)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    <span class="keywordflow">if</span> (indice &lt; 0)</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Erro: Índice deve ser maior ou igual a zero.&quot;</span>);</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)indice &gt;= linhas_)</div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Erro: Índice de linha fora dos limites.&quot;</span>);</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    std::vector&lt;T&gt; nova_linha(&amp;matriz_[indice * colunas_], &amp;matriz_[(indice + 1) * colunas_]);</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo(1, colunas_, nova_linha); <span class="comment">// Nova matriz com ordem 1xn</span></div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    <span class="keywordflow">return</span> novo;</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>}</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00297" data-start="{" data-end="}">
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a9afceea97ef36954dc7b92f07bc2e4bd">  297</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#a9afceea97ef36954dc7b92f07bc2e4bd">Matriz&lt;T&gt;::linha</a>(<span class="keywordtype">int</span> indice)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    <span class="keywordflow">if</span> (indice &lt; 0)</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Índice deve ser maior ou igual a zero.&quot;</span>);</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)indice &gt;= linhas_)</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Índice de linha fora dos limites.&quot;</span>);</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    std::vector&lt;T&gt; nova_linha(&amp;matriz_[indice * colunas_], &amp;matriz_[(indice + 1) * colunas_]);</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span> </div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo(1, colunas_, nova_linha); <span class="comment">// Nova matriz com ordem 1xn</span></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    <span class="keywordflow">return</span> novo;</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>}</div>
 </div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00327" data-start="{" data-end="}">
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a99e7f382f3d897c5d72e773dfa95b9d4">  327</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#a99e7f382f3d897c5d72e773dfa95b9d4">Matriz&lt;T&gt;::coluna</a>(<span class="keywordtype">int</span> indice)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    <span class="keywordflow">if</span> (indice &lt; 0)</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Erro: Índice deve ser maior ou igual a zero.&quot;</span>);</div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)indice &gt;= linhas_)</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Erro: Índice de coluna fora dos limites.&quot;</span>);</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    std::vector&lt;T&gt; nova_coluna(colunas_);</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; linhas_; i++)</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>        nova_coluna[i] = matriz_[i * colunas_ + indice];</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo(linhas_, 1, nova_coluna); <span class="comment">// Nova matriz com ordem nx1</span></div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    <span class="keywordflow">return</span> novo;</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>}</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00326" data-start="{" data-end="}">
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a99e7f382f3d897c5d72e773dfa95b9d4">  326</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#a99e7f382f3d897c5d72e773dfa95b9d4">Matriz&lt;T&gt;::coluna</a>(<span class="keywordtype">int</span> indice)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    <span class="keywordflow">if</span> (indice &lt; 0)</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Índice deve ser maior ou igual a zero.&quot;</span>);</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)indice &gt;= linhas_)</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Índice de coluna fora dos limites.&quot;</span>);</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    std::vector&lt;T&gt; nova_coluna(colunas_);</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; linhas_; i++)</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        nova_coluna[i] = matriz_[i * colunas_ + indice];</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span> </div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo(linhas_, 1, nova_coluna); <span class="comment">// Nova matriz com ordem nx1</span></div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    <span class="keywordflow">return</span> novo;</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>}</div>
 </div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span> </div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00358" data-start="{" data-end="}">
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a5234520c88a68a1b54590e81162344c4">  358</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#a5234520c88a68a1b54590e81162344c4">Matriz&lt;T&gt;::redimensionar</a>(<span class="keywordtype">int</span> linhas, <span class="keywordtype">int</span> colunas)</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>{</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>    <span class="keywordflow">if</span> (linhas &lt; 0 || colunas &lt; 0)</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Erro: Valores devem ser positivos.&quot;</span>);</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span> </div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> novo_linhas = <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(linhas);</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> novo_colunas = <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(colunas);</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> novo_tamanho = novo_linhas * novo_colunas;</div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span> </div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    <span class="keywordflow">if</span> (novo_linhas == linhas_ &amp;&amp; novo_colunas == colunas_)</div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>        <span class="keywordflow">return</span>; <span class="comment">// Uai?</span></div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span> </div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    <span class="comment">// Nós não precisamos criar uma nova matriz nem nada do tipo, basta aumentar</span></div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    <span class="comment">// o tamanho do vetor que guarda os dados (matriz), atualizar o índice dos</span></div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>    <span class="comment">// valores internos e atualizar os valores de linhas e colunas.</span></div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span> </div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    <span class="comment">// Nota: fazer resize em um vetor é equivalente a realocá-lo na memória. :)</span></div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span> </div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> min_linhas = std::min(novo_linhas, linhas_);</div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> min_colunas = std::min(novo_colunas, colunas_);</div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span> </div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>    <span class="comment">// Nós só vamos precisar shiftar valores se o número de COLUNAS mudar.</span></div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    <span class="comment">// Se o novo número de colunas for maior, nós precisamos shiftar os valores</span></div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <span class="comment">// para direita começando de trás pra frente, para evitar sobrescrita.</span></div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>    <span class="keywordflow">if</span> (novo_colunas &gt; colunas_) {</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>        <span class="comment">// Mover linhas existentes de trás pra frente (evitando sobrescrita)</span></div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>        matriz_.resize(novo_tamanho, T()); <span class="comment">// T() ao invés de 0 para inicializar</span></div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = min_linhas; i &gt; 0; --i) {</div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>            <span class="keyword">const</span> <span class="keywordtype">size_t</span> lin = i - 1;</div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span> </div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>            <span class="keyword">auto</span> *dest = &amp;matriz_[lin * novo_colunas];</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>            <span class="keyword">auto</span> *src = &amp;matriz_[lin * colunas_];</div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>            std::memmove(dest, src, min_colunas * <span class="keyword">sizeof</span>(T));</div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span> </div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>            <span class="comment">// std::memmove não esvazia as posições antigas, precisamos zerar</span></div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>            <span class="keyword">auto</span> *fill_pos = &amp;matriz_[lin * novo_colunas + min_colunas];</div>
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>            std::fill_n(fill_pos, novo_colunas - min_colunas, T());</div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>        }</div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (novo_colunas &lt; colunas_) {</div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>        <span class="comment">// Mover linhas esquerda pra direita, sem risco de sobrescrita</span></div>
-<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> lin = 0; lin &lt; min_linhas; ++lin) {</div>
-<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>            <span class="keyword">auto</span> *dest = &amp;matriz_[lin * novo_colunas];</div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>            <span class="keyword">auto</span> *src = &amp;matriz_[lin * colunas_];</div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>            std::memmove(dest, src, min_colunas * <span class="keyword">sizeof</span>(T));</div>
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>        }</div>
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>        matriz_.resize(novo_tamanho, T());</div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>        <span class="comment">// Colunas permanecem as mesmas, redimensionar de acordo com as linhas</span></div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>        matriz_.resize(novo_tamanho, T());</div>
-<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>    }</div>
-<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span> </div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>    linhas_ = novo_linhas;</div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>    colunas_ = novo_colunas;</div>
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>}</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span> </div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00357" data-start="{" data-end="}">
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a5234520c88a68a1b54590e81162344c4">  357</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#a5234520c88a68a1b54590e81162344c4">Matriz&lt;T&gt;::redimensionar</a>(<span class="keywordtype">int</span> linhas, <span class="keywordtype">int</span> colunas)</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>{</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>    <span class="keywordflow">if</span> (linhas &lt; 0 || colunas &lt; 0)</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Valores devem ser positivos.&quot;</span>);</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> novo_linhas = <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(linhas);</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> novo_colunas = <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(colunas);</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> novo_tamanho = novo_linhas * novo_colunas;</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span> </div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    <span class="keywordflow">if</span> (novo_linhas == linhas_ &amp;&amp; novo_colunas == colunas_)</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>        <span class="keywordflow">return</span>; <span class="comment">// Uai?</span></div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span> </div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>    <span class="comment">// Nós não precisamos criar uma nova matriz nem nada do tipo, basta aumentar</span></div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    <span class="comment">// o tamanho do vetor que guarda os dados (matriz), atualizar o índice dos</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    <span class="comment">// valores internos e atualizar os valores de linhas e colunas.</span></div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span> </div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>    <span class="comment">// Nota: fazer resize em um vetor é equivalente a realocá-lo na memória. :)</span></div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span> </div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> min_linhas = std::min(novo_linhas, linhas_);</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> min_colunas = std::min(novo_colunas, colunas_);</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span> </div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    <span class="comment">// Nós só vamos precisar shiftar valores se o número de COLUNAS mudar.</span></div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>    <span class="comment">// Se o novo número de colunas for maior, nós precisamos shiftar os valores</span></div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    <span class="comment">// para direita começando de trás pra frente, para evitar sobrescrita.</span></div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span> </div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>    <span class="keywordflow">if</span> (novo_colunas &gt; colunas_) {</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>        <span class="comment">// Mover linhas existentes de trás pra frente (evitando sobrescrita)</span></div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>        matriz_.resize(novo_tamanho, T()); <span class="comment">// T() ao invés de 0 para inicializar</span></div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = min_linhas; i &gt; 0; --i) {</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>            <span class="keyword">const</span> <span class="keywordtype">size_t</span> lin = i - 1;</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span> </div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>            <span class="keyword">auto</span> *dest = &amp;matriz_[lin * novo_colunas];</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>            <span class="keyword">auto</span> *src = &amp;matriz_[lin * colunas_];</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>            std::memmove(dest, src, min_colunas * <span class="keyword">sizeof</span>(T));</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span> </div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>            <span class="comment">// std::memmove não esvazia as posições antigas, precisamos zerar</span></div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>            <span class="keyword">auto</span> *fill_pos = &amp;matriz_[lin * novo_colunas + min_colunas];</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>            std::fill_n(fill_pos, novo_colunas - min_colunas, T());</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>        }</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (novo_colunas &lt; colunas_) {</div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>        <span class="comment">// Mover linhas esquerda pra direita, sem risco de sobrescrita</span></div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> lin = 0; lin &lt; min_linhas; ++lin) {</div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>            <span class="keyword">auto</span> *dest = &amp;matriz_[lin * novo_colunas];</div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>            <span class="keyword">auto</span> *src = &amp;matriz_[lin * colunas_];</div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>            std::memmove(dest, src, min_colunas * <span class="keyword">sizeof</span>(T));</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>        }</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>        matriz_.resize(novo_tamanho, T());</div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>        <span class="comment">// Colunas permanecem as mesmas, redimensionar de acordo com as linhas</span></div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>        matriz_.resize(novo_tamanho, T());</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>    }</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span> </div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>    linhas_ = novo_linhas;</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>    colunas_ = novo_colunas;</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>}</div>
 </div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span> </div>
-<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00428" data-start="{" data-end="}">
-<div class="line"><a id="l00428" name="l00428"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a558576aeac0cb7f335617c4acadd0f62">  428</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#a558576aeac0cb7f335617c4acadd0f62">Matriz&lt;T&gt;::trocar_linhas</a>(<span class="keywordtype">int</span> indice1, <span class="keywordtype">int</span> indice2)</div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>{</div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>    <span class="keywordflow">if</span> (indice1 &lt; 0 || indice2 &lt; 0)</div>
-<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Erro: Índice/s de linha negativo/s.&quot;</span>);</div>
-<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span> </div>
-<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)indice1 &gt;= linhas_ || (<span class="keywordtype">size_t</span>)indice2 &gt;= linhas_)</div>
-<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Erro: Índice/s de linha além do limite da matriz.&quot;</span>);</div>
-<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span> </div>
-<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>    <span class="keyword">auto</span> start1 = matriz_.begin() + indice1 * colunas_; <span class="comment">// inicio do intervalo [</span></div>
-<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>    <span class="keyword">auto</span> last1 = start1 + colunas_;                     <span class="comment">// fim do intervalo    )</span></div>
-<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>    <span class="keyword">auto</span> start2 = matriz_.begin() + indice2 * colunas_; <span class="comment">// inicio do destino</span></div>
-<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>    std::swap_ranges(start1, last1, start2);</div>
-<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>}</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span> </div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00427" data-start="{" data-end="}">
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a558576aeac0cb7f335617c4acadd0f62">  427</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#a558576aeac0cb7f335617c4acadd0f62">Matriz&lt;T&gt;::trocar_linhas</a>(<span class="keywordtype">int</span> indice1, <span class="keywordtype">int</span> indice2)</div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>{</div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>    <span class="keywordflow">if</span> (indice1 &lt; 0 || indice2 &lt; 0)</div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Índice/s de linha negativo/s.&quot;</span>);</div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span> </div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)indice1 &gt;= linhas_ || (<span class="keywordtype">size_t</span>)indice2 &gt;= linhas_)</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Índice/s de linha além do limite da matriz.&quot;</span>);</div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span> </div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>    <span class="keyword">auto</span> start1 = matriz_.begin() + indice1 * colunas_; <span class="comment">// inicio do intervalo [</span></div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>    <span class="keyword">auto</span> last1 = start1 + colunas_;                     <span class="comment">// fim do intervalo    )</span></div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>    <span class="keyword">auto</span> start2 = matriz_.begin() + indice2 * colunas_; <span class="comment">// inicio do destino</span></div>
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>    std::swap_ranges(start1, last1, start2);</div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>}</div>
 </div>
-<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span> </div>
-<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00456" data-start="{" data-end="}">
-<div class="line"><a id="l00456" name="l00456"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#aab78e588081a037833e199b51021e922">  456</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#aab78e588081a037833e199b51021e922">Matriz&lt;T&gt;::trocar_colunas</a>(<span class="keywordtype">int</span> indice1, <span class="keywordtype">int</span> indice2)</div>
-<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span>{</div>
-<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span> </div>
-<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>    <span class="keywordflow">if</span> (indice1 &lt; 0 || indice2 &lt; 0)</div>
-<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Erro: Índice/s de coluna negativo/s.&quot;</span>);</div>
-<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span> </div>
-<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)indice1 &gt;= colunas_ || (<span class="keywordtype">size_t</span>)indice2 &gt;= colunas_)</div>
-<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Erro: Índice/s de coluna além do limite da matriz.&quot;</span>);</div>
-<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span> </div>
-<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; linhas_; i++)</div>
-<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span>        std::swap(matriz_[i * colunas_ + indice1], matriz_[i * colunas_ + indice2]);</div>
-<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span>}</div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span> </div>
+<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00455" data-start="{" data-end="}">
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#aab78e588081a037833e199b51021e922">  455</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#aab78e588081a037833e199b51021e922">Matriz&lt;T&gt;::trocar_colunas</a>(<span class="keywordtype">int</span> indice1, <span class="keywordtype">int</span> indice2)</div>
+<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>{</div>
+<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span> </div>
+<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>    <span class="keywordflow">if</span> (indice1 &lt; 0 || indice2 &lt; 0)</div>
+<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Índice/s de coluna negativo/s.&quot;</span>);</div>
+<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span> </div>
+<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)indice1 &gt;= colunas_ || (<span class="keywordtype">size_t</span>)indice2 &gt;= colunas_)</div>
+<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Índice/s de coluna além do limite da matriz.&quot;</span>);</div>
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span> </div>
+<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; linhas_; i++)</div>
+<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span>        std::swap(matriz_[i * colunas_ + indice1], matriz_[i * colunas_ + indice2]);</div>
+<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span>}</div>
 </div>
-<div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span> </div>
-<div class="line"><a id="l00483" name="l00483"></a><span class="lineno">  483</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00484" data-start="{" data-end="}">
-<div class="line"><a id="l00484" name="l00484"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#aa9f8afe9aa414b5358aa348bcc143d31">  484</a></span>T <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#aa9f8afe9aa414b5358aa348bcc143d31">Matriz&lt;T&gt;::operator()</a>(<span class="keywordtype">int</span> linha, <span class="keywordtype">int</span> coluna)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00485" name="l00485"></a><span class="lineno">  485</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00486" name="l00486"></a><span class="lineno">  486</span>    <span class="keywordflow">if</span> (linha &lt; 0 || coluna &lt; 0)</div>
-<div class="line"><a id="l00487" name="l00487"></a><span class="lineno">  487</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Erro: Índices negativos.&quot;</span>);</div>
-<div class="line"><a id="l00488" name="l00488"></a><span class="lineno">  488</span> </div>
-<div class="line"><a id="l00489" name="l00489"></a><span class="lineno">  489</span>    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)linha &gt;= linhas_ || (<span class="keywordtype">size_t</span>)coluna &gt;= colunas_)</div>
-<div class="line"><a id="l00490" name="l00490"></a><span class="lineno">  490</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Erro: Índices fora dos limites da matriz.&quot;</span>);</div>
-<div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span> </div>
-<div class="line"><a id="l00492" name="l00492"></a><span class="lineno">  492</span>    <span class="keywordflow">return</span> matriz_[linha * colunas_ + coluna];</div>
-<div class="line"><a id="l00493" name="l00493"></a><span class="lineno">  493</span>}</div>
+<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span> </div>
+<div class="line"><a id="l00482" name="l00482"></a><span class="lineno">  482</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00483" data-start="{" data-end="}">
+<div class="line"><a id="l00483" name="l00483"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#aa9f8afe9aa414b5358aa348bcc143d31">  483</a></span>T <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#aa9f8afe9aa414b5358aa348bcc143d31">Matriz&lt;T&gt;::operator()</a>(<span class="keywordtype">int</span> linha, <span class="keywordtype">int</span> coluna)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00484" name="l00484"></a><span class="lineno">  484</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00485" name="l00485"></a><span class="lineno">  485</span>    <span class="keywordflow">if</span> (linha &lt; 0 || coluna &lt; 0)</div>
+<div class="line"><a id="l00486" name="l00486"></a><span class="lineno">  486</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Índices negativos.&quot;</span>);</div>
+<div class="line"><a id="l00487" name="l00487"></a><span class="lineno">  487</span> </div>
+<div class="line"><a id="l00488" name="l00488"></a><span class="lineno">  488</span>    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)linha &gt;= linhas_ || (<span class="keywordtype">size_t</span>)coluna &gt;= colunas_)</div>
+<div class="line"><a id="l00489" name="l00489"></a><span class="lineno">  489</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Índices fora dos limites da matriz.&quot;</span>);</div>
+<div class="line"><a id="l00490" name="l00490"></a><span class="lineno">  490</span> </div>
+<div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span>    <span class="keywordflow">return</span> matriz_[linha * colunas_ + coluna];</div>
+<div class="line"><a id="l00492" name="l00492"></a><span class="lineno">  492</span>}</div>
 </div>
-<div class="line"><a id="l00494" name="l00494"></a><span class="lineno">  494</span> </div>
-<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00510" data-start="{" data-end="}">
-<div class="line"><a id="l00510" name="l00510"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a029587ad8b0ac3ac9ac192f1b10e05ec">  510</a></span>T &amp;<a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#aa9f8afe9aa414b5358aa348bcc143d31">Matriz&lt;T&gt;::operator()</a>(<span class="keywordtype">int</span> linha, <span class="keywordtype">int</span> coluna)</div>
-<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>{</div>
-<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>    <span class="keywordflow">if</span> (linha &lt; 0 || coluna &lt; 0)</div>
-<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Erro: Índices negativos.&quot;</span>);</div>
-<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span> </div>
-<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)linha &gt;= linhas_ || (<span class="keywordtype">size_t</span>)coluna &gt;= colunas_)</div>
-<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Erro: Índices fora dos limites da matriz.&quot;</span>);</div>
-<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span> </div>
-<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span>    <span class="keywordflow">return</span> matriz_[linha * colunas_ + coluna];</div>
-<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>}</div>
+<div class="line"><a id="l00493" name="l00493"></a><span class="lineno">  493</span> </div>
+<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00509" data-start="{" data-end="}">
+<div class="line"><a id="l00509" name="l00509"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a029587ad8b0ac3ac9ac192f1b10e05ec">  509</a></span>T &amp;<a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#aa9f8afe9aa414b5358aa348bcc143d31">Matriz&lt;T&gt;::operator()</a>(<span class="keywordtype">int</span> linha, <span class="keywordtype">int</span> coluna)</div>
+<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>{</div>
+<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>    <span class="keywordflow">if</span> (linha &lt; 0 || coluna &lt; 0)</div>
+<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Índices negativos.&quot;</span>);</div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span> </div>
+<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span>    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>)linha &gt;= linhas_ || (<span class="keywordtype">size_t</span>)coluna &gt;= colunas_)</div>
+<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>        <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Índices fora dos limites da matriz.&quot;</span>);</div>
+<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span> </div>
+<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span>    <span class="keywordflow">return</span> matriz_[linha * colunas_ + coluna];</div>
+<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span>}</div>
 </div>
-<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span> </div>
-<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00533" data-start="{" data-end="}">
-<div class="line"><a id="l00533" name="l00533"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#adda7e135c8426228158698fcdbd09ef7">  533</a></span><span class="keyword">inline</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#adda7e135c8426228158698fcdbd09ef7">Matriz&lt;T&gt;::operator-</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo = *<span class="keyword">this</span>;</div>
-<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span> </div>
-<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;e : novo.matriz_)</div>
-<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>        e *= -1;</div>
-<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span> </div>
-<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>    <span class="keywordflow">return</span> novo;</div>
-<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span>}</div>
+<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span> </div>
+<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00532" data-start="{" data-end="}">
+<div class="line"><a id="l00532" name="l00532"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#adda7e135c8426228158698fcdbd09ef7">  532</a></span><span class="keyword">inline</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#adda7e135c8426228158698fcdbd09ef7">Matriz&lt;T&gt;::operator-</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo = *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span> </div>
+<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;e : novo.matriz_)</div>
+<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>        e *= -1;</div>
+<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span> </div>
+<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>    <span class="keywordflow">return</span> novo;</div>
+<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>}</div>
 </div>
-<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span> </div>
-<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00557" data-start="{" data-end="}">
-<div class="line"><a id="l00557" name="l00557"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#ae3928c1a8946e9e4bf78f8d1d800eca0">  557</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#ae3928c1a8946e9e4bf78f8d1d800eca0">Matriz&lt;T&gt;::operator+</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;other)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>    <span class="keywordflow">if</span> (colunas_ != other.colunas_ || linhas_ != other.linhas_)</div>
-<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Erro: Matrizes de ordens diferentes.&quot;</span>);</div>
-<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span> </div>
-<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo(linhas_, colunas_);</div>
-<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span> </div>
-<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; matriz_.size(); i++)</div>
-<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span>        novo.matriz_[i] = matriz_[i] + other.matriz_[i];</div>
-<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span> </div>
-<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span>    <span class="keywordflow">return</span> novo;</div>
-<div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span>}</div>
+<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span> </div>
+<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00556" data-start="{" data-end="}">
+<div class="line"><a id="l00556" name="l00556"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#ae3928c1a8946e9e4bf78f8d1d800eca0">  556</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#ae3928c1a8946e9e4bf78f8d1d800eca0">Matriz&lt;T&gt;::operator+</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;other)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>    <span class="keywordflow">if</span> (colunas_ != other.colunas_ || linhas_ != other.linhas_)</div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Matrizes de ordens diferentes.&quot;</span>);</div>
+<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span> </div>
+<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo(linhas_, colunas_);</div>
+<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span> </div>
+<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; matriz_.size(); i++)</div>
+<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>        novo.matriz_[i] = matriz_[i] + other.matriz_[i];</div>
+<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span> </div>
+<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span>    <span class="keywordflow">return</span> novo;</div>
+<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span>}</div>
 </div>
-<div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span> </div>
-<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00584" data-start="{" data-end="}">
-<div class="line"><a id="l00584" name="l00584"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#aaafbfc786677742d7b102c53f52e29f3">  584</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#adda7e135c8426228158698fcdbd09ef7">Matriz&lt;T&gt;::operator-</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;other)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>    <span class="keywordflow">if</span> (colunas_ != other.colunas_ || linhas_ != other.linhas_)</div>
-<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Erro: Matrizes de ordens diferentes.&quot;</span>);</div>
-<div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span> </div>
-<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo(linhas_, colunas_);</div>
-<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span> </div>
-<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; matriz_.size(); i++)</div>
-<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>        novo.matriz_[i] = matriz_[i] - other.matriz_[i];</div>
-<div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span> </div>
-<div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>    <span class="keywordflow">return</span> novo;</div>
-<div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>}</div>
+<div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span> </div>
+<div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00583" data-start="{" data-end="}">
+<div class="line"><a id="l00583" name="l00583"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#aaafbfc786677742d7b102c53f52e29f3">  583</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#adda7e135c8426228158698fcdbd09ef7">Matriz&lt;T&gt;::operator-</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;other)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span>    <span class="keywordflow">if</span> (colunas_ != other.colunas_ || linhas_ != other.linhas_)</div>
+<div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Matrizes de ordens diferentes.&quot;</span>);</div>
+<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span> </div>
+<div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo(linhas_, colunas_);</div>
+<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span> </div>
+<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; matriz_.size(); i++)</div>
+<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>        novo.matriz_[i] = matriz_[i] - other.matriz_[i];</div>
+<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span> </div>
+<div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>    <span class="keywordflow">return</span> novo;</div>
+<div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>}</div>
 </div>
-<div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span> </div>
-<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00610" data-start="{" data-end="}">
-<div class="line"><a id="l00610" name="l00610"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#ae3b7d6e74a081c4454003a2e0e88ec48">  610</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_friend" href="../../d1/d50/classifnum_1_1Matriz.html#a64f8e423653c3e6311a3c513c81f5e4b">Matriz&lt;T&gt;::operator*</a>(T escalar)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo(linhas_, colunas_);</div>
-<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span> </div>
-<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; matriz_.size(); i++)</div>
-<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>        novo.matriz_[i] = matriz_[i] * escalar;</div>
-<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span> </div>
-<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>    <span class="keywordflow">return</span> novo;</div>
-<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span>}</div>
+<div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span> </div>
+<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00609" data-start="{" data-end="}">
+<div class="line"><a id="l00609" name="l00609"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#ae3b7d6e74a081c4454003a2e0e88ec48">  609</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_friend" href="../../d1/d50/classifnum_1_1Matriz.html#a64f8e423653c3e6311a3c513c81f5e4b">Matriz&lt;T&gt;::operator*</a>(T escalar)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo(linhas_, colunas_);</div>
+<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span> </div>
+<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; matriz_.size(); i++)</div>
+<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>        novo.matriz_[i] = matriz_[i] * escalar;</div>
+<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span> </div>
+<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>    <span class="keywordflow">return</span> novo;</div>
+<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>}</div>
 </div>
-<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span> </div>
-<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00634" data-start="{" data-end="}">
-<div class="line"><a id="l00634" name="l00634"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a96460939f7a628b562ec685b6f2292fb">  634</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#a96460939f7a628b562ec685b6f2292fb">Matriz&lt;T&gt;::operator/</a>(T escalar)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>    <span class="keywordflow">if</span> (escalar == 0)</div>
-<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Erro: Divisão por zero.&quot;</span>);</div>
-<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span> </div>
-<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo(linhas_, colunas_);</div>
-<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span> </div>
-<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; matriz_.size(); i++)</div>
-<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>        novo.matriz_[i] = matriz_[i] / escalar;</div>
-<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span> </div>
-<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>    <span class="keywordflow">return</span> novo;</div>
-<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>}</div>
+<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span> </div>
+<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00633" data-start="{" data-end="}">
+<div class="line"><a id="l00633" name="l00633"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a96460939f7a628b562ec685b6f2292fb">  633</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#a96460939f7a628b562ec685b6f2292fb">Matriz&lt;T&gt;::operator/</a>(T escalar)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>    <span class="keywordflow">if</span> (escalar == 0)</div>
+<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Divisão por zero.&quot;</span>);</div>
+<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span> </div>
+<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo(linhas_, colunas_);</div>
+<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span> </div>
+<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; matriz_.size(); i++)</div>
+<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>        novo.matriz_[i] = matriz_[i] / escalar;</div>
+<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span> </div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>    <span class="keywordflow">return</span> novo;</div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>}</div>
 </div>
-<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span> </div>
-<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00662" data-start="{" data-end="}">
-<div class="line"><a id="l00662" name="l00662"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a0a78c3b11165be51a7758812c856be77">  662</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_friend" href="../../d1/d50/classifnum_1_1Matriz.html#a64f8e423653c3e6311a3c513c81f5e4b">Matriz&lt;T&gt;::operator*</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;outro)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>    <span class="keywordflow">if</span> (colunas_ != outro.linhas_)</div>
-<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Erro: Matrizes incompatíveis.&quot;</span>);</div>
-<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span> </div>
-<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo(linhas_, outro.colunas_);</div>
-<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span> </div>
-<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; linhas_; i++)</div>
-<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; outro.colunas_; j++)</div>
-<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = 0; k &lt; colunas_; k++)</div>
-<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>                novo(i, j) += (*this)(i, k) * outro(k, j);</div>
-<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span> </div>
-<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>    <span class="keywordflow">return</span> novo;</div>
-<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>}</div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span> </div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00661" data-start="{" data-end="}">
+<div class="line"><a id="l00661" name="l00661"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a0a78c3b11165be51a7758812c856be77">  661</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> <a class="code hl_friend" href="../../d1/d50/classifnum_1_1Matriz.html#a64f8e423653c3e6311a3c513c81f5e4b">Matriz&lt;T&gt;::operator*</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;outro)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>    <span class="keywordflow">if</span> (colunas_ != outro.linhas_)</div>
+<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Matrizes com dimensões incompatíveis para multiplicação.&quot;</span>);</div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span> </div>
+<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>    <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> novo(linhas_, outro.colunas_);</div>
+<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span> </div>
+<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; linhas_; i++)</div>
+<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; outro.colunas_; j++)</div>
+<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = 0; k &lt; colunas_; k++)</div>
+<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>                novo(i, j) += (*this)(i, k) * outro(k, j);</div>
+<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span> </div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>    <span class="keywordflow">return</span> novo;</div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>}</div>
 </div>
-<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span> </div>
-<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00691" data-start="{" data-end="}">
-<div class="line"><a id="l00691" name="l00691"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a0d12f562a4eff379de417421d62d1135">  691</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;<a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#a0d12f562a4eff379de417421d62d1135">Matriz&lt;T&gt;::operator+=</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;other)</div>
-<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>{</div>
-<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>    <span class="comment">// return *this = *this + other;</span></div>
-<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span> </div>
-<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>    <span class="keywordflow">if</span> (colunas_ != other.colunas_ || linhas_ != other.linhas_)</div>
-<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Erro: Matrizes de ordens diferentes.&quot;</span>);</div>
-<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span> </div>
-<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; matriz_.size(); i++)</div>
-<div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>        matriz_[i] += other.matriz_[i];</div>
-<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span> </div>
-<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span>}</div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span> </div>
+<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00690" data-start="{" data-end="}">
+<div class="line"><a id="l00690" name="l00690"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#a0d12f562a4eff379de417421d62d1135">  690</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;<a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#a0d12f562a4eff379de417421d62d1135">Matriz&lt;T&gt;::operator+=</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;other)</div>
+<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>{</div>
+<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>    <span class="comment">// return *this = *this + other;</span></div>
+<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span> </div>
+<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>    <span class="keywordflow">if</span> (colunas_ != other.colunas_ || linhas_ != other.linhas_)</div>
+<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Matrizes de ordens diferentes.&quot;</span>);</div>
+<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span> </div>
+<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; matriz_.size(); i++)</div>
+<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>        matriz_[i] += other.matriz_[i];</div>
+<div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span> </div>
+<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span>}</div>
 </div>
-<div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span> </div>
-<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00718" data-start="{" data-end="}">
-<div class="line"><a id="l00718" name="l00718"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#ae24cc33915bc10c45d9694455c190202">  718</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;<a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#ae24cc33915bc10c45d9694455c190202">Matriz&lt;T&gt;::operator-=</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;other)</div>
-<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span>{</div>
-<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span>    <span class="comment">// return *this = *this - outro;</span></div>
-<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span> </div>
-<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span>    <span class="keywordflow">if</span> (colunas_ != other.colunas_ || linhas_ != other.linhas_)</div>
-<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Erro: Matrizes de ordens diferentes.&quot;</span>);</div>
-<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span> </div>
-<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; matriz_.size(); i++)</div>
-<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span>        matriz_[i] -= other.matriz_[i];</div>
-<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span> </div>
-<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span>}</div>
+<div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span> </div>
+<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00717" data-start="{" data-end="}">
+<div class="line"><a id="l00717" name="l00717"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#ae24cc33915bc10c45d9694455c190202">  717</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;<a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#ae24cc33915bc10c45d9694455c190202">Matriz&lt;T&gt;::operator-=</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;other)</div>
+<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span>{</div>
+<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span>    <span class="comment">// return *this = *this - outro;</span></div>
+<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span> </div>
+<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span>    <span class="keywordflow">if</span> (colunas_ != other.colunas_ || linhas_ != other.linhas_)</div>
+<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Matrizes de ordens diferentes.&quot;</span>);</div>
+<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span> </div>
+<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; matriz_.size(); i++)</div>
+<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span>        matriz_[i] -= other.matriz_[i];</div>
+<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span> </div>
+<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span>}</div>
 </div>
-<div class="line"><a id="l00730" name="l00730"></a><span class="lineno">  730</span> </div>
-<div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00742" data-start="{" data-end="}">
-<div class="line"><a id="l00742" name="l00742"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#ab51ae2fef5f1771c781460dc0e42ad6c">  742</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;<a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#ab51ae2fef5f1771c781460dc0e42ad6c">Matriz&lt;T&gt;::operator*=</a>(T escalar)</div>
-<div class="line"><a id="l00743" name="l00743"></a><span class="lineno">  743</span>{</div>
-<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span>    <span class="comment">// return *this = *this * escalar;</span></div>
-<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span> </div>
-<div class="line"><a id="l00746" name="l00746"></a><span class="lineno">  746</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;e : matriz_)</div>
-<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span>        e *= escalar;</div>
-<div class="line"><a id="l00748" name="l00748"></a><span class="lineno">  748</span> </div>
-<div class="line"><a id="l00749" name="l00749"></a><span class="lineno">  749</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a id="l00750" name="l00750"></a><span class="lineno">  750</span>}</div>
+<div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span> </div>
+<div class="line"><a id="l00740" name="l00740"></a><span class="lineno">  740</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00741" data-start="{" data-end="}">
+<div class="line"><a id="l00741" name="l00741"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#ab51ae2fef5f1771c781460dc0e42ad6c">  741</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;<a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#ab51ae2fef5f1771c781460dc0e42ad6c">Matriz&lt;T&gt;::operator*=</a>(T escalar)</div>
+<div class="line"><a id="l00742" name="l00742"></a><span class="lineno">  742</span>{</div>
+<div class="line"><a id="l00743" name="l00743"></a><span class="lineno">  743</span>    <span class="comment">// return *this = *this * escalar;</span></div>
+<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span> </div>
+<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;e : matriz_)</div>
+<div class="line"><a id="l00746" name="l00746"></a><span class="lineno">  746</span>        e *= escalar;</div>
+<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span> </div>
+<div class="line"><a id="l00748" name="l00748"></a><span class="lineno">  748</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00749" name="l00749"></a><span class="lineno">  749</span>}</div>
 </div>
-<div class="line"><a id="l00751" name="l00751"></a><span class="lineno">  751</span> </div>
-<div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00764" data-start="{" data-end="}">
-<div class="line"><a id="l00764" name="l00764"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#aa4c8c4fb5e41886d0af1fc7880d84a5e">  764</a></span><span class="keyword">inline</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;<a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#aa4c8c4fb5e41886d0af1fc7880d84a5e">Matriz&lt;T&gt;::operator/=</a>(T escalar)</div>
-<div class="line"><a id="l00765" name="l00765"></a><span class="lineno">  765</span>{</div>
-<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span>    <span class="comment">// return *this = *this / escalar;</span></div>
-<div class="line"><a id="l00767" name="l00767"></a><span class="lineno">  767</span> </div>
-<div class="line"><a id="l00768" name="l00768"></a><span class="lineno">  768</span>    <span class="keywordflow">if</span> (escalar == 0)</div>
-<div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Erro: Divisão por zero.&quot;</span>);</div>
-<div class="line"><a id="l00770" name="l00770"></a><span class="lineno">  770</span> </div>
-<div class="line"><a id="l00771" name="l00771"></a><span class="lineno">  771</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;e : matriz_)</div>
-<div class="line"><a id="l00772" name="l00772"></a><span class="lineno">  772</span>        e /= escalar;</div>
-<div class="line"><a id="l00773" name="l00773"></a><span class="lineno">  773</span> </div>
-<div class="line"><a id="l00774" name="l00774"></a><span class="lineno">  774</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a id="l00775" name="l00775"></a><span class="lineno">  775</span>}</div>
+<div class="line"><a id="l00750" name="l00750"></a><span class="lineno">  750</span> </div>
+<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00763" data-start="{" data-end="}">
+<div class="line"><a id="l00763" name="l00763"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#aa4c8c4fb5e41886d0af1fc7880d84a5e">  763</a></span><span class="keyword">inline</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;<a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#aa4c8c4fb5e41886d0af1fc7880d84a5e">Matriz&lt;T&gt;::operator/=</a>(T escalar)</div>
+<div class="line"><a id="l00764" name="l00764"></a><span class="lineno">  764</span>{</div>
+<div class="line"><a id="l00765" name="l00765"></a><span class="lineno">  765</span>    <span class="comment">// return *this = *this / escalar;</span></div>
+<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span> </div>
+<div class="line"><a id="l00767" name="l00767"></a><span class="lineno">  767</span>    <span class="keywordflow">if</span> (escalar == 0)</div>
+<div class="line"><a id="l00768" name="l00768"></a><span class="lineno">  768</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Divisão por zero.&quot;</span>);</div>
+<div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span> </div>
+<div class="line"><a id="l00770" name="l00770"></a><span class="lineno">  770</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;e : matriz_)</div>
+<div class="line"><a id="l00771" name="l00771"></a><span class="lineno">  771</span>        e /= escalar;</div>
+<div class="line"><a id="l00772" name="l00772"></a><span class="lineno">  772</span> </div>
+<div class="line"><a id="l00773" name="l00773"></a><span class="lineno">  773</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00774" name="l00774"></a><span class="lineno">  774</span>}</div>
 </div>
-<div class="line"><a id="l00776" name="l00776"></a><span class="lineno">  776</span> </div>
-<div class="line"><a id="l00787" name="l00787"></a><span class="lineno">  787</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00788" data-start="{" data-end="}">
-<div class="line"><a id="l00788" name="l00788"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#afb03001b8163ef28d4a4b9ada68a6925">  788</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#afb03001b8163ef28d4a4b9ada68a6925">Matriz&lt;T&gt;::operator==</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;outro)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00789" name="l00789"></a><span class="lineno">  789</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00790" name="l00790"></a><span class="lineno">  790</span>    <span class="keywordflow">if</span> (linhas_ != outro.linhas_ || colunas_ != outro.colunas_)</div>
-<div class="line"><a id="l00791" name="l00791"></a><span class="lineno">  791</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00792" name="l00792"></a><span class="lineno">  792</span> </div>
-<div class="line"><a id="l00793" name="l00793"></a><span class="lineno">  793</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; linhas_; ++i)</div>
-<div class="line"><a id="l00794" name="l00794"></a><span class="lineno">  794</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; colunas_; ++j)</div>
-<div class="line"><a id="l00795" name="l00795"></a><span class="lineno">  795</span>            <span class="keywordflow">if</span> ((*<span class="keyword">this</span>)(i, j) != outro(i, j))</div>
-<div class="line"><a id="l00796" name="l00796"></a><span class="lineno">  796</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00797" name="l00797"></a><span class="lineno">  797</span> </div>
-<div class="line"><a id="l00798" name="l00798"></a><span class="lineno">  798</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00799" name="l00799"></a><span class="lineno">  799</span>}</div>
+<div class="line"><a id="l00775" name="l00775"></a><span class="lineno">  775</span> </div>
+<div class="line"><a id="l00786" name="l00786"></a><span class="lineno">  786</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00787" data-start="{" data-end="}">
+<div class="line"><a id="l00787" name="l00787"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#afb03001b8163ef28d4a4b9ada68a6925">  787</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#afb03001b8163ef28d4a4b9ada68a6925">Matriz&lt;T&gt;::operator==</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;outro)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00788" name="l00788"></a><span class="lineno">  788</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00789" name="l00789"></a><span class="lineno">  789</span>    <span class="keywordflow">if</span> (linhas_ != outro.linhas_ || colunas_ != outro.colunas_)</div>
+<div class="line"><a id="l00790" name="l00790"></a><span class="lineno">  790</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00791" name="l00791"></a><span class="lineno">  791</span> </div>
+<div class="line"><a id="l00792" name="l00792"></a><span class="lineno">  792</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; linhas_; ++i)</div>
+<div class="line"><a id="l00793" name="l00793"></a><span class="lineno">  793</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; colunas_; ++j)</div>
+<div class="line"><a id="l00794" name="l00794"></a><span class="lineno">  794</span>            <span class="keywordflow">if</span> ((*<span class="keyword">this</span>)(i, j) != outro(i, j))</div>
+<div class="line"><a id="l00795" name="l00795"></a><span class="lineno">  795</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00796" name="l00796"></a><span class="lineno">  796</span> </div>
+<div class="line"><a id="l00797" name="l00797"></a><span class="lineno">  797</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00798" name="l00798"></a><span class="lineno">  798</span>}</div>
 </div>
-<div class="line"><a id="l00800" name="l00800"></a><span class="lineno">  800</span> </div>
-<div class="line"><a id="l00811" name="l00811"></a><span class="lineno">  811</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00812" data-start="{" data-end="}">
-<div class="line"><a id="l00812" name="l00812"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#abc6ab506227f79c7171bd45f2e3686e6">  812</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#abc6ab506227f79c7171bd45f2e3686e6">Matriz&lt;T&gt;::operator!=</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;outro)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00813" name="l00813"></a><span class="lineno">  813</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00814" name="l00814"></a><span class="lineno">  814</span>    <span class="keywordflow">return</span> !(*<span class="keyword">this</span> == outro);</div>
-<div class="line"><a id="l00815" name="l00815"></a><span class="lineno">  815</span>}</div>
+<div class="line"><a id="l00799" name="l00799"></a><span class="lineno">  799</span> </div>
+<div class="line"><a id="l00810" name="l00810"></a><span class="lineno">  810</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00811" data-start="{" data-end="}">
+<div class="line"><a id="l00811" name="l00811"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#abc6ab506227f79c7171bd45f2e3686e6">  811</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d1/d50/classifnum_1_1Matriz.html#abc6ab506227f79c7171bd45f2e3686e6">Matriz&lt;T&gt;::operator!=</a>(<span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;T&gt;</a> &amp;outro)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00812" name="l00812"></a><span class="lineno">  812</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00813" name="l00813"></a><span class="lineno">  813</span>    <span class="keywordflow">return</span> !(*<span class="keyword">this</span> == outro);</div>
+<div class="line"><a id="l00814" name="l00814"></a><span class="lineno">  814</span>}</div>
 </div>
-<div class="line"><a id="l00816" name="l00816"></a><span class="lineno">  816</span> </div>
-<div class="line"><a id="l00830" name="l00830"></a><span class="lineno">  830</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> U&gt;</div>
-<div class="foldopen" id="foldopen00831" data-start="{" data-end="};">
-<div class="line"><a id="l00831" name="l00831"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#acc129f8b9d432f36631d47272e0ce7ad">  831</a></span>std::ostream &amp;<a class="code hl_function" href="../../d2/d4e/namespaceifnum.html#af5205fc909f51140329946af1f4dcc9c">operator&lt;&lt;</a>(std::ostream &amp;os, <span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;U&gt;</a> &amp;u)</div>
-<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span>{</div>
-<div class="line"><a id="l00833" name="l00833"></a><span class="lineno">  833</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> largura = 10;</div>
-<div class="line"><a id="l00834" name="l00834"></a><span class="lineno">  834</span> </div>
-<div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; u.linhas_; ++i) {</div>
-<div class="line"><a id="l00836" name="l00836"></a><span class="lineno">  836</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; u.colunas_; ++j) {</div>
-<div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span>            os &lt;&lt; std::setw(largura) &lt;&lt; u(i, j);</div>
-<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span>        }</div>
-<div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span>        os &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span>    }</div>
-<div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span> </div>
-<div class="line"><a id="l00842" name="l00842"></a><span class="lineno">  842</span>    <span class="keywordflow">return</span> os;</div>
-<div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span>}</div>
+<div class="line"><a id="l00815" name="l00815"></a><span class="lineno">  815</span> </div>
+<div class="line"><a id="l00829" name="l00829"></a><span class="lineno">  829</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> U&gt;</div>
+<div class="foldopen" id="foldopen00830" data-start="{" data-end="};">
+<div class="line"><a id="l00830" name="l00830"></a><span class="lineno"><a class="line" href="../../d1/d50/classifnum_1_1Matriz.html#acc129f8b9d432f36631d47272e0ce7ad">  830</a></span>std::ostream &amp;<a class="code hl_function" href="../../d2/d4e/namespaceifnum.html#af5205fc909f51140329946af1f4dcc9c">operator&lt;&lt;</a>(std::ostream &amp;os, <span class="keyword">const</span> <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;U&gt;</a> &amp;u)</div>
+<div class="line"><a id="l00831" name="l00831"></a><span class="lineno">  831</span>{</div>
+<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> largura = 10;</div>
+<div class="line"><a id="l00833" name="l00833"></a><span class="lineno">  833</span> </div>
+<div class="line"><a id="l00834" name="l00834"></a><span class="lineno">  834</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; u.linhas_; ++i) {</div>
+<div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; u.colunas_; ++j) {</div>
+<div class="line"><a id="l00836" name="l00836"></a><span class="lineno">  836</span>            os &lt;&lt; std::setw(largura) &lt;&lt; u(i, j);</div>
+<div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span>        }</div>
+<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span>        os &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span>    }</div>
+<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span> </div>
+<div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span>    <span class="keywordflow">return</span> os;</div>
+<div class="line"><a id="l00842" name="l00842"></a><span class="lineno">  842</span>}</div>
 </div>
-<div class="line"><a id="l00844" name="l00844"></a><span class="lineno">  844</span> </div>
-<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> U&gt;</div>
-<div class="foldopen" id="foldopen00859" data-start="{" data-end="}">
-<div class="line"><a id="l00859" name="l00859"></a><span class="lineno"><a class="line" href="../../d2/d4e/namespaceifnum.html#a2bf50c78ef038d7d971021c61d9deecc">  859</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;U&gt;</a> <a class="code hl_function" href="../../d2/d4e/namespaceifnum.html#a2bf50c78ef038d7d971021c61d9deecc">operator*</a>(U escalar, <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;U&gt;</a> &amp;matriz)</div>
-<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span>{</div>
-<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>    <span class="keywordflow">return</span> matriz * escalar;</div>
-<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span>}</div>
+<div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span> </div>
+<div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> U&gt;</div>
+<div class="foldopen" id="foldopen00858" data-start="{" data-end="}">
+<div class="line"><a id="l00858" name="l00858"></a><span class="lineno"><a class="line" href="../../d2/d4e/namespaceifnum.html#a2bf50c78ef038d7d971021c61d9deecc">  858</a></span><a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;U&gt;</a> <a class="code hl_function" href="../../d2/d4e/namespaceifnum.html#a2bf50c78ef038d7d971021c61d9deecc">operator*</a>(U escalar, <a class="code hl_class" href="../../d1/d50/classifnum_1_1Matriz.html">Matriz&lt;U&gt;</a> &amp;matriz)</div>
+<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span>{</div>
+<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span>    <span class="keywordflow">return</span> matriz * escalar;</div>
+<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>}</div>
 </div>
-<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span> </div>
-<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span>} <span class="comment">// namespace ifnum</span></div>
+<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span> </div>
+<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span>} <span class="comment">// namespace ifnum</span></div>
 <div class="ttc" id="aMatriz_8hpp_html"><div class="ttname"><a href="../../d6/d1b/Matriz_8hpp.html">Matriz.hpp</a></div><div class="ttdoc">Declaração da classe template Matriz e suas operações associadas.</div></div>
 <div class="ttc" id="aclassifnum_1_1Matriz_html"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html">ifnum::Matriz</a></div><div class="ttdoc">Classe genérica para representação e manipulação de matrizes.</div><div class="ttdef"><b>Definição</b> Matriz.hpp:37</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_a0d12f562a4eff379de417421d62d1135"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a0d12f562a4eff379de417421d62d1135">ifnum::Matriz::operator+=</a></div><div class="ttdeci">Matriz&lt; T &gt; &amp; operator+=(const Matriz&lt; T &gt; &amp;outro)</div><div class="ttdoc">Soma outra matriz a esta matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:691</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_a0d12f562a4eff379de417421d62d1135"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a0d12f562a4eff379de417421d62d1135">ifnum::Matriz::operator+=</a></div><div class="ttdeci">Matriz&lt; T &gt; &amp; operator+=(const Matriz&lt; T &gt; &amp;outro)</div><div class="ttdoc">Soma outra matriz a esta matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:690</div></div>
 <div class="ttc" id="aclassifnum_1_1Matriz_html_a13d3d925fb23fed70ee4e102abcd3197"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a13d3d925fb23fed70ee4e102abcd3197">ifnum::Matriz::imprimir</a></div><div class="ttdeci">void imprimir() const</div><div class="ttdoc">Imprime a matriz no console.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:140</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_a5234520c88a68a1b54590e81162344c4"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a5234520c88a68a1b54590e81162344c4">ifnum::Matriz::redimensionar</a></div><div class="ttdeci">void redimensionar(int linhas, int colunas)</div><div class="ttdoc">Redimensiona a matriz para o número de linhas e colunas especificado.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:358</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_a558576aeac0cb7f335617c4acadd0f62"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a558576aeac0cb7f335617c4acadd0f62">ifnum::Matriz::trocar_linhas</a></div><div class="ttdeci">void trocar_linhas(int indice1, int indice2)</div><div class="ttdoc">Troca duas linhas da matriz entre si.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:428</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_a5234520c88a68a1b54590e81162344c4"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a5234520c88a68a1b54590e81162344c4">ifnum::Matriz::redimensionar</a></div><div class="ttdeci">void redimensionar(int linhas, int colunas)</div><div class="ttdoc">Redimensiona a matriz para o número de linhas e colunas especificado.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:357</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_a558576aeac0cb7f335617c4acadd0f62"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a558576aeac0cb7f335617c4acadd0f62">ifnum::Matriz::trocar_linhas</a></div><div class="ttdeci">void trocar_linhas(int indice1, int indice2)</div><div class="ttdoc">Troca duas linhas da matriz entre si.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:427</div></div>
 <div class="ttc" id="aclassifnum_1_1Matriz_html_a64f8e423653c3e6311a3c513c81f5e4b"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a64f8e423653c3e6311a3c513c81f5e4b">ifnum::Matriz::operator*</a></div><div class="ttdeci">friend Matriz&lt; U &gt; operator*(U escalar, const Matriz&lt; U &gt; &amp;matriz)</div></div>
 <div class="ttc" id="aclassifnum_1_1Matriz_html_a7bcb6401e103f448fcf3e87859eac6be"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a7bcb6401e103f448fcf3e87859eac6be">ifnum::Matriz::linhas</a></div><div class="ttdeci">size_t linhas() const</div><div class="ttdoc">Retorna a quantidade de linhas da matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:92</div></div>
 <div class="ttc" id="aclassifnum_1_1Matriz_html_a94dd1664c37b2ca809cbdc236e354663"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a94dd1664c37b2ca809cbdc236e354663">ifnum::Matriz::Matriz</a></div><div class="ttdeci">Matriz(size_t linhas, size_t colunas, const std::vector&lt; T &gt; &amp;dados)</div><div class="ttdoc">Construtor da matriz com dados iniciais.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:56</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_a96460939f7a628b562ec685b6f2292fb"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a96460939f7a628b562ec685b6f2292fb">ifnum::Matriz::operator/</a></div><div class="ttdeci">Matriz&lt; T &gt; operator/(T escalar) const</div><div class="ttdoc">Divide todos os elementos da matriz por um escalar.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:634</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_a99e7f382f3d897c5d72e773dfa95b9d4"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a99e7f382f3d897c5d72e773dfa95b9d4">ifnum::Matriz::coluna</a></div><div class="ttdeci">Matriz&lt; T &gt; coluna(int indice) const</div><div class="ttdoc">Retorna a coluna da matriz no índice especificado como uma nova matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:327</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_a9afceea97ef36954dc7b92f07bc2e4bd"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a9afceea97ef36954dc7b92f07bc2e4bd">ifnum::Matriz::linha</a></div><div class="ttdeci">Matriz&lt; T &gt; linha(int indice) const</div><div class="ttdoc">Retorna a linha da matriz no índice especificado como uma nova matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:298</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_a96460939f7a628b562ec685b6f2292fb"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a96460939f7a628b562ec685b6f2292fb">ifnum::Matriz::operator/</a></div><div class="ttdeci">Matriz&lt; T &gt; operator/(T escalar) const</div><div class="ttdoc">Divide todos os elementos da matriz por um escalar.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:633</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_a99e7f382f3d897c5d72e773dfa95b9d4"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a99e7f382f3d897c5d72e773dfa95b9d4">ifnum::Matriz::coluna</a></div><div class="ttdeci">Matriz&lt; T &gt; coluna(int indice) const</div><div class="ttdoc">Retorna a coluna da matriz no índice especificado como uma nova matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:326</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_a9afceea97ef36954dc7b92f07bc2e4bd"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a9afceea97ef36954dc7b92f07bc2e4bd">ifnum::Matriz::linha</a></div><div class="ttdeci">Matriz&lt; T &gt; linha(int indice) const</div><div class="ttdoc">Retorna a linha da matriz no índice especificado como uma nova matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:297</div></div>
 <div class="ttc" id="aclassifnum_1_1Matriz_html_a9c7342d86acff9aa3306c7b0a08d2366"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#a9c7342d86acff9aa3306c7b0a08d2366">ifnum::Matriz::colunas</a></div><div class="ttdeci">size_t colunas() const</div><div class="ttdoc">Retorna a quantidade de colunas da matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:107</div></div>
 <div class="ttc" id="aclassifnum_1_1Matriz_html_aa10c082b01bde12d68e31b32b2beb6d1"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#aa10c082b01bde12d68e31b32b2beb6d1">ifnum::Matriz::modulo</a></div><div class="ttdeci">T modulo() const</div><div class="ttdoc">Calcula o módulo (norma Euclidiana) de um vetor.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:190</div></div>
 <div class="ttc" id="aclassifnum_1_1Matriz_html_aa2ac14ffea356ca8b391c80cf51784c7"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#aa2ac14ffea356ca8b391c80cf51784c7">ifnum::Matriz::autovalor</a></div><div class="ttdeci">double autovalor(const Matriz&lt; T &gt; &amp;other, double tolerancia, int r) const</div><div class="ttdoc">Calcula um autovalor da matriz utilizando o método do poder com normalização.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:244</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_aa4c8c4fb5e41886d0af1fc7880d84a5e"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#aa4c8c4fb5e41886d0af1fc7880d84a5e">ifnum::Matriz::operator/=</a></div><div class="ttdeci">Matriz&lt; T &gt; &amp; operator/=(T escalar)</div><div class="ttdoc">Divide todos os elementos da matriz por um escalar.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:764</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_aa9f8afe9aa414b5358aa348bcc143d31"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#aa9f8afe9aa414b5358aa348bcc143d31">ifnum::Matriz::operator()</a></div><div class="ttdeci">T operator()(int linha, int coluna) const</div><div class="ttdoc">Acesso de leitura a um elemento da matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:484</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_aa4c8c4fb5e41886d0af1fc7880d84a5e"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#aa4c8c4fb5e41886d0af1fc7880d84a5e">ifnum::Matriz::operator/=</a></div><div class="ttdeci">Matriz&lt; T &gt; &amp; operator/=(T escalar)</div><div class="ttdoc">Divide todos os elementos da matriz por um escalar.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:763</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_aa9f8afe9aa414b5358aa348bcc143d31"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#aa9f8afe9aa414b5358aa348bcc143d31">ifnum::Matriz::operator()</a></div><div class="ttdeci">T operator()(int linha, int coluna) const</div><div class="ttdoc">Acesso de leitura a um elemento da matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:483</div></div>
 <div class="ttc" id="aclassifnum_1_1Matriz_html_aaa360331f5dfe812101e89ad368baabc"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#aaa360331f5dfe812101e89ad368baabc">ifnum::Matriz::determinante</a></div><div class="ttdeci">T determinante() const</div><div class="ttdoc">Calcula o determinante da matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:159</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_aab78e588081a037833e199b51021e922"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#aab78e588081a037833e199b51021e922">ifnum::Matriz::trocar_colunas</a></div><div class="ttdeci">void trocar_colunas(int indice1, int indice2)</div><div class="ttdoc">Troca duas colunas da matriz entre si.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:456</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_ab51ae2fef5f1771c781460dc0e42ad6c"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#ab51ae2fef5f1771c781460dc0e42ad6c">ifnum::Matriz::operator*=</a></div><div class="ttdeci">Matriz&lt; T &gt; &amp; operator*=(T escalar)</div><div class="ttdoc">Multiplica todos os elementos da matriz por um escalar.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:742</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_abc6ab506227f79c7171bd45f2e3686e6"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#abc6ab506227f79c7171bd45f2e3686e6">ifnum::Matriz::operator!=</a></div><div class="ttdeci">bool operator!=(const Matriz&lt; T &gt; &amp;outro) const</div><div class="ttdoc">Compara duas matrizes quanto à desigualdade.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:812</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_adda7e135c8426228158698fcdbd09ef7"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#adda7e135c8426228158698fcdbd09ef7">ifnum::Matriz::operator-</a></div><div class="ttdeci">Matriz&lt; T &gt; operator-() const</div><div class="ttdoc">Operador unário de negação.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:533</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_ae24cc33915bc10c45d9694455c190202"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#ae24cc33915bc10c45d9694455c190202">ifnum::Matriz::operator-=</a></div><div class="ttdeci">Matriz&lt; T &gt; &amp; operator-=(const Matriz&lt; T &gt; &amp;outro)</div><div class="ttdoc">Subtrai outra matriz desta matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:718</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_ae3928c1a8946e9e4bf78f8d1d800eca0"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#ae3928c1a8946e9e4bf78f8d1d800eca0">ifnum::Matriz::operator+</a></div><div class="ttdeci">Matriz&lt; T &gt; operator+(const Matriz&lt; T &gt; &amp;outro) const</div><div class="ttdoc">Soma duas matrizes elemento a elemento.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:557</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_aab78e588081a037833e199b51021e922"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#aab78e588081a037833e199b51021e922">ifnum::Matriz::trocar_colunas</a></div><div class="ttdeci">void trocar_colunas(int indice1, int indice2)</div><div class="ttdoc">Troca duas colunas da matriz entre si.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:455</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_ab51ae2fef5f1771c781460dc0e42ad6c"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#ab51ae2fef5f1771c781460dc0e42ad6c">ifnum::Matriz::operator*=</a></div><div class="ttdeci">Matriz&lt; T &gt; &amp; operator*=(T escalar)</div><div class="ttdoc">Multiplica todos os elementos da matriz por um escalar.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:741</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_abc6ab506227f79c7171bd45f2e3686e6"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#abc6ab506227f79c7171bd45f2e3686e6">ifnum::Matriz::operator!=</a></div><div class="ttdeci">bool operator!=(const Matriz&lt; T &gt; &amp;outro) const</div><div class="ttdoc">Compara duas matrizes quanto à desigualdade.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:811</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_adda7e135c8426228158698fcdbd09ef7"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#adda7e135c8426228158698fcdbd09ef7">ifnum::Matriz::operator-</a></div><div class="ttdeci">Matriz&lt; T &gt; operator-() const</div><div class="ttdoc">Operador unário de negação.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:532</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_ae24cc33915bc10c45d9694455c190202"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#ae24cc33915bc10c45d9694455c190202">ifnum::Matriz::operator-=</a></div><div class="ttdeci">Matriz&lt; T &gt; &amp; operator-=(const Matriz&lt; T &gt; &amp;outro)</div><div class="ttdoc">Subtrai outra matriz desta matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:717</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_ae3928c1a8946e9e4bf78f8d1d800eca0"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#ae3928c1a8946e9e4bf78f8d1d800eca0">ifnum::Matriz::operator+</a></div><div class="ttdeci">Matriz&lt; T &gt; operator+(const Matriz&lt; T &gt; &amp;outro) const</div><div class="ttdoc">Soma duas matrizes elemento a elemento.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:556</div></div>
 <div class="ttc" id="aclassifnum_1_1Matriz_html_aee65d6031035b3e3966cc00bdc56fc98"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#aee65d6031035b3e3966cc00bdc56fc98">ifnum::Matriz::transposta</a></div><div class="ttdeci">Matriz&lt; T &gt; transposta() const</div><div class="ttdoc">Retorna a transposta da matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:216</div></div>
 <div class="ttc" id="aclassifnum_1_1Matriz_html_aef5492dde14d947aaf5ec70747d238f5"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#aef5492dde14d947aaf5ec70747d238f5">ifnum::Matriz::vector</a></div><div class="ttdeci">std::vector&lt; T &gt; vector() const</div><div class="ttdoc">Retorna uma cópia dos dados da matriz em formato de vetor linear.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:124</div></div>
-<div class="ttc" id="aclassifnum_1_1Matriz_html_afb03001b8163ef28d4a4b9ada68a6925"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#afb03001b8163ef28d4a4b9ada68a6925">ifnum::Matriz::operator==</a></div><div class="ttdeci">bool operator==(const Matriz&lt; T &gt; &amp;outro) const</div><div class="ttdoc">Compara duas matrizes quanto à igualdade.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:788</div></div>
+<div class="ttc" id="aclassifnum_1_1Matriz_html_afb03001b8163ef28d4a4b9ada68a6925"><div class="ttname"><a href="../../d1/d50/classifnum_1_1Matriz.html#afb03001b8163ef28d4a4b9ada68a6925">ifnum::Matriz::operator==</a></div><div class="ttdeci">bool operator==(const Matriz&lt; T &gt; &amp;outro) const</div><div class="ttdoc">Compara duas matrizes quanto à igualdade.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:787</div></div>
 <div class="ttc" id="anamespaceifnum_html"><div class="ttname"><a href="../../d2/d4e/namespaceifnum.html">ifnum</a></div><div class="ttdoc">Namespace principal do projeto. Contém estruturas e funções numéricas.</div><div class="ttdef"><b>Definição</b> AlgebraLinear.hpp:14</div></div>
-<div class="ttc" id="anamespaceifnum_html_a2bf50c78ef038d7d971021c61d9deecc"><div class="ttname"><a href="../../d2/d4e/namespaceifnum.html#a2bf50c78ef038d7d971021c61d9deecc">ifnum::operator*</a></div><div class="ttdeci">Matriz&lt; U &gt; operator*(U escalar, Matriz&lt; U &gt; &amp;matriz)</div><div class="ttdoc">Multiplica escalar por matriz (escalar à esquerda).</div><div class="ttdef"><b>Definição</b> Matriz.tpp:859</div></div>
-<div class="ttc" id="anamespaceifnum_html_af5205fc909f51140329946af1f4dcc9c"><div class="ttname"><a href="../../d2/d4e/namespaceifnum.html#af5205fc909f51140329946af1f4dcc9c">ifnum::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, const Matriz&lt; U &gt; &amp;u)</div><div class="ttdoc">Sobrecarga do operador de saída para impressão de matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:831</div></div>
+<div class="ttc" id="anamespaceifnum_html_a2bf50c78ef038d7d971021c61d9deecc"><div class="ttname"><a href="../../d2/d4e/namespaceifnum.html#a2bf50c78ef038d7d971021c61d9deecc">ifnum::operator*</a></div><div class="ttdeci">Matriz&lt; U &gt; operator*(U escalar, Matriz&lt; U &gt; &amp;matriz)</div><div class="ttdoc">Multiplica escalar por matriz (escalar à esquerda).</div><div class="ttdef"><b>Definição</b> Matriz.tpp:858</div></div>
+<div class="ttc" id="anamespaceifnum_html_af5205fc909f51140329946af1f4dcc9c"><div class="ttname"><a href="../../d2/d4e/namespaceifnum.html#af5205fc909f51140329946af1f4dcc9c">ifnum::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, const Matriz&lt; U &gt; &amp;u)</div><div class="ttdoc">Sobrecarga do operador de saída para impressão de matriz.</div><div class="ttdef"><b>Definição</b> Matriz.tpp:830</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
