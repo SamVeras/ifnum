@@ -4,7 +4,7 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="465,33,410,72,407,68,461,29"/>
 <area shape="rect" id="Node000011" title=" " alt="" coords="451,79,506,104"/>
 <area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="481,31,481,65,476,65,476,31"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="531,79,667,104"/>
+<area shape="rect" id="Node000012" href="$dc/d73/AlgebraLinear_8tpp.html" title="Implementações de templates para operações de álgebra linear." alt="" coords="531,79,667,104"/>
 <area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="499,28,568,69,566,74,497,33"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="5,152,91,177"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="336,105,105,154,104,149,335,100"/>
@@ -20,6 +20,6 @@
 <area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="408,102,503,144,501,149,406,106"/>
 <area shape="rect" id="Node000009" title=" " alt="" coords="607,152,670,177"/>
 <area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="423,101,594,148,593,154,422,107"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="695,152,783,177"/>
+<area shape="rect" id="Node000010" href="$dd/dc2/Matriz_8tpp.html" title="Implementação dos métodos da classe template Matriz." alt="" coords="695,152,783,177"/>
 <area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="427,99,682,149,681,154,426,104"/>
 </map>

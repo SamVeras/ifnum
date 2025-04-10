@@ -104,6 +104,7 @@ $(document).ready(function(){initNavTree('d7/d2c/namespaceifnum_1_1rng.html','..
 Funções</h2></td></tr>
 <tr class="memitem:a6c2524644ce91c6a51fbd080ff3501b8" id="r_a6c2524644ce91c6a51fbd080ff3501b8"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a6c2524644ce91c6a51fbd080ff3501b8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../d1/d50/classifnum_1_1Matriz.html">ifnum::Matriz</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d2c/namespaceifnum_1_1rng.html#a6c2524644ce91c6a51fbd080ff3501b8">matriz_aleatoria</a> (size_t linhas, size_t colunas, T min, T max)</td></tr>
+<tr class="memdesc:a6c2524644ce91c6a51fbd080ff3501b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gera uma matriz aleatória de valores numéricos.  <br /></td></tr>
 <tr class="separator:a6c2524644ce91c6a51fbd080ff3501b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -154,6 +155,33 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Gera uma matriz aleatória de valores numéricos. </p>
+<p>Gera uma matriz com os valores distribuídos uniformemente no intervalo [min, max], usando distribuição inteira ou contínua, dependendo do tipo T.</p>
+<dl class="tparams"><dt>Parâmetros do template</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Tipo numérico dos elementos (int, float, double...). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">linhas</td><td>Número de linhas da matriz. </td></tr>
+    <tr><td class="paramname">colunas</td><td>Número de colunas da matriz. </td></tr>
+    <tr><td class="paramname">min</td><td>Valor mínimo dos elementos. </td></tr>
+    <tr><td class="paramname">max</td><td>Valor máximo dos elementos. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd><a class="el" href="../../d1/d50/classifnum_1_1Matriz.html" title="Classe genérica para representação e manipulação de matrizes.">Matriz</a> preenchida com valores aleatórios. </dd></dl>
+<dl class="exception"><dt>Exceções</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">static_assert</td><td>Se T não for um tipo numérico.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section author"><dt>Autor</dt><dd>Samuel Veras </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>27/03/2025 </dd></dl>
 
 </div>
 </div>

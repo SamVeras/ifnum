@@ -13,7 +13,7 @@
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="300,102,336,140,332,144,296,106"/>
 <area shape="rect" id="Node000012" title=" " alt="" coords="70,152,125,177"/>
 <area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="257,107,139,151,137,146,255,102"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="149,152,285,177"/>
+<area shape="rect" id="Node000013" href="$dc/d73/AlgebraLinear_8tpp.html" title="Implementações de templates para operações de álgebra linear." alt="" coords="149,152,285,177"/>
 <area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="277,106,240,144,236,140,273,102"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="117,225,203,251"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="324,180,205,223,204,218,322,175"/>
@@ -29,7 +29,7 @@
 <area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="400,175,577,220,576,225,399,180"/>
 <area shape="rect" id="Node000010" title=" " alt="" coords="417,225,479,251"/>
 <area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="371,175,424,215,420,219,368,179"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="5,225,93,251"/>
+<area shape="rect" id="Node000011" href="$dd/dc2/Matriz_8tpp.html" title="Implementação dos métodos da classe template Matriz." alt="" coords="5,225,93,251"/>
 <area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="310,179,107,226,106,221,308,174"/>
 <area shape="poly" id="edge14_Node000014_Node000003" title=" " alt="" coords="523,107,401,150,400,145,522,102"/>
 <area shape="poly" id="edge15_Node000014_Node000008" title=" " alt="" coords="605,93,646,99,692,110,740,126,784,150,815,179,836,211,831,214,811,183,781,154,738,131,691,115,645,105,604,99"/>
@@ -44,6 +44,6 @@
 <area shape="poly" id="edge24_Node000019_Node000008" title=" " alt="" coords="749,175,816,216,813,220,747,180"/>
 <area shape="poly" id="edge25_Node000019_Node000009" title=" " alt="" coords="715,180,662,219,659,215,712,175"/>
 <area shape="poly" id="edge26_Node000019_Node000010" title=" " alt="" coords="689,179,493,227,492,222,687,174"/>
-<area shape="rect" id="Node000020" title=" " alt="" coords="701,225,781,251"/>
+<area shape="rect" id="Node000020" href="$d6/df2/Vetor_8tpp.html" title=" " alt="" coords="701,225,781,251"/>
 <area shape="poly" id="edge27_Node000019_Node000020" title=" " alt="" coords="734,177,740,211,734,212,729,178"/>
 </map>
