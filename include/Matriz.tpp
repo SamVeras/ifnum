@@ -159,7 +159,7 @@ template <typename T>
 T Matriz<T>::determinante() const
 {
     if (colunas_ != linhas_)
-        throw std::invalid_argument("Erro: Matriz não é quadrada.");
+        throw std::invalid_argument("Matriz não é quadrada.");
 
     if (linhas_ == 1)
         return (*this)(0, 0);
@@ -190,7 +190,7 @@ template <typename T>
 T Matriz<T>::modulo() const // Calcula a norma de um vetor.
 {
     if (colunas_ != 1) {
-        throw std::invalid_argument("Erro: A matriz não é um vetor coluna.");
+        throw std::invalid_argument("A matriz não é um vetor coluna.");
     }
 
     T soma_quadrados = 0;
@@ -244,10 +244,10 @@ template <typename T>
 double Matriz<T>::autovalor(const Matriz<T> &other, double tolerancia, int r) const
 {
     if (colunas_ != linhas_)
-        throw std::invalid_argument("Erro: Matriz deve ser quadrada.");
+        throw std::invalid_argument("Matriz deve ser quadrada.");
 
     if (other.colunas_ != 1 || other.linhas_ != linhas_)
-        throw std::invalid_argument("Erro: O vetor inicial deve ser um vetor "
+        throw std::invalid_argument("O vetor inicial deve ser um vetor "
                                     "coluna com a mesma quantidade "
                                     "de linhas da matriz.");
 
@@ -275,8 +275,7 @@ double Matriz<T>::autovalor(const Matriz<T> &other, double tolerancia, int r) co
     Matriz<T> denominador = v.transposta() * v;
 
     if (denominador(0, 0) == 0)
-        throw std::runtime_error(
-            "Erro: Denominador zero, impossibilitando o cálculo do autovalor.");
+        throw std::runtime_error("Denominador zero, impossibilitando o cálculo do autovalor.");
 
     return produto(0, 0) / denominador(0, 0);
 }
@@ -298,10 +297,10 @@ template <typename T>
 Matriz<T> Matriz<T>::linha(int indice) const
 {
     if (indice < 0)
-        throw std::out_of_range("Erro: Índice deve ser maior ou igual a zero.");
+        throw std::out_of_range("Índice deve ser maior ou igual a zero.");
 
     if ((size_t)indice >= linhas_)
-        throw std::out_of_range("Erro: Índice de linha fora dos limites.");
+        throw std::out_of_range("Índice de linha fora dos limites.");
 
     std::vector<T> nova_linha(&matriz_[indice * colunas_], &matriz_[(indice + 1) * colunas_]);
 
@@ -327,10 +326,10 @@ template <typename T>
 Matriz<T> Matriz<T>::coluna(int indice) const
 {
     if (indice < 0)
-        throw std::out_of_range("Erro: Índice deve ser maior ou igual a zero.");
+        throw std::out_of_range("Índice deve ser maior ou igual a zero.");
 
     if ((size_t)indice >= linhas_)
-        throw std::out_of_range("Erro: Índice de coluna fora dos limites.");
+        throw std::out_of_range("Índice de coluna fora dos limites.");
 
     std::vector<T> nova_coluna(colunas_);
     for (size_t i = 0; i < linhas_; i++)
@@ -358,7 +357,7 @@ template <typename T>
 void Matriz<T>::redimensionar(int linhas, int colunas)
 {
     if (linhas < 0 || colunas < 0)
-        throw std::invalid_argument("Erro: Valores devem ser positivos.");
+        throw std::invalid_argument("Valores devem ser positivos.");
 
     const size_t novo_linhas = static_cast<size_t>(linhas);
     const size_t novo_colunas = static_cast<size_t>(colunas);
@@ -428,10 +427,10 @@ template <typename T>
 void Matriz<T>::trocar_linhas(int indice1, int indice2)
 {
     if (indice1 < 0 || indice2 < 0)
-        throw std::out_of_range("Erro: Índice/s de linha negativo/s.");
+        throw std::out_of_range("Índice/s de linha negativo/s.");
 
     if ((size_t)indice1 >= linhas_ || (size_t)indice2 >= linhas_)
-        throw std::out_of_range("Erro: Índice/s de linha além do limite da matriz.");
+        throw std::out_of_range("Índice/s de linha além do limite da matriz.");
 
     auto start1 = matriz_.begin() + indice1 * colunas_; // inicio do intervalo [
     auto last1 = start1 + colunas_;                     // fim do intervalo    )
@@ -457,10 +456,10 @@ void Matriz<T>::trocar_colunas(int indice1, int indice2)
 {
 
     if (indice1 < 0 || indice2 < 0)
-        throw std::out_of_range("Erro: Índice/s de coluna negativo/s.");
+        throw std::out_of_range("Índice/s de coluna negativo/s.");
 
     if ((size_t)indice1 >= colunas_ || (size_t)indice2 >= colunas_)
-        throw std::out_of_range("Erro: Índice/s de coluna além do limite da matriz.");
+        throw std::out_of_range("Índice/s de coluna além do limite da matriz.");
 
     for (size_t i = 0; i < linhas_; i++)
         std::swap(matriz_[i * colunas_ + indice1], matriz_[i * colunas_ + indice2]);
@@ -484,10 +483,10 @@ template <typename T>
 T Matriz<T>::operator()(int linha, int coluna) const
 {
     if (linha < 0 || coluna < 0)
-        throw std::out_of_range("Erro: Índices negativos.");
+        throw std::out_of_range("Índices negativos.");
 
     if ((size_t)linha >= linhas_ || (size_t)coluna >= colunas_)
-        throw std::out_of_range("Erro: Índices fora dos limites da matriz.");
+        throw std::out_of_range("Índices fora dos limites da matriz.");
 
     return matriz_[linha * colunas_ + coluna];
 }
@@ -510,10 +509,10 @@ template <typename T>
 T &Matriz<T>::operator()(int linha, int coluna)
 {
     if (linha < 0 || coluna < 0)
-        throw std::out_of_range("Erro: Índices negativos.");
+        throw std::out_of_range("Índices negativos.");
 
     if ((size_t)linha >= linhas_ || (size_t)coluna >= colunas_)
-        throw std::out_of_range("Erro: Índices fora dos limites da matriz.");
+        throw std::out_of_range("Índices fora dos limites da matriz.");
 
     return matriz_[linha * colunas_ + coluna];
 }
@@ -557,7 +556,7 @@ template <typename T>
 Matriz<T> Matriz<T>::operator+(const Matriz<T> &other) const
 {
     if (colunas_ != other.colunas_ || linhas_ != other.linhas_)
-        throw std::invalid_argument("Erro: Matrizes de ordens diferentes.");
+        throw std::invalid_argument("Matrizes de ordens diferentes.");
 
     Matriz<T> novo(linhas_, colunas_);
 
@@ -584,7 +583,7 @@ template <typename T>
 Matriz<T> Matriz<T>::operator-(const Matriz<T> &other) const
 {
     if (colunas_ != other.colunas_ || linhas_ != other.linhas_)
-        throw std::invalid_argument("Erro: Matrizes de ordens diferentes.");
+        throw std::invalid_argument("Matrizes de ordens diferentes.");
 
     Matriz<T> novo(linhas_, colunas_);
 
@@ -634,7 +633,7 @@ template <typename T>
 Matriz<T> Matriz<T>::operator/(T escalar) const
 {
     if (escalar == 0)
-        throw std::invalid_argument("Erro: Divisão por zero.");
+        throw std::invalid_argument("Divisão por zero.");
 
     Matriz<T> novo(linhas_, colunas_);
 
@@ -662,7 +661,7 @@ template <typename T>
 Matriz<T> Matriz<T>::operator*(const Matriz<T> &outro) const
 {
     if (colunas_ != outro.linhas_)
-        throw std::invalid_argument("Erro: Matrizes incompatíveis.");
+        throw std::invalid_argument("Matrizes com dimensões incompatíveis para multiplicação.");
 
     Matriz<T> novo(linhas_, outro.colunas_);
 
@@ -693,7 +692,7 @@ Matriz<T> &Matriz<T>::operator+=(const Matriz<T> &other)
     // return *this = *this + other;
 
     if (colunas_ != other.colunas_ || linhas_ != other.linhas_)
-        throw std::invalid_argument("Erro: Matrizes de ordens diferentes.");
+        throw std::invalid_argument("Matrizes de ordens diferentes.");
 
     for (size_t i = 0; i < matriz_.size(); i++)
         matriz_[i] += other.matriz_[i];
@@ -720,7 +719,7 @@ Matriz<T> &Matriz<T>::operator-=(const Matriz<T> &other)
     // return *this = *this - outro;
 
     if (colunas_ != other.colunas_ || linhas_ != other.linhas_)
-        throw std::invalid_argument("Erro: Matrizes de ordens diferentes.");
+        throw std::invalid_argument("Matrizes de ordens diferentes.");
 
     for (size_t i = 0; i < matriz_.size(); i++)
         matriz_[i] -= other.matriz_[i];
@@ -766,7 +765,7 @@ inline Matriz<T> &Matriz<T>::operator/=(T escalar)
     // return *this = *this / escalar;
 
     if (escalar == 0)
-        throw std::invalid_argument("Erro: Divisão por zero.");
+        throw std::invalid_argument("Divisão por zero.");
 
     for (auto &e : matriz_)
         e /= escalar;

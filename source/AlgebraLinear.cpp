@@ -11,19 +11,22 @@ namespace ifnum
 {
 // Ler um pouco de pivotamento em http://e-maxx.ru/bookz/files/numerical_recipes.pdf
 /*!
- * @brief Decompoem uma matriz em L e U com pivotamento completo
+ * @brief Decompõe uma matriz quadrada em L, U e P com pivotamento completo.
  *
- * Decompoem uma matriz em L e U com pivotamento completo e retorna junto a L e U um matriz de permutação.
+ * A função realiza a decomposição LU com pivotamento completo, retornando:
+ * - L: matriz triangular inferior,
+ * - U: matriz triangular superior,
+ * - P: matriz de permutação.
  *
- * @param A matriz quadrada que será decomposta
- * @param L matriz quadrada triangular inferiro
- * @param U matriz quadrada triangular superior
- * @param P matriz qudrada de permutação
+ * @param A Matriz quadrada a ser decomposta.
+ * @return Tupla contendo as matrizes L, U e P, respectivamente.
+ *
+ * @throws std::runtime_error Se a matriz for singular.
  *
  * @author Lucas Andrei
  * @author Giovani Zanella
  * @date 03/04/2025
-*/
+ */
 std::tuple<Matriz<double>, Matriz<double>, Matriz<double>> decomposicaoLU(const Matriz<double> &A)
 {
 
@@ -83,16 +86,23 @@ std::tuple<Matriz<double>, Matriz<double>, Matriz<double>> decomposicaoLU(const 
 }
 
 /*!
- * @brief Resolve um sistema linear pelo método de substituição simples.
+ * @brief Resolve um sistema linear utilizando a decomposição LU com pivotamento completo.
  *
- * Recebe uma matriz nxn com a parte inferior zerada e um vetor e retorna a solução do sistema
+ * Resolve o sistema \( Ax = b \) através de:
+ * 1. Decomposição LU com pivotamento completo.
+ * 2. Substituição direta e reversa para encontrar o vetor solução.
  *
- * @param matriz Matriz dos coeficientes
+ * @param A Matriz dos coeficientes (matriz quadrada).
+ * @param b Vetor coluna com os termos independentes.
+ * @return Vetor solução do sistema.
+ *
+ * @throws std::runtime_error Se a decomposição não for possível (matriz singular).
  *
  * @author Lucas Andrei
  * @author Giovani Zanella
  * @date 03/04/2025
-*/
+ */
+
 Matriz<double> resolverLU(const Matriz<double> &A, const Matriz<double> &b)
 {
     auto [L, U, P] = decomposicaoLU(A);

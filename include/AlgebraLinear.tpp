@@ -12,18 +12,18 @@
 namespace ifnum
 {
 /*!
-* @brief Resolve um sistema linear pelo método de substituição simples.
-*
-* Recebe uma matriz nxn com a parte inferior zerada e um vetor e retorna a solução do sistema
-*
-* @param matriz Matriz dos coeficientes
-* @param b Vetor
-* @param x Vetor solução do sistema
-*
-* @author Lucas Andrei
-* @author Giovani Zanella
-* @date 20/03/2025
-*/
+ * @brief Resolve um sistema triangular superior via substituição reversa.
+ *
+ * Recebe uma matriz com a parte inferior zerada e um vetor, e retorna o vetor solução.
+ *
+ * @param matriz Matriz triangular superior.
+ * @param b Vetor de constantes.
+ * @return Vetor solução do sistema.
+ *
+ * @author Lucas Andrei
+ * @author Giovani Zanella
+ * @date 20/03/2025
+ */
 template <typename T>
 Matriz<T> sub(Matriz<T> &matriz, Matriz<T> &b)
 {
@@ -42,18 +42,18 @@ Matriz<T> sub(Matriz<T> &matriz, Matriz<T> &b)
 }
 
 /*!
- * @brief Resolve um sistema linear pelo método de  retro substituição.
+ * @brief Resolve um sistema triangular inferior via substituição direta.
  *
- * Recebe uma matriz nxn com a parte superior zerada e um vetor e retorna a solução do sistema
+ * Recebe uma matriz com a parte superior zerada e um vetor, e retorna o vetor solução.
  *
- * @param matriz Matriz dos coeficientes
- * @param b Vetor
- * @param x Vetor solução do sistema
+ * @param matriz Matriz triangular inferior.
+ * @param b Vetor de constantes.
+ * @return Vetor solução do sistema.
  *
  * @author Lucas Andrei
  * @author Giovani Zanella
  * @date 20/03/2025
-*/
+ */
 template <typename T>
 Matriz<T> reversub(const Matriz<T> &matriz, const Matriz<T> &b)
 {
@@ -92,21 +92,26 @@ bool verificar_matriz_quadrada(Matriz<T> matriz)
 }
 
 /*!
- * @brief Resolve um sistema linear pelo método de substituição simples.
+ * @brief Aplica o método de eliminação de Gauss para escalonar uma matriz.
  *
- * Recebe uma matriz nxn com a parte inferior zerada e um vetor e retorna a solução do sistema
+ * Realiza a triangularização superior de uma matriz de coeficientes e modifica o vetor de constantes correspondente.
+ * Não realiza substituição para encontrar a solução — apenas escalona o sistema.
  *
- * @param matriz Matriz dos coeficientes
+ * @param matriz Matriz dos coeficientes (modificada no processo).
+ * @param b Vetor de constantes do sistema (modificado no processo).
+ * @return Matriz escalonada.
+ *
+ * @throws std::invalid_argument Se a matriz não for quadrada.
  *
  * @author Sofia Effting
  * @author Ana Julia Dalmora
  * @date 20/03/2025
-*/
+ */
 template <typename T>
 Matriz<T> gauss(Matriz<T> &matriz, Matriz<T> &b)
 {
     if (!verificar_matriz_quadrada(matriz)) {
-        throw std::invalid_argument("Erro: Matriz não é quadrada.");
+        throw std::invalid_argument("Matriz não é quadrada.");
     };
     int n = static_cast<int>(matriz.linhas());
 
@@ -126,21 +131,25 @@ Matriz<T> gauss(Matriz<T> &matriz, Matriz<T> &b)
 }
 
 /*!
- * @brief Resolve um sistema linear pelo método de substituição simples.
+ * @brief Aplica o método de Gauss-Jordan para resolver um sistema linear.
  *
- * Recebe uma matriz nxn com a parte inferior zerada e um vetor e retorna a solução do sistema
+ * Executa o escalonamento direto seguido do escalonamento reverso, resultando na matriz identidade e no vetor solução.
  *
- * @param matriz Matriz dos coeficientes
+ * @param matriz Matriz dos coeficientes (modificada no processo).
+ * @param b Vetor de constantes do sistema (modificado no processo e se torna o vetor solução).
+ * @return Matriz identidade resultante do processo.
+ *
+ * @throws std::invalid_argument Se a matriz não for quadrada.
  *
  * @author Sofia Effting
  * @author Ana Julia Dalmora
  * @date 20/03/2025
-*/
+ */
 template <typename T>
 Matriz<T> gauss_jordan(Matriz<T> &matriz, Matriz<T> &b)
 {
     if (!verificar_matriz_quadrada(matriz)) {
-        throw std::invalid_argument("Erro: Matriz não é quadrada.");
+        throw std::invalid_argument("Matriz não é quadrada.");
     };
     int n = static_cast<int>(matriz.linhas());
 
@@ -182,7 +191,7 @@ template <typename T>
 Matriz<T> retorna_U(Matriz<T> &matriz)
 {
     if (!verificar_matriz_quadrada(matriz)) {
-        throw std::invalid_argument("Erro: Matriz não é quadrada.");
+        throw std::invalid_argument("Matriz não é quadrada.");
     }
 
     int n = static_cast<int>(matriz.linhas());
@@ -215,7 +224,7 @@ template <typename T>
 Matriz<T> retorna_L(Matriz<T> &matriz)
 {
     if (!verificar_matriz_quadrada(matriz)) {
-        throw std::invalid_argument("Erro: Matriz não é quadrada.");
+        throw std::invalid_argument("Matriz não é quadrada.");
     }
 
     int n = static_cast<int>(matriz.linhas());
