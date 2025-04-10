@@ -39,7 +39,7 @@ template <typename T>
 Vetor<T>::Vetor(size_t tamanho, const std::vector<T> &dados)
     : tamanho_(tamanho), elementos_(tamanho)
 {
-    // tamanho pode ser maior, igual ou menor que dados.size()
+    // Tamanho pode ser maior, igual ou menor que dados.size()
     size_t min = std::min(tamanho, dados.size());
     std::copy_n(dados.begin(), min, elementos_.begin());
 }

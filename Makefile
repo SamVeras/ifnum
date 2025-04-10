@@ -9,6 +9,7 @@ ARFLAGS   := rcs
 # Pastas
 SRCDIR    := source
 INCDIR    := include
+DOCSDIR   := docs
 TESTDIR   := tests
 BUILDDIR  := build
 
@@ -19,6 +20,10 @@ LIBTARGET   := $(BUILDDIR)/lib$(LIB_NAME).a # Biblioteca deve ter nome com prefi
 # Coleta todos os arquivos fonte para a biblioteca
 LIB_SRCS  := $(wildcard $(SRCDIR)/*.cpp)
 LIB_OBJS  := $(patsubst $(SRCDIR)/%.cpp, $(BUILDDIR)/%.o, $(LIB_SRCS))
+
+# Coleta todos os arquivos de cabeçalho para a biblioteca
+LIB_HDRS  := $(wildcard $(INCDIR)/*.hpp)
+LIB_TPPS  := $(wildcard $(INCDIR)/*.tpp)
 
 # Coleta os arquivos fonte dos testes (cada um com sua própria main())
 TEST_SRCS := $(wildcard $(TESTDIR)/*.cpp)
@@ -67,4 +72,10 @@ clean:
 	@echo "Limpando..."
 	find $(BUILDDIR) -maxdepth 1 -type f ! -name '.gitignore' -exec rm -f {} \;
 
-.PHONY: all clean
+# Limpezas da documentação
+clean-docs:
+	@echo "Limpando documentação..."
+	find $(DOCSDIR) -type f ! -name '.gitignore' -exec rm -f {} \;
+	find docs -type d -empty -delete
+
+.PHONY: all docs clean clean-docs
