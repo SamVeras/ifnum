@@ -1,28 +1,33 @@
-# Biblioteca ifnum
+# 📚 Biblioteca ifnum
 
-Projeto para matéria de Projeto Integrador na Extensão.
+Projeto para matéria de **Projeto Integrador na Extensão**.
 
-Instituto Federal Catarinense, campus Blumenau.
+🎓 Instituto Federal Catarinense, campus Blumenau.
 
-Repositório mantido por: [Samuel B. Veras](https://github.com/SamVeras), [Lucas
-Andrei C. Marin](https://github.com/L-Andrei), [Sofia
-Effting](https://github.com/sofiaEffting), [Ana Júlia L.
-Dalmora](https://github.com/AnaDalmora), [Giovani Z.
-Maia](https://github.com/Gzanella1) e [Yean J. Chen](https://github.com/yeanjy).
+Repositório mantido por:\
+👨‍💻 [Samuel B. Veras](https://github.com/SamVeras),\
+👨‍💻 [Lucas Andrei C. Marin](https://github.com/L-Andrei),\
+👩‍💻 [Sofia Effting](https://github.com/sofiaEffting),\
+👩‍💻 [Ana Júlia L. Dalmora](https://github.com/AnaDalmora),\
+👨‍💻 [Giovani Z. Maia](https://github.com/Gzanella1),\
+👨‍💻 [Yean J. Chen](https://github.com/yeanjy)
+
+📄 [Link para a documentação](https://samveras.github.io/ifnum/index.html)
 
 **Disciplinas integradas**:
 
-- disciplinas de cálculo
-- algebra linear
-- disciplinas de programação
-- arquitetura de computadores
-- métodos numéricos
+- 📐 Disciplinas de cálculo
+- 🧮 Álgebra linear
+- 💻 Disciplinas de programação
+- 🖥️ Arquitetura de computadores
+- 📊 Métodos numéricos
 
-## Compilação
+## 💻 Compilação
 
-Requisitos: `g++`, `make` e `doxygen`.
+Requisitos: `g++`, `make`, `doxygen` e `graphviz` (opcional).
 
 - Compilar a biblioteca: `make`
-- Compilar a biblioteca e os executáveis de teste: `make tests`
+- Compilar os executáveis de teste: `make tests`
 - Gerar a documentação (usando Doxygen): `make docs`
 - Limpar os artefatos de compilação: `make clean`
+- Limpar os arquivos de documentação: `make clean-docs`
