@@ -43,8 +43,9 @@ std::tuple<Matriz<double>, Matriz<double>, Matriz<double>> decomposicaoLU(const 
     for (size_t k = 0; k < n; k++) {
         // Pivotamento completo
         double maxValor = 0.0;
-        size_t maxLinha = k, maxColuna = k;
+        size_t maxLinha = k, maxColuna = k; 
 
+        // Loop para encontrar os indicies do número absoluto mais alto.
         for (size_t i = k; i < n; i++) {
             for (size_t j = k; j < n; j++) {
                 if (std::abs(U(i, j)) > maxValor) {
@@ -62,7 +63,7 @@ std::tuple<Matriz<double>, Matriz<double>, Matriz<double>> decomposicaoLU(const 
         // Trocar linhas na matriz U e P
         U.trocar_linhas(k, maxLinha);
         P.trocar_linhas(k, maxLinha);
-        L.trocar_linhas(k, maxLinha);
+        //L.trocar_linhas(k, maxLinha);
 
         // Trocar colunas na matriz U
         U.trocar_colunas(k, maxColuna);
